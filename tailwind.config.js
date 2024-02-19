@@ -3,7 +3,14 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        times: ["Times New Roman", "serif"],
+      },
+      colors: {
+        github: '#010409'
+      }
+    },
   },
   variants: {
     extend: {},
