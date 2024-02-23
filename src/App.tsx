@@ -10,6 +10,7 @@ import { NavBar } from "./components/NavBar";
 
 // Pages
 import { Home } from "./Pages/Home";
+import { Characters } from "./Pages/Characters";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       <NavBar />
       <Routes>
         <Route path={"/"} element={<Home />} />
+        <Route path={"/personagens"} element={<Characters />} />
       </Routes>
     </div>
   );

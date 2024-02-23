@@ -8,7 +8,8 @@ module.exports = {
         times: ["Times New Roman", "serif"],
       },
       colors: {
-        github: '#010409'
+        github: '#010409',
+        githubComponents: '#161b21'
       }
     },
   },
