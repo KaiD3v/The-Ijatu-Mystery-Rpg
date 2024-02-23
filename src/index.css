@@ -2,7 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+    background-color:#010409;
+}
+
 a:hover,
 button:hover{
     opacity: 50%;
 }
+
+.card-container {
+    width: 300px; 
+    height: 400px; 
+  }
+  

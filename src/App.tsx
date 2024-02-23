@@ -14,7 +14,7 @@ import { Characters } from "./Pages/Characters";
 
 export default function App() {
   return (
-    <div className=" bg-github h-screen w-screen">
+    <div className=" bg-github h-full w-screen">
       <NavBar />
       <Routes>
         <Route path={"/"} element={<Home />} />
