@@ -48,7 +48,7 @@ export const CharacterCards: React.FC<CardProps> = ({
   pro,
   age,
   job,
-  lore
+  lore,
 }) => {
   return (
     <Dialog.Root>
@@ -84,26 +84,29 @@ export const CharacterCards: React.FC<CardProps> = ({
       </Dialog.Trigger>
 
       <Dialog.Content className="fixed inset-0 flex items-center justify-center z-50">
-        <div className="absolute inset-0 flex justify-center items-center bg-slate-700">
-          <div className="sm:w-5/6 sm:h-5/6 w-full h-full border border-white rounded-md bg-gray-800">
+        <div className="absolute inset-0 flex justify-center items-center bg-slate-700 overflow-hidden">
+          <div className="sm:w-5/6 sm:h-5/6 w-full max-w-screen-lg h-full border border-white rounded-md bg-gray-800 overflow-y-auto flex flex-col justify-center items-center">
             <div className="flex justify-end absolute top-0 right-0 m-2">
               <Dialog.Close className="absolute top-0 right-0 m-2 text-gray-300 cursor-pointer">
                 <X />
               </Dialog.Close>
             </div>
-
-            <div className="flex flex-col gap-4 h-full overflow-auto p-4">
-              <div className="text-white text-xl">
+            <div className="flex border bg-gray-800 border-t-0 rounded-t-none rounded-md p-4 flex-col gap-4 justify-center items-center text-left">
+              <Dialog.Title className="text-white text-xl md:mt-48 mt-96">
                 {name}, {age}, {job}
-              </div>
-              <div className="text-gray-300">{desc}</div>
-              <div>
-                <h1 className="text-white">Personalidade: {personality}</h1>
-              </div>
-              {appearence && (
-                <div>
-                  <h1 className="text-white">Aparência</h1>
-                  <ul className="text-gray-300">
+              </Dialog.Title>
+              <Dialog.Description className="text-gray-300">
+                {desc}
+              </Dialog.Description>
+              <div className="m-0 p-0 border border-gray-400 w-full"/>
+              <h1> Personalidade: </h1>
+              <p>{personality}</p>
+              <div className="m-0 p-0 border border-gray-400 w-full"/>
+              {appearence ? (
+                <div className="flex flex-col justify-center items-center">
+                  
+                  <h1 className="text-white text-xl mb-0">Aparência</h1>
+                  <ul>
                     {appearence.height && <li>Altura: {appearence.height}</li>}
                     {appearence.hair && <li>Cabelo: {appearence.hair}</li>}
                     {appearence.eyesColor && (
@@ -118,13 +121,16 @@ export const CharacterCards: React.FC<CardProps> = ({
                     {appearence.more && (
                       <li>Outros detalhes: {appearence.more}</li>
                     )}
+                    {curiosity && <li>{curiosity}</li>}
                   </ul>
-                  {curiosity && <p className="text-gray-300">{curiosity}</p>}
                 </div>
+              ) : (
+                ""
               )}
-              <div>
-                <h1 className="text-white">Atributos</h1>
-                <div className="flex flex-wrap gap-6 bg-gray-200 text-github p-4 rounded-xl">
+               <div className="m-0 p-0 border border-gray-400 w-full"/>
+              <div className="justify-center text-center">
+                <h1 className="text-white text-xl">Atributos</h1>
+                <div className="flex gap-6 bg-gray-200 text-github p-4 text rounded-xl">
                   <h1>PV: {hp}</h1>
                   <h1>PE: {pe}</h1>
                   <h1>For: {attr.str}</h1>
@@ -134,32 +140,27 @@ export const CharacterCards: React.FC<CardProps> = ({
                   <h1>Int: {attr.int}</h1>
                   <h1>Cha: {attr.char}</h1>
                 </div>
-              </div>
-              <div>
-                <h1 className="text-white">Habilidades</h1>
-                <details className="flex mr-12">
+                <details className="flex">
                   <summary className="cursor-pointer">Habilidades</summary>
-                  <ul className="text-gray-300">
-                    {skills &&
-                      skills.map((skill, i) => (
-                        <li key={i}>{skill}</li>
-                      ))}
+                  <ul>
+                    {skills?.map((skill, i) => (
+                      <li key={i}>{skill}</li>
+                    ))}
                   </ul>
                 </details>
-              </div>
-              <div>
-                <h1 className="text-white">Perícias</h1>
-                <ul className="text-gray-300">
-                  {pro &&
-                    pro.map((item, i) => (
-                      <li key={i}>{item}</li>
-                    ))}
+                <h1 className="text-white m-4 text-xl">Perícias</h1>
+                <ul className="flex text-left justify-center items-center flex-col">
+                  {pro?.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
                 </ul>
               </div>
+              <div className="m-0 p-0 border border-gray-400 w-full"/>
               <div>
-                <h1 className="text-white">História</h1>
-                <p className="text-gray-300">{lore}</p>
+                <h1 className="text-white m-4 text-xl">História</h1>
+                <p>{lore}</p>
               </div>
+              <div className="m-0 p-0 border border-gray-400 w-full"/>
             </div>
           </div>
         </div>
