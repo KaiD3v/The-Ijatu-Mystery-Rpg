@@ -1,4 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog";
+import { X } from 'lucide-react';
 
 interface CardProps {
   profilePic: string;
@@ -39,16 +40,20 @@ export const CharacterCards: React.FC<CardProps> = ({
       </Dialog.Trigger>
 
       <Dialog.Content className="fixed inset-0 flex items-center justify-center z-50">
-        <div className="absolute bg-slate-700 p-40 rounded-md bg-gray-600">
-          <Dialog.Title className="text-white text-xl mb-2">
+        <div className="absolute bg-slate-700 sm:w-5/6 sm:h-5/6 w-full h-full  rounded-md bg-gray-600">
+          <div className="w-full text-right">
+          <Dialog.Close className="text-gray-300 m-4 justify-end cursor-pointer mt-4">
+            <X/>
+          </Dialog.Close>
+          </div>      
+          <div>
+          <Dialog.Title className="text-white text-xl mb-0">
             {name}
           </Dialog.Title>
           <Dialog.Description className="text-gray-300">
             {desc}
           </Dialog.Description>
-          <Dialog.Close className="text-gray-300 cursor-pointer mt-4">
-            Fechar
-          </Dialog.Close>
+          </div>        
         </div>
       </Dialog.Content>
     </Dialog.Root>
