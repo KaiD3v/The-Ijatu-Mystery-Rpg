@@ -7,6 +7,7 @@ interface CardProps {
   job: string;
   name: string;
   desc: string;
+  lore: string;
   icons?: React.ReactNode;
   personality: string;
   skills?: string[];
@@ -47,6 +48,7 @@ export const CharacterCards: React.FC<CardProps> = ({
   pro,
   age,
   job,
+  lore
 }) => {
   return (
     <Dialog.Root>
@@ -90,20 +92,18 @@ export const CharacterCards: React.FC<CardProps> = ({
               </Dialog.Close>
             </div>
 
-            <div className="flex border bg-gray-800 border-t-0 rounded-t-none rounded-md p-4 flex-col gap-4 justify-center items-center text-left h-full">
-              <Dialog.Title className="text-white text-xl mb-0">
+            <div className="flex flex-col gap-4 h-full overflow-auto p-4">
+              <div className="text-white text-xl">
                 {name}, {age}, {job}
-              </Dialog.Title>
-              <Dialog.Description className="text-gray-300">
-                {desc}
-              </Dialog.Description>
-              <div>
-                <h1> Personalidade: {personality}</h1>
               </div>
-              {appearence ? (
+              <div className="text-gray-300">{desc}</div>
+              <div>
+                <h1 className="text-white">Personalidade: {personality}</h1>
+              </div>
+              {appearence && (
                 <div>
-                  <h1>Aparência</h1>
-                  <ul>
+                  <h1 className="text-white">Aparência</h1>
+                  <ul className="text-gray-300">
                     {appearence.height && <li>Altura: {appearence.height}</li>}
                     {appearence.hair && <li>Cabelo: {appearence.hair}</li>}
                     {appearence.eyesColor && (
@@ -119,23 +119,12 @@ export const CharacterCards: React.FC<CardProps> = ({
                       <li>Outros detalhes: {appearence.more}</li>
                     )}
                   </ul>
-                  {curiosity}
+                  {curiosity && <p className="text-gray-300">{curiosity}</p>}
                 </div>
-              ) : (
-                ""
               )}
-              <div className=" justify-center text-center">
-                <details className="flex mr-12">
-                  <summary className="cursor-pointer">Habilidades</summary>
-                  <ul className="">
-                    {skills?.map((skill, i) => (
-                      <li key={i}>{skill}</li>
-                    ))}
-                  </ul>
-                </details>
-
-                <h1 className="text-white text-xl">Atributos</h1>
-                <div className="flex gap-6 bg-gray-200 text-github p-4 rounded-xl">
+              <div>
+                <h1 className="text-white">Atributos</h1>
+                <div className="flex flex-wrap gap-6 bg-gray-200 text-github p-4 rounded-xl">
                   <h1>PV: {hp}</h1>
                   <h1>PE: {pe}</h1>
                   <h1>For: {attr.str}</h1>
@@ -145,14 +134,31 @@ export const CharacterCards: React.FC<CardProps> = ({
                   <h1>Int: {attr.int}</h1>
                   <h1>Cha: {attr.char}</h1>
                 </div>
-
-                <h1 className="text-white m-4 text-xl">Perícias</h1>
-
-                <ul className="flex flex-col">
-                  {pro?.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
+              </div>
+              <div>
+                <h1 className="text-white">Habilidades</h1>
+                <details className="flex mr-12">
+                  <summary className="cursor-pointer">Habilidades</summary>
+                  <ul className="text-gray-300">
+                    {skills &&
+                      skills.map((skill, i) => (
+                        <li key={i}>{skill}</li>
+                      ))}
+                  </ul>
+                </details>
+              </div>
+              <div>
+                <h1 className="text-white">Perícias</h1>
+                <ul className="text-gray-300">
+                  {pro &&
+                    pro.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
                 </ul>
+              </div>
+              <div>
+                <h1 className="text-white">História</h1>
+                <p className="text-gray-300">{lore}</p>
               </div>
             </div>
           </div>

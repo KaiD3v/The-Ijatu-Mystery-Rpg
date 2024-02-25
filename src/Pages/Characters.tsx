@@ -49,6 +49,9 @@ export const Characters = () => {
               skinColor: "Fair",
               clothes: "Casual",
             }}
+            lore={
+              "Ângela de Matos cresceu em uma fazenda nos arredores de Ijatu, onde ajudava sua família nos trabalhos rurais desde criança. Quando sua mãe adoeceu, ela começou a trabalhar como garçonete no único bar da cidade para ajudar nas despesas médicas. Apesar das dificuldades, Ângela mantém sua extroversão e empatia, recebendo os clientes com um sorriso caloroso. Enquanto equilibra o trabalho no campo e no bar com o cuidado de sua mãe, ela mantém viva a esperança de um futuro melhor."
+            }
             age={"19"}
             job={"Garçonete"}
             pro={[
