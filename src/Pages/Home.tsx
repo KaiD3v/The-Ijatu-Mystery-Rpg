@@ -15,10 +15,10 @@ export const Home = () => {
           O melhor rpg de mistério do Brasil!
         </p>
         <div className="flex flex-col sm:flex-row mt-10">
-          <button className="text-github bg-gray-100 border rounded-lg m-1 px-10 py-3 transition duration-300 hover:shadow-lg hover:opacity-100">
+          <button className="text-github bg-gray-100 border rounded-lg m-1 px-10 py-3 transition duration-300 hover:bg-github hover:text-gray-50 hover:opacity-100">
             Explorar Conteúdo
           </button>
-          <button className="text-white border border-white rounded-lg m-1 px-10 py-3 transition duration-500 ease-in-out hover:bg-black hover:border-white hover:opacity-100">
+          <button className="text-white border border-white rounded-lg m-1 px-10 py-3 transition duration-500 ease-in-out hover:bg-gray-50 hover:text-github hover:border-white hover:opacity-100">
             Baixar Livros
           </button>
         </div>
