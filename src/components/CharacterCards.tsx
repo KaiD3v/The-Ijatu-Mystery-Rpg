@@ -91,8 +91,8 @@ export const CharacterCards: React.FC<CardProps> = ({
                 <X />
               </Dialog.Close>
             </div>
-            <div className="flex border bg-gray-800 border-t-0 rounded-t-none rounded-md p-4 flex-col gap-4 justify-center items-center text-left">
-              <Dialog.Title className="text-white text-xl md:mt-48 mt-96 lg:mt-96">
+            <div className="flex border sm:text-base text-sm bg-gray-800 border-t-0 rounded-t-none rounded-md p-4 flex-col gap-4 justify-center items-center text-left">
+              <Dialog.Title className="text-white sm:text-xl text-sm mt-96">
                 {name}, {age}, {job}
               </Dialog.Title>
               <Dialog.Description className="text-gray-300">
