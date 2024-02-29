@@ -84,15 +84,15 @@ export const CharacterCards: React.FC<CardProps> = ({
       </Dialog.Trigger>
 
       <Dialog.Content className="fixed inset-0 flex items-center justify-center z-50">
-        <div className="absolute inset-0 flex justify-center items-center bg-slate-700 overflow-hidden">
-          <div className="sm:w-5/6 sm:h-5/6 w-full max-w-screen-lg h-full border border-white rounded-md bg-gray-800 overflow-y-auto flex flex-col justify-center items-center">
+        <div className="absolute sm:text-base text-sm inset-0 flex justify-center items-center bg-slate-700 overflow-hidden">
+          <div className="sm:w-5/6 sm:h-5/6 w-full max-w-screen-lg h-full border border-white rounded-md bg-gray-800 overflow-y-auto flex flex-col ">
             <div className="flex justify-end absolute top-0 right-0 m-2">
               <Dialog.Close className="absolute top-0 right-0 m-2 text-gray-300 cursor-pointer">
                 <X />
               </Dialog.Close>
             </div>
             <div className="flex border sm:text-base text-sm bg-gray-800 border-t-0 rounded-t-none rounded-md p-4 flex-col gap-4 justify-center items-center text-left">
-              <Dialog.Title className="text-white sm:text-xl text-sm mt-96">
+              <Dialog.Title className="text-white sm:text-xl text-sm ">
                 {name}, {age}, {job}
               </Dialog.Title>
               <Dialog.Description className="text-gray-300">
@@ -127,10 +127,10 @@ export const CharacterCards: React.FC<CardProps> = ({
               ) : (
                 ""
               )}
-               <div className="m-0 p-0 border border-gray-400 w-full"/>
+               <div className="border border-gray-400 w-full"/>
               <div className="justify-center text-center">
-                <h1 className="text-white text-xl">Atributos</h1>
-                <div className="flex gap-6 bg-gray-200 text-github p-4 text rounded-xl">
+                <h1 className="text-white sm:text-xl text-sm">Atributos</h1>
+                <div className="flex sm:text-xl text-sm gap-6 bg-gray-200 text-github sm:p-4 py-2 text rounded-xl">
                   <h1>PV: {hp}</h1>
                   <h1>PE: {pe}</h1>
                   <h1>For: {attr.str}</h1>
