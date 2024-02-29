@@ -1,7 +1,9 @@
 import { CharacterCards } from "../components/CharacterCards";
 import angelaProfile from "../assets/ProfilePictures/angelaProfile.png";
-import pauloProfile from "../assets/ProfilePictures/pauloProfile.png"
-import { PartyPopper, Beer, BookOpen } from "lucide-react";
+import pauloProfile from "../assets/ProfilePictures/pauloProfile.png";
+import marcosProfile from "../assets/ProfilePictures/marcosProfile.png";
+import josefinoProfile from "../assets/ProfilePictures/josefinoProfile.png"
+import { PartyPopper, Beer, BookOpen, Axe, FlameKindling, Church } from "lucide-react";
 
 export const Characters = () => {
   return (
@@ -85,7 +87,7 @@ export const Characters = () => {
             appearence={{
               height: "1,93m",
               hair: "Calvo",
-              eyesColor: "Preto",
+              eyesColor: "Pretos",
               skinColor: "Branca",
               clothes:
                 "Por passar a maior parte do tempo em casa, Paulo prefere roupas despojadas e confortáveis. Ele geralmente veste uma camiseta social larga, com apenas os botões centrais abotoados, combinada com um short grande e de material leve. Seu calçado favorito é uma papete, que o acompanha em todos os lugares.",
@@ -95,9 +97,7 @@ export const Characters = () => {
             }
             age={"31"}
             job={"Bibliotecário"}
-            pro={[
-              "investigação: 2"
-            ]}
+            pro={["investigação: 2"]}
             hp={"6"}
             pe={"2"}
             attr={{
@@ -107,6 +107,84 @@ export const Characters = () => {
               knw: "0",
               int: "2",
               char: "0",
+            }}
+          />
+          <CharacterCards
+            name="Marcos Santos"
+            desc="Marcos é um homem de poucas palavras, quieto e reservado."
+            profilePic={marcosProfile}
+            skills={["Trabalhador Braçal"]}
+            icons={[<Axe />, <FlameKindling />]}
+            personality=" Ele prefere a solidão da floresta à agitação da cidade e tem uma conexão profunda com a natureza ao seu redor. Apesar de sua natureza solitária, ele é observador e atento aos detalhes, demonstrando uma sabedoria silenciosa em suas ações."
+            appearence={{
+              height: "1,90m",
+              hair: "Negros",
+              eyesColor: "Castanhos",
+              skinColor: "Bronzeada pelo sol",
+              clothes:
+                "Ele veste roupas simples e práticas, geralmente uma camisa xadrez desgastada, calças jeans resistentes e botas de couro gastas pela trilha.",
+            }}
+            lore={
+              "Marcos é um lenhador experiente que vive em uma pequena cabana isolada nas profundezas da floresta. Ele aprendeu desde cedo a sobreviver na natureza, desenvolvendo habilidades de caça, rastreamento e sobrevivência que o tornaram um mestre do ambiente selvagem. Apesar de sua vida solitária, Marcos não é insensível à presença humana. De tempos em tempos, ele visita o Bar do Tonhão na cidade próxima, onde troca suas mercadorias por suprimentos essenciais e compartilha breves conversas com os habitantes locais. No entanto, sua verdadeira casa está entre as árvores altas e o silêncio tranquilo da floresta, onde ele se sente verdadeiramente em paz."
+            }
+            age={"30"}
+            job={"Lenhador/Seringueiro"}
+            pro={[
+              "Atletismo: 2",
+              "Intuição: 2",
+              "Lidar com Animais: 1",
+              "Luta: 2",
+              "Medicina: 1",
+              "Sobrevivencia: 1",
+            ]}
+            hp={"8"}
+            pe={"2"}
+            attr={{
+              str: "2",
+              con: "2",
+              dex: "0",
+              knw: "1",
+              int: "2",
+              char: "0",
+            }}
+          />
+
+          <CharacterCards
+            name="Joséfino"
+            desc="Joséfino é reverenciado como uma figura respeitada e admirada na comunidade como padre e líder espiritual."
+            profilePic={josefinoProfile}
+            skills={["Língua de Prata"]}
+            icons={[<Church />]}
+            personality="Extremamente inteligente e eloquente, Joséfino é reverenciado como uma figura respeitada e admirada na comunidade como padre e líder espiritual. No entanto, por trás de sua fachada piedosa, ele esconde uma natureza manipuladora e ambiciosa. Ele é capaz de usar sua inteligência e carisma para alcançar seus objetivos, muitas vezes às custas dos outros. Joséfino é conhecido por seus acordos sujos com o prefeito da cidade, envolvendo-se em práticas questionáveis em busca de poder e riqueza."
+            appearence={{
+              height: "1,80m",
+              hair: "Negros",
+              eyesColor: "Castanhos",
+              skinColor: "Branca",
+              clothes:
+                "Ele veste roupas simples e práticas, geralmente uma camisa xadrez desgastada, calças jeans resistentes e botas de couro gastas pela trilha.",
+            }}
+            lore={
+              "Nascido e criado na cidade de Ijatu, Joséfino seguiu uma trajetória de vida que o levou ao sacerdócio. Como líder da única igreja da cidade, ele exerce uma influência significativa sobre os habitantes locais, usando sua posição para consolidar seu poder e alcançar seus próprios interesses. Apesar de sua vida financeira aparentemente próspera, há segredos sombrios por trás da fachada piedosa de Joséfino, revelando um homem disposto a fazer qualquer coisa para manter seu domínio sobre a comunidade."
+            }
+            age={"45"}
+            job={"Padre"}
+            pro={["Enganação: 2",
+                  "Intimidação: 1,",
+                  "Investigação: 2",
+                  "Intuição: 1",
+                  "Natureza: 2",
+                  "Persuasão: 3",
+                  "Religião: 3"]}
+            hp={"6"}
+            pe={"2"}
+            attr={{
+              str: "0",
+              con: "0",
+              dex: "0",
+              knw: "0",
+              int: "2",
+              char: "1",
             }}
           />
         </div>
