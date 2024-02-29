@@ -1,6 +1,7 @@
 import { CharacterCards } from "../components/CharacterCards";
 import angelaProfile from "../assets/ProfilePictures/angelaProfile.png";
-import { PartyPopper, Beer } from "lucide-react";
+import pauloProfile from "../assets/ProfilePictures/pauloProfile.png"
+import { PartyPopper, Beer, BookOpen } from "lucide-react";
 
 export const Characters = () => {
   return (
@@ -73,6 +74,41 @@ export const Characters = () => {
               char: "0",
             }}
           />
+          <CharacterCards
+            name="Paulo Sérgio de Almeida"
+            desc="Amigável e atencioso, Paulo tende a se conectar facilmente com as pessoas ao seu redor."
+            profilePic={pauloProfile}
+            skills={["Estudioso"]}
+            icons={[<BookOpen />]}
+            personality=" É influenciável e tende a acreditar demais na bondade das pessoas, o que pode levá-lo a situações de decepção.
+            Seu grande defeito é confiar demasiadamente em quem é gentil com ele, muitas vezes ignorando sinais de alerta."
+            appearence={{
+              height: "1,93m",
+              hair: "Calvo",
+              eyesColor: "Preto",
+              skinColor: "Branca",
+              clothes:
+                "Por passar a maior parte do tempo em casa, Paulo prefere roupas despojadas e confortáveis. Ele geralmente veste uma camiseta social larga, com apenas os botões centrais abotoados, combinada com um short grande e de material leve. Seu calçado favorito é uma papete, que o acompanha em todos os lugares.",
+            }}
+            lore={
+              "Curioso e apaixonado por literatura, Paulo sonha em transcrever livros do árabe para o português. Esse desejo nasceu após um encontro marcante com um grupo de imigrantes do Oriente Médio quando era mais jovem."
+            }
+            age={"31"}
+            job={"Bibliotecário"}
+            pro={[
+              "investigação: 2"
+            ]}
+            hp={"6"}
+            pe={"2"}
+            attr={{
+              str: "0",
+              con: "0",
+              dex: "0",
+              knw: "0",
+              int: "2",
+              char: "0",
+            }}
+          />
         </div>
       </div>
 
@@ -81,7 +117,9 @@ export const Characters = () => {
         <h1 className="m-4 underline sm:text-4xl text-2xl italic font-times mt-4">
           NPC's / PDM's
         </h1>
-        <div className="flex md:flex-row flex-col justify-center items-center gap-4"></div>
+        <div className="flex md:flex-row flex-col justify-center items-center gap-4">
+          s
+        </div>
       </div>
     </div>
   );
