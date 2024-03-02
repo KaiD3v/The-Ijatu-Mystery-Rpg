@@ -4,7 +4,8 @@ import pauloProfile from "../assets/ProfilePictures/pauloProfile.png";
 import marcosProfile from "../assets/ProfilePictures/marcosProfile.png";
 import josefinoProfile from "../assets/ProfilePictures/josefinoProfile.png";
 import alvaroProfile from "../assets/ProfilePictures/alvaroProfile.png";
-import carlosProfile from "../assets/ProfilePictures/carlosProfile.png"
+import carlosProfile from "../assets/ProfilePictures/carlosProfile.png";
+import alfredoProfile from "../assets/ProfilePictures/alfredoProfile.png"
 import {
   PartyPopper,
   Beer,
@@ -13,7 +14,8 @@ import {
   FlameKindling,
   Church,
   HandMetal,
-  Tractor
+  Tractor,
+  GraduationCap
 } from "lucide-react";
 
 export const Characters = () => {
@@ -294,6 +296,56 @@ export const Characters = () => {
               dex: "0",
               knw: "1",
               int: "1",
+              char: "0",
+            }}
+          />
+        </div>
+        <div className="flex sm:flex-row flex-col gap-4 justify-center items-center mt-4">
+          <CharacterCards
+            name="Alfredo"
+            desc="Alfredo é conhecido por sua natureza tímida e reservada, preferindo passar seu tempo estudando ou mergulhado em seus próprios pensamentos."
+            profilePic={alfredoProfile}
+            skills={["Estudioso"]}
+            icons={[<GraduationCap />]}
+            personality="Alfredo é conhecido por sua natureza tímida e reservada, preferindo passar seu tempo estudando ou mergulhado em seus próprios pensamentos.
+            Ele é extremamente habilidoso com números e cálculos, demonstrando um talento natural para a matemática que o distingue entre seus colegas.
+            Apesar de sua timidez, Alfredo é gentil e prestativo com aqueles ao seu redor, sempre disposto a oferecer ajuda quando necessário.
+            Como filho do dono do comércio local e irmão de Álvaro, Alfredo muitas vezes se encontra no meio de conflitos familiares e rivalidades, mas prefere evitar confrontos sempre que possível."
+            appearence={{
+              height: "1,74m",
+              hair: "Negros",
+              eyesColor: "Castanhos",
+              skinColor: "Branca",
+              clothes:
+                "Ele é frequentemente visto vestindo uma blusa cinza, que parece ser sua escolha preferida de vestuário.",
+            }}
+            lore={
+              "Alfredo cresceu em uma família dedicada ao comércio local, onde sua inteligência e habilidades matemáticas foram notadas desde cedo. Enquanto seu irmão Álvaro se destacava pela força física, Alfredo encontrava conforto nos números e na lógica dos cálculos.  Apesar de sua natureza reservada, Alfredo é uma peça valiosa nos negócios da família, ajudando a gerenciar as finanças e a manter os registros em ordem. Seu talento para a matemática não passou despercebido por seus pais, que têm grandes esperanças para o futuro de seu filho mais novo. Embora ele ainda lute com sua timidez e inseguranças, Alfredo está determinado a seguir seu próprio caminho e provar seu valor no mundo."
+            }
+            age={"18"}
+            job={"Estudante"}
+            pro={["Acrobacia: 1",
+                  "Atualidades: 4",
+                  "Investigação: 3",
+                  "Intuição: 1",
+                  "Mãos Leves: 1",
+                  "Medicina: 1",
+                  "Natureza: 2",
+                  "Percepção: 1",
+                  "Pilotagem: 1",
+                  "Pontaria: 1",
+                  "Reflexos: 1",
+                  "Religião: 2",
+                  "SObrevivência: 1",
+                  "Vontade: 2"]}
+            hp={"6"}
+            pe={"2"}
+            attr={{
+              str: "0",
+              con: "0",
+              dex: "1",
+              knw: "2",
+              int: "2",
               char: "0",
             }}
           />
