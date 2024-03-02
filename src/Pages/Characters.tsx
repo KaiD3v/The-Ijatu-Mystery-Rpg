@@ -2,8 +2,17 @@ import { CharacterCards } from "../components/CharacterCards";
 import angelaProfile from "../assets/ProfilePictures/angelaProfile.png";
 import pauloProfile from "../assets/ProfilePictures/pauloProfile.png";
 import marcosProfile from "../assets/ProfilePictures/marcosProfile.png";
-import josefinoProfile from "../assets/ProfilePictures/josefinoProfile.png"
-import { PartyPopper, Beer, BookOpen, Axe, FlameKindling, Church } from "lucide-react";
+import josefinoProfile from "../assets/ProfilePictures/josefinoProfile.png";
+import alvaroProfile from "../assets/ProfilePictures/alvaroProfile.png"
+import {
+  PartyPopper,
+  Beer,
+  BookOpen,
+  Axe,
+  FlameKindling,
+  Church,
+  HandMetal
+} from "lucide-react";
 
 export const Characters = () => {
   return (
@@ -36,7 +45,7 @@ export const Characters = () => {
         <h1 className="m-4 underline sm:text-4xl text-2xl italic font-times mt-4">
           Protagonistas
         </h1>
-        <div className="flex md:flex-row flex-col justify-center items-center gap-4">
+        <div className="flex sm:flex-row flex-col gap-4 justify-center items-center">
           <CharacterCards
             name="Angêla de Matos"
             desc="Ângela de Matos é uma garçonete extrovertida e empática no Bar do Tonhão."
@@ -148,8 +157,9 @@ export const Characters = () => {
               char: "0",
             }}
           />
-
-          <CharacterCards
+        </div>
+        <div className="flex sm:flex-row flex-col gap-4 justify-center items-center mt-4">
+        <CharacterCards
             name="Joséfino"
             desc="Joséfino é reverenciado como uma figura respeitada e admirada na comunidade como padre e líder espiritual."
             profilePic={josefinoProfile}
@@ -169,13 +179,15 @@ export const Characters = () => {
             }
             age={"45"}
             job={"Padre"}
-            pro={["Enganação: 2",
-                  "Intimidação: 1,",
-                  "Investigação: 2",
-                  "Intuição: 1",
-                  "Natureza: 2",
-                  "Persuasão: 3",
-                  "Religião: 3"]}
+            pro={[
+              "Enganação: 2",
+              "Intimidação: 1,",
+              "Investigação: 2",
+              "Intuição: 1",
+              "Natureza: 2",
+              "Persuasão: 3",
+              "Religião: 3",
+            ]}
             hp={"6"}
             pe={"2"}
             attr={{
@@ -187,6 +199,59 @@ export const Characters = () => {
               char: "1",
             }}
           />
+
+          {/* Alvaro */}
+
+          <CharacterCards
+            name="Álvaro"
+            desc="Álvaro cresceu trabalhando no comércio do pai, onde aprendeu desde cedo o valor do trabalho duro e da dedicação."
+            profilePic={alvaroProfile}
+            skills={["Trambiqueiro"]}
+            icons={[<HandMetal />]}
+            personality="- Álvaro é conhecido por sua natureza birrenta e teimosa, muitas vezes entrando em discussões ou brigas por qualquer motivo trivial.
+             Ele é frequentemente descrito como alcoólatra, encontrando refúgio nas bebidas alcoólicas para escapar de seus problemas e frustrações.
+             Embora seja fisicamente forte, Álvaro não é conhecido por sua inteligência ou perspicácia. Ele é muitas vezes considerado ingênuo ou simplório, confiando mais em sua força bruta do que em sua astúcia.
+             Apesar de suas falhas, Álvaro é leal à sua família e amigos próximos, e está sempre disposto a protegê-los com sua força e determinação."
+            appearence={{
+              height: "1,80m",
+              hair: "Negros",
+              eyesColor: "Castanhos",
+              skinColor: "Morena",
+              clothes:
+                "Ele veste roupas simples e práticas, geralmente uma camisa xadrez desgastada, calças jeans resistentes e botas de couro gastas pela trilha.",
+            }}
+            lore={
+              "Álvaro cresceu trabalhando no comércio do pai, onde aprendeu desde cedo o valor do trabalho duro e da dedicação. No entanto, sua personalidade birrenta e seu comportamento impulsivo muitas vezes o colocaram em apuros, causando atritos com clientes e colegas de trabalho. Sua luta contra o vício em álcool é uma fonte constante de conflito em sua vida, prejudicando suas relações pessoais e afetando seu desempenho no trabalho. Apesar de seus defeitos, Álvaro é uma alma atormentada em busca de redenção, lutando para superar seus demônios internos e encontrar seu lugar no mundo."
+            }
+            age={"20"}
+            job={"Ajudante Geral no comércio do pai"}
+            pro={[
+              "Acrobacia: 1",
+              "Atletismo: 2",
+              "Enganação: 3",
+              "Furtividade: 1",
+              "Intimidação: 2",
+              "Luta: 3",
+              "Mãos Leves: 1",
+              "Persuasão: 1",
+              "Pilotagem: 1",
+              "Pontaria: 1",
+              "Pontaria: 1",
+              "Reflexos: 1"
+              
+            ]}
+            hp={"6"}
+            pe={"2"}
+            attr={{
+              str: "1",
+              con: "1",
+              dex: "1",
+              knw: "0",
+              int: "0",
+              char: "1",
+            }}
+          />
+                   
         </div>
       </div>
 
