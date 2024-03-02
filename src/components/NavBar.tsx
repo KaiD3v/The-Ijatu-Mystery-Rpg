@@ -13,7 +13,7 @@ export const NavBar = () => {
           </DropdownMenu.Trigger>
           <DropdownMenu.Content sideOffset={5}>
             <ul className="flex flex-col gap-1 bg-gray-800 p-2 border rounded-md">
-              <li><Link to={"/"}>Regras</Link></li>
+              <li><Link to={"/regras"}>Regras</Link></li>
               <li><Link to={"/"}>Locais</Link></li>
               <li><Link to={"/"}>Histórias</Link></li>
               <li><Link to={"/personagens"}>Personagens</Link></li>
@@ -30,7 +30,7 @@ export const NavBar = () => {
       </div>
       <ul className=" hidden sm:flex justify-between gap-5">
         <li>
-            <Link to={'/'}>Regras</Link>
+            <Link to={'/regras'}>Regras</Link>
         </li>
         <li>
         <Link to={'/'}>Locais</Link>

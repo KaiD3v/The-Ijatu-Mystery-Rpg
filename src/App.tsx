@@ -11,6 +11,7 @@ import { NavBar } from "./components/NavBar";
 // Pages
 import { Home } from "./Pages/Home";
 import { Characters } from "./Pages/Characters";
+import { Rules } from "./Pages/Rules";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
       <Routes>
         <Route path={"/"} element={<Home />} />
         <Route path={"/personagens"} element={<Characters />} />
+        <Route path={"/regras"} element={<Rules />} />
       </Routes>
     </div>
   );
