@@ -8,7 +8,8 @@ import carlosProfile from "../assets/ProfilePictures/carlosProfile.png";
 import alfredoProfile from "../assets/ProfilePictures/alfredoProfile.png";
 import franciscaProfile from "../assets/ProfilePictures/franciscaProfile.png";
 import isabelProfile from "../assets/ProfilePictures/isabelProfile.png";
-import marioProfile from "../assets/ProfilePictures/marioProfile.png"
+import marioProfile from "../assets/ProfilePictures/marioProfile.png";
+import { motion } from "framer-motion";
 import {
   PartyPopper,
   Beer,
@@ -24,7 +25,11 @@ import {
 
 export const Characters = () => {
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+    >
       <div className="justify-center text-white italic text-center items-center">
         <div>
           <h1 className=" underline sm:text-4xl text-2xl italic font-times mt-4">
@@ -503,6 +508,6 @@ export const Characters = () => {
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
