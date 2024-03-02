@@ -6,7 +6,9 @@ import josefinoProfile from "../assets/ProfilePictures/josefinoProfile.png";
 import alvaroProfile from "../assets/ProfilePictures/alvaroProfile.png";
 import carlosProfile from "../assets/ProfilePictures/carlosProfile.png";
 import alfredoProfile from "../assets/ProfilePictures/alfredoProfile.png";
-import franciscaProfile from "../assets/ProfilePictures/franciscaProfile.png"
+import franciscaProfile from "../assets/ProfilePictures/franciscaProfile.png";
+import isabelProfile from "../assets/ProfilePictures/isabelProfile.png";
+import marioProfile from "../assets/ProfilePictures/marioProfile.png"
 import {
   PartyPopper,
   Beer,
@@ -384,7 +386,7 @@ export const Characters = () => {
               "Persuasão: 2",
               "Religião: 3",
               "Sobrevivência: 1",
-              "Vontade: 3"
+              "Vontade: 3",
             ]}
             hp={"6"}
             pe={"2"}
@@ -406,7 +408,99 @@ export const Characters = () => {
           NPC's / PDM's
         </h1>
         <div className="flex md:flex-row flex-col justify-center items-center gap-4">
-          s
+          <CharacterCards
+            name="Isabel Miranda"
+            desc="Isabel é uma mulher extremamente adorável e carismática. "
+            profilePic={isabelProfile}
+            skills={["Fofocando"]}
+            personality="Isabel é uma mulher extremamente adorável e carismática. Sua simpatia e gentileza são contagiantes, fazendo com que todos ao seu redor se sintam confortáveis e bem-vindos em sua presença. Ela é conhecida por seu sorriso caloroso e sua disposição para ajudar os outros."
+            appearence={{
+              height: "1,58m",
+              hair: "Grisalhos",
+              eyesColor: "Castanhos",
+              skinColor: "Branca",
+              clothes:
+                "Ela é frequentemente vista vestindo um jaleco por cima de suas roupas casuais e coloridas.",
+            }}
+            lore={
+              "Trabalhando como faxineira para os poderosos da cidade há muitos anos, Isabel é uma figura respeitada e estimada por todos que a conhecem. Sua posição lhe proporciona acesso a informações privilegiadas, pois está sempre atenta às conversas que ocorrem ao seu redor enquanto realiza suas tarefas. Apesar de sua ocupação humilde, Isabel é uma mulher de grande integridade e sabedoria. Ela é uma confidente para muitos, oferecendo conselhos sábios e apoio emocional quando necessário. Sua presença é um raio de luz na comunidade, trazendo alegria e conforto a todos os que têm a sorte de conhecê-la."
+            }
+            age={"62"}
+            job={"Faxineira dos poderosos da cidade"}
+            pro={[
+              "Acrobacia: 1",
+              "Lidar com Animais: 1",
+              "Investigação: 3",
+              "Enganação: 3",
+              "Furtividade: 2",
+              "Intimidação: 2",
+              "Intuição: 3",
+              "Mãos Leves: 1",
+              "Medicina: 1",
+              "Vontade: 3",
+              "Percepção: 1",
+              "Persuasão: 4",
+              "Pontaria: 1",
+              "Reflexos: 1",
+              "Sobrevivência: 1",
+              "Pilotagem: 1",
+            ]}
+            hp={"6"}
+            pe={"2"}
+            attr={{
+              str: "0",
+              con: "0",
+              dex: "1",
+              knw: "0",
+              int: "1",
+              char: "2",
+            }}
+          />
+          <CharacterCards
+            name="Mário Alcântra"
+            desc="Mário Alcântra parece ser uma pessoa encantadora e amigável, com um sorriso caloroso e um jeito afável que conquista a confiança dos outros. "
+            profilePic={marioProfile}
+            skills={["Língua de Prata"]}
+            personality="Por fora, Mário Alcântra parece ser uma pessoa encantadora e amigável, com um sorriso caloroso e um jeito afável que conquista a confiança dos outros. No entanto, por baixo dessa fachada simpática, ele é um indivíduo manipulador e astuto, capaz de qualquer coisa para alcançar seus objetivos. Ele é mestre em jogos de poder e manipulação, utilizando sua inteligência e charme para influenciar os outros e alcançar seus próprios interesses."
+            appearence={{
+              height: "1,65m",
+              hair: "Grisalhos",
+              eyesColor: "Pretos",
+              skinColor: "Branca",
+              clothes:
+                "Ele se veste de maneira elegante e impecável, com ternos bem cortados e gravatas combinando, transmitindo uma imagem de autoridade e sofisticação.",
+            }}
+            lore={
+              "Mário Alcântra é o atual prefeito da cidade, uma figura influente e respeitada na comunidade. Ele ascendeu ao poder através de uma combinação de carisma, inteligência e manipulação, construindo uma rede de alianças e favores que o mantêm no topo.  Por trás de sua imagem pública de líder dedicado e visionário, Mário é um político astuto e calculista, sempre planejando seus próximos passos com cuidado e precisão. Ele é conhecido por jogar sujo quando necessário, manipulando situações e pessoas para alcançar seus objetivos pessoais e políticos. Apesar de sua natureza ambiciosa e manipuladora, Mário Alcântra é amplamente admirado e respeitado na cidade, principalmente entre os mais influentes e poderosos. No entanto, aqueles que conhecem sua verdadeira natureza sabem que por trás de seu sorriso amigável se esconde um homem capaz de qualquer coisa para manter seu poder e status."
+            }
+            age={"62"}
+            job={"Faxineira dos poderosos da cidade"}
+            pro={[
+              "Acrobacia: 1",
+              "Enganação: 4",
+              "Furtividade: 1",
+              "Intimidação: 2",
+              "Investigação: 2",
+              "Mãos Leves: 1",
+              "Natureza: 2",
+              "Percepção: 1",
+              "Persuasão: 3",
+              "Pilotagem: 1",
+              "Pontaria: 2",
+              "Reflexos: 1",
+              "Religião: 2",
+            ]}
+            hp={"6"}
+            pe={"2"}
+            attr={{
+              str: "0",
+              con: "0",
+              dex: "1",
+              knw: "0",
+              int: "2",
+              char: "1",
+            }}
+          />
         </div>
       </div>
     </div>
