@@ -5,7 +5,8 @@ import marcosProfile from "../assets/ProfilePictures/marcosProfile.png";
 import josefinoProfile from "../assets/ProfilePictures/josefinoProfile.png";
 import alvaroProfile from "../assets/ProfilePictures/alvaroProfile.png";
 import carlosProfile from "../assets/ProfilePictures/carlosProfile.png";
-import alfredoProfile from "../assets/ProfilePictures/alfredoProfile.png"
+import alfredoProfile from "../assets/ProfilePictures/alfredoProfile.png";
+import franciscaProfile from "../assets/ProfilePictures/franciscaProfile.png"
 import {
   PartyPopper,
   Beer,
@@ -15,7 +16,8 @@ import {
   Church,
   HandMetal,
   Tractor,
-  GraduationCap
+  GraduationCap,
+  ClipboardPlus,
 } from "lucide-react";
 
 export const Characters = () => {
@@ -312,7 +314,7 @@ export const Characters = () => {
             Apesar de sua timidez, Alfredo é gentil e prestativo com aqueles ao seu redor, sempre disposto a oferecer ajuda quando necessário.
             Como filho do dono do comércio local e irmão de Álvaro, Alfredo muitas vezes se encontra no meio de conflitos familiares e rivalidades, mas prefere evitar confrontos sempre que possível."
             appearence={{
-              height: "1,74m",
+              height: "1,70m",
               hair: "Negros",
               eyesColor: "Castanhos",
               skinColor: "Branca",
@@ -324,20 +326,22 @@ export const Characters = () => {
             }
             age={"18"}
             job={"Estudante"}
-            pro={["Acrobacia: 1",
-                  "Atualidades: 4",
-                  "Investigação: 3",
-                  "Intuição: 1",
-                  "Mãos Leves: 1",
-                  "Medicina: 1",
-                  "Natureza: 2",
-                  "Percepção: 1",
-                  "Pilotagem: 1",
-                  "Pontaria: 1",
-                  "Reflexos: 1",
-                  "Religião: 2",
-                  "SObrevivência: 1",
-                  "Vontade: 2"]}
+            pro={[
+              "Acrobacia: 1",
+              "Atualidades: 4",
+              "Investigação: 3",
+              "Intuição: 1",
+              "Mãos Leves: 1",
+              "Medicina: 1",
+              "Natureza: 2",
+              "Percepção: 1",
+              "Pilotagem: 1",
+              "Pontaria: 1",
+              "Reflexos: 1",
+              "Religião: 2",
+              "Sobrevivência: 1",
+              "Vontade: 2",
+            ]}
             hp={"6"}
             pe={"2"}
             attr={{
@@ -347,6 +351,50 @@ export const Characters = () => {
               knw: "2",
               int: "2",
               char: "0",
+            }}
+          />
+          <CharacterCards
+            name="Francisca"
+            desc="Francisca é uma mulher durona e responsável, sempre se preocupando com seus pacientes e dando o melhor de si em cada consulta."
+            profilePic={franciscaProfile}
+            skills={["Médico"]}
+            curiosity="Francisca cursou Enfermagem e Medicina na Universidade Unicesumar - Rio Branco - AC. Ela é a melhor amiga da Carmem Carvalho."
+            icons={[<ClipboardPlus />]}
+            personality=" Francisca é uma mulher durona e responsável, sempre se preocupando com seus pacientes e dando o melhor de si em cada consulta. Ela tem um coração generoso e gosta especialmente de cuidar de crianças. Sua paciência é notável e ela é conhecida por ser uma das pessoas mais tolerantes de Ijatu."
+            appearence={{
+              height: "1,63m",
+              hair: "Ruivos",
+              eyesColor: "Castanhos",
+              skinColor: "Branca",
+              clothes:
+                "Ela é frequentemente vista vestindo um jaleco por cima de suas roupas casuais e coloridas.",
+            }}
+            lore={
+              "Francisca Santos é uma figura respeitada em Ijatu, conhecida por sua dedicação à saúde e ao bem-estar da comunidade. Ela estabeleceu uma clínica médica na cidade e dedica-se inteiramente ao cuidado dos habitantes locais. Sua presença é reconfortante e sua habilidade médica é amplamente reconhecida."
+            }
+            age={"30"}
+            job={"Médica"}
+            pro={[
+              "Enganação: 1",
+              "Intimidação: 2",
+              "Investigação: 3",
+              "Intuição: 1",
+              "Medicina: 3",
+              "Natureza: 3",
+              "Persuasão: 2",
+              "Religião: 3",
+              "Sobrevivência: 1",
+              "Vontade: 3"
+            ]}
+            hp={"6"}
+            pe={"2"}
+            attr={{
+              str: "0",
+              con: "0",
+              dex: "0",
+              knw: "0",
+              int: "3",
+              char: "1",
             }}
           />
         </div>
