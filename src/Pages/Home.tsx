@@ -69,7 +69,7 @@ export const Home = () => {
             Introdução
           </h1>
           <p className="m-3 text-lg sm:text-xl ml-1 font-extralight italic text-gray-500">
-            "Bem-vindo a IJatu, uma experiência única de RPG de mesa que combina
+            "Bem-vindo a IJatu Mystery, uma experiência única de RPG de mesa que combina
             um cenário envolvente com um sistema de jogo dinâmico! IJatu é uma
             pequena cidade situada no coração do interior do Acre. Nesta
             comunidade autosustentável, os habitantes vivem em harmonia com a
@@ -82,7 +82,7 @@ export const Home = () => {
             suspeita. Como parte deste emocionante RPG de mesa, os jogadores
             assumirão o papel de bravos aventureiros que se deparam com o
             desafio de desvendar os segredos ocultos da cidade e restaurar a paz
-            perdida. Sombras sobre IJatu apresenta um sistema de jogo inovador,
+            perdida. O Mistério de IJatu apresenta um sistema de jogo inovador,
             projetado para proporcionar uma experiência imersiva e emocionante.
             Com regras simplificadas e flexíveis, os jogadores terão a liberdade
             de explorar o cenário, interagir com personagens intrigantes e
