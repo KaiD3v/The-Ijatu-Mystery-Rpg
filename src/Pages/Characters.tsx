@@ -3,7 +3,8 @@ import angelaProfile from "../assets/ProfilePictures/angelaProfile.png";
 import pauloProfile from "../assets/ProfilePictures/pauloProfile.png";
 import marcosProfile from "../assets/ProfilePictures/marcosProfile.png";
 import josefinoProfile from "../assets/ProfilePictures/josefinoProfile.png";
-import alvaroProfile from "../assets/ProfilePictures/alvaroProfile.png"
+import alvaroProfile from "../assets/ProfilePictures/alvaroProfile.png";
+import carlosProfile from "../assets/ProfilePictures/carlosProfile.png"
 import {
   PartyPopper,
   Beer,
@@ -11,7 +12,8 @@ import {
   Axe,
   FlameKindling,
   Church,
-  HandMetal
+  HandMetal,
+  Tractor
 } from "lucide-react";
 
 export const Characters = () => {
@@ -159,7 +161,7 @@ export const Characters = () => {
           />
         </div>
         <div className="flex sm:flex-row flex-col gap-4 justify-center items-center mt-4">
-        <CharacterCards
+          <CharacterCards
             name="Joséfino"
             desc="Joséfino é reverenciado como uma figura respeitada e admirada na comunidade como padre e líder espiritual."
             profilePic={josefinoProfile}
@@ -218,7 +220,7 @@ export const Characters = () => {
               eyesColor: "Castanhos",
               skinColor: "Morena",
               clothes:
-                "Ele veste roupas simples e práticas, geralmente uma camisa xadrez desgastada, calças jeans resistentes e botas de couro gastas pela trilha.",
+                "Sua vestimenta típica inclui uma camiseta preta, geralmente desgastada e manchada pelo trabalho, que destaca sua figura imponente.",
             }}
             lore={
               "Álvaro cresceu trabalhando no comércio do pai, onde aprendeu desde cedo o valor do trabalho duro e da dedicação. No entanto, sua personalidade birrenta e seu comportamento impulsivo muitas vezes o colocaram em apuros, causando atritos com clientes e colegas de trabalho. Sua luta contra o vício em álcool é uma fonte constante de conflito em sua vida, prejudicando suas relações pessoais e afetando seu desempenho no trabalho. Apesar de seus defeitos, Álvaro é uma alma atormentada em busca de redenção, lutando para superar seus demônios internos e encontrar seu lugar no mundo."
@@ -237,8 +239,7 @@ export const Characters = () => {
               "Pilotagem: 1",
               "Pontaria: 1",
               "Pontaria: 1",
-              "Reflexos: 1"
-              
+              "Reflexos: 1",
             ]}
             hp={"6"}
             pe={"2"}
@@ -251,7 +252,51 @@ export const Characters = () => {
               char: "1",
             }}
           />
-                   
+          <CharacterCards
+            name="Carlos"
+            desc="Inteligente e astuto, Carlos demonstra habilidades excepcionais para resolver problemas práticos relacionados à vida no campo."
+            profilePic={carlosProfile}
+            skills={["Cuidador de Animais"]}
+            icons={[<Tractor />]}
+            personality="Inteligente e astuto, Carlos demonstra habilidades excepcionais para resolver problemas práticos relacionados à vida no campo. Ele é trabalhador e dedicado às responsabilidades que possui na granja, ajudando seu pai em diversas tarefas agrícolas e de criação de animais. Apesar de sua juventude, Carlos mostra uma sabedoria além de seus anos, adquirida através da experiência e do trabalho árduo na fazenda e eventualmente é visto saindo com a filha do prefeito."
+            appearence={{
+              height: "1,74m",
+              hair: "Negros",
+              eyesColor: "Castanhos",
+              skinColor: "Branca",
+              clothes:
+                "frequentemente visto usando roupas típicas de roça, práticas e confortáveis para suas atividades diárias.",
+            }}
+            lore={
+              "Desde muito jovem, Carlos acompanha seu pai, João Carlos, na administração da fazenda da família. Ele aprendeu os segredos da agricultura e da pecuária desde cedo, desenvolvendo uma profunda conexão com a terra e os animais. Sua vida é marcada pela rotina do campo, onde ele desempenha um papel ativo no manejo dos cultivos e na criação dos animais."
+            }
+            age={"17"}
+            job={"Granjeiro na fazenda do pai"}
+            pro={[
+              "Atualidade: 1",
+              "Atletismo: 1",
+              "Investigação: 1",
+              "Intuição: 1",
+              "Lidar com Animais: 4",
+              "Luta: 1",
+              "Medicina: 1",
+              "Natureza: 2",
+              "Percepção: 1",
+              "Religião: 1",
+              "Sobrevivência: 2",
+              "Vontade: 1",
+            ]}
+            hp={"6"}
+            pe={"2"}
+            attr={{
+              str: "1",
+              con: "1",
+              dex: "0",
+              knw: "1",
+              int: "1",
+              char: "0",
+            }}
+          />
         </div>
       </div>
 
