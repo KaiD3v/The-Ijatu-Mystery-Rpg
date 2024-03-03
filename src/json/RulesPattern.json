@@ -2,13 +2,13 @@
     "regras": [
         {
             "id": "1",
-            "title": "Título Teste",
-            "content" : "Conteúdo Regra 1"
+            "title": "O Mestre do Jogo",
+            "content" : "O Mestre do Jogo \n No mundo de 'Ijatu Mistery', o mestre do jogo desempenha um papel crucial na criação e na condução da narrativa misteriosa e envolvente que permeia a cidade de Ijatu. Como mestre do jogo, você será o arquiteto por trás de cada mistério, cada enigma e cada reviravolta que os jogadores enfrentarão durante sua jornada.\n\nSuas responsabilidades incluem:\n- Construir o Mundo de Ijatu: Como mestre do jogo, você será responsável por pintar um retrato vívido da pequena cidade de Ijatu, com seus habitantes, suas ruas tranquilas e os segredos sombrios que se escondem por trás de suas fachadas aparentemente pacíficas.\n- Desenvolver a Trama Misteriosa: Cabe a você criar e desenvolver a trama principal do jogo, que gira em torno do assassinato misterioso que abalou a comunidade de Ijatu. Isso inclui a criação de personagens suspeitos, a distribuição de pistas cruciais e a manutenção do suspense em cada interação.\n- Interpretar Personagens e Situações: Como mestre do jogo, você interpretará os diversos habitantes de Ijatu, desde os mais inocentes até os mais sinistros. Você também apresentará aos jogadores uma série de desafios e enigmas que os levarão mais fundo na investigação do mistério.\n- Adaptar-se às Escolhas dos Jogadores: Uma das suas principais funções é adaptar a narrativa às escolhas e ações dos jogadores. Suas respostas e reações moldarão a direção da história, garantindo que cada sessão de jogo seja única e emocionante."
         },
         {
             "id": "2",
-            "title": "Título Teste",
-            "content" : "Conteúdo Regra 2"
-        }
+            "title": "Como Jogar",
+            "content": "O jogo 'Ijatu Mystery' se desenrola seguindo os seguintes passos:\n\n1. Descrição do Ambiente pelo Mestre:\nO Mestre descreve o ambiente no qual os jogadores estão, fornecendo informações sobre os arredores e apresentando opções básicas para os aventureiros. Isso inclui detalhes como o número de portas que levam para fora do local, o que está sobre a mesa, quem está na taverna, entre outros.\n\n2. Ações dos Jogadores:\nOs jogadores descrevem o que desejam fazer. Cada aventureiro pode tomar ações diferentes, como procurar por pistas, examinar objetos ou manter vigília. Os jogadores não precisam agir em turnos, mas o Mestre escuta cada jogador e decide como resolver suas ações.\n\nResolver uma ação pode ser simples ou desafiador, dependendo das circunstâncias. O Mestre decide os resultados das ações, muitas vezes usando jogadas de dados para determinar os resultados.\n\n3. Narrativa dos Resultados pelo Mestre:\nO Mestre narra os resultados das ações dos aventureiros, o que leva a novas decisões e retorna o jogo ao passo 1.\n\nEsse padrão persiste em diversas situações, desde explorar uma ruína até lidar com situações de combate ou interações sociais. O jogo é fluido e flexível, adaptando-se às circunstâncias da aventura e à imaginação dos jogadores e do Mestre.\n\nAlguns Mestres podem usar recursos como música, arte e efeitos sonoros para criar atmosfera, enquanto muitos jogadores e Mestres adotam diferentes vozes para os personagens. Além disso, o uso de mapas e miniaturas pode ajudar a visualizar a cena e acompanhar a posição dos personagens."
+            }
     ]
 }

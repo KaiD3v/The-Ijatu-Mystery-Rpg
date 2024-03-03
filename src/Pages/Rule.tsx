@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { RulesSideBar } from "../components/RulesSideBar";
 import { useParams } from "react-router-dom";
 import rules from "../json/RulesPattern.json";
+import { motion as m } from "framer-motion";
 
 // Defina o tipo para as regras
 interface Rule {
@@ -12,9 +13,9 @@ interface Rule {
 
 export const Rule = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { id } = useParams<{ id: string }>(); // Defina o tipo para id
+  const { id } = useParams<{ id: string }>();
 
-  const [selectedRule, setSelectedRule] = useState<Rule | null>(null); // Defina o tipo para a regra
+  const [selectedRule, setSelectedRule] = useState<Rule | null>(null);
 
   useEffect(() => {
     const rule = rules.regras.find((rule: Rule) => rule.id === id);
@@ -24,6 +25,14 @@ export const Rule = () => {
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  // Formatar texto json
+  const formatText = (text: string) => {
+    return text
+      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // negrito
+      .replace(/_(.*?)_/g, "<u>$1</u>") // sublinhado
+      .replace(/\n/g, "<br>"); // quebra de linha
   };
 
   return (
@@ -38,7 +47,7 @@ export const Rule = () => {
       </div>
 
       {/* Conteúdo principal */}
-      <div className="flex text-gray-300 flex-col items-center mt-10">
+      <div className="flex m-10  max-w-2xl text-gray-300 flex-col items-center mt-10">
         <div className="flex flex-col gap-4 text-center">
           <h1 className="sm:text-4xl text-gray-50 text-2xl italic font-times mt-4">
             Regras do Jogo
@@ -60,17 +69,32 @@ export const Rule = () => {
           <div className="m-0 p-0 border border-gray-400 w-full" />
           <div>
             <button onClick={toggleMenu} className="text-white">
-              Menu de Regras
+              -- Menu de Regras --
             </button>
           </div>
-          <div className="m-0 p-0 border border-gray-400 w-full" />
+          <div className="max-w-2xl text-left border border-gray-400" />
           {selectedRule && (
-            <div key={selectedRule.id}>
-              <h1 className="sm:text-4xl text-gray-50 text-2xl italic font-times mt-4">{selectedRule.title}</h1>
-              <p>{selectedRule.content}</p>
-            </div>
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="flex flex-col gap-8"
+              key={selectedRule.id}
+            >
+              <h1 className="sm:text-4xl underline text-gray-50 text-2xl italic font-times mt-4">
+                {selectedRule.title}
+              </h1>
+              <div className="text-left">
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: formatText(selectedRule.content),
+                  }}
+                ></p>
+              </div>
+            </m.div>
           )}
         </div>
+        <div className="mt- p-0 border border-gray-400 w-full" />
       </div>
     </div>
   );

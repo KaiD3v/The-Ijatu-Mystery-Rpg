@@ -42,7 +42,7 @@ export const Rules = () => {
           <div className="m-0 p-0 border border-gray-400 w-full" />
           <div>
             <button onClick={toggleMenu} className="text-white">
-              Menu de Regras
+             -- Menu de Regras --
             </button>
           </div>
           <div className="m-0 p-0 border border-gray-400 w-full" />

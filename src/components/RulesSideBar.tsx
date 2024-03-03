@@ -14,10 +14,10 @@ export const RulesSideBar: React.FC<OpenMenuProps> = ({ isOpen, toggleMenu }) =>
     >
       <h2 className="text-2xl font-bold mb-4">Regras</h2>
       <ul className="flex flex-col gap-2">
-        <li className="cursor-pointer hover:text-gray-400"><Link to={'/regras/1'}>ChupeChupe</Link></li>
-        <li className="cursor-pointer hover:text-gray-400"><Link to={'/regras/2'}>Regras do Jogo</Link></li>
+        <li className="cursor-pointer hover:text-gray-400"><Link to={'/regras/1'}>O Mestre do Jogo</Link></li>
+        <li className="cursor-pointer hover:text-gray-400"><Link to={'/regras/2'}>Como Jogar</Link></li>
         <li className="cursor-pointer hover:text-gray-400">Exemplos</li>
-        <li><button onClick={toggleMenu}>Close</button></li>
+        <li><button onClick={toggleMenu}>Fechar</button></li>
       </ul>  
     </div>
   );
