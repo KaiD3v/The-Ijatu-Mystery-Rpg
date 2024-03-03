@@ -1,0 +1,14 @@
+{
+    "regras": [
+        {
+            "id": "1",
+            "title": "Título Teste",
+            "content" : "Conteúdo Regra 1"
+        },
+        {
+            "id": "2",
+            "title": "Título Teste",
+            "content" : "Conteúdo Regra 2"
+        }
+    ]
+}

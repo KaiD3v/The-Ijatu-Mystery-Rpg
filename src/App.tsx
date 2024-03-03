@@ -22,7 +22,7 @@ export default function App() {
         <Route path={"/"} element={<Home />} />
         <Route path={"/personagens"} element={<Characters />} />
         <Route path={"/regras"} element={<Rules />} />
-        <Route path="regras/regra" element={<Rule />} />
+        <Route path="regras/:id" element={<Rule />} />
       </Routes>
     </div>
   );
