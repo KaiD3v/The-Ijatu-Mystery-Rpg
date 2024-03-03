@@ -12,6 +12,7 @@ import { NavBar } from "./components/NavBar";
 import { Home } from "./Pages/Home";
 import { Characters } from "./Pages/Characters";
 import { Rules } from "./Pages/Rules";
+import { Rule } from "./Pages/Rule";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path={"/"} element={<Home />} />
         <Route path={"/personagens"} element={<Characters />} />
         <Route path={"/regras"} element={<Rules />} />
+        <Route path="regras/regra" element={<Rule />} />
       </Routes>
     </div>
   );
