@@ -1,0 +1,14 @@
+{
+    "locals": [
+        {
+            "id": "1",
+            "title": "Local Pika",
+            "desc": "Chupingole"
+        },
+        {
+            "id": "2",
+            "title": "Local Pika 2",
+            "desc": "Descrição Local pika 2"
+        }
+    ]
+}
