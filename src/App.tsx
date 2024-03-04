@@ -14,6 +14,7 @@ import { Characters } from "./Pages/Characters";
 import { Rules } from "./Pages/Rules";
 import { Rule } from "./Pages/Rule";
 import { Locals } from "./Pages/Locals";
+import { Local } from "./Pages/Local";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Route path={"/regras"} element={<Rules />} />
         <Route path="regras/:id" element={<Rule />} />
         <Route path={"/locais"} element={<Locals />} />
+        <Route path={"locais/:id"} element={<Local />} />
       </Routes>
     </div>
   );

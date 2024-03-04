@@ -5,6 +5,9 @@ interface Local {
   id: string;
   title: string;
   desc: string;
+  image: string;
+  details: string;
+  secrets: string[]
 }
 
 const locals: Local[] = localsData.locals;
@@ -13,11 +16,11 @@ export const LocalCards = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4">
       {locals.map((local) => (
-        <Link to="/" key={local.id}>
-          <div className="max-w-xs border-black py-4 items-center text-center overflow-hidden bg-githubComponents">
+        <Link to={`/locais/${local.id}`} key={local.id}>
+          <div className="max-w-xs h-80 border-black py-4 items-center text-center overflow-hidden bg-githubComponents">
             <h1 className="text-center text-lg font-bold m-1">{local.title}</h1>
             <img
-              src="https://2.bp.blogspot.com/-C4GYKJsXzCQ/V02COXETtZI/AAAAAAAAKgI/Qbt1u_6CugcC4xDGmjvHxp38HrF9ev2CQCLcB/s1600/51803.jpg"
+              src={local.image}
               alt="nome do local"
               className="w-full"
             />
