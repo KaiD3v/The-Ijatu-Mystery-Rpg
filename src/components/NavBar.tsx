@@ -14,7 +14,7 @@ export const NavBar = () => {
           <DropdownMenu.Content sideOffset={5}>
             <ul className="flex flex-col gap-1 bg-gray-800 p-2 border rounded-md">
               <li><Link to={"/regras"}>Regras</Link></li>
-              <li><Link to={"/"}>Locais</Link></li>
+              <li><Link to={"/locais"}>Locais</Link></li>
               <li><Link to={"/"}>Histórias</Link></li>
               <li><Link to={"/personagens"}>Personagens</Link></li>
               <li><Link to={"/"}>Itens</Link></li>
@@ -33,7 +33,7 @@ export const NavBar = () => {
             <Link to={'/regras'}>Regras</Link>
         </li>
         <li>
-        <Link to={'/'}>Locais</Link>
+        <Link to={'/locais'}>Locais</Link>
         </li>
         <li>
          <Link to={'/'}>Historias</Link>

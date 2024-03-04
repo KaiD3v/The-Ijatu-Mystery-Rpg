@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 interface OpenMenuProps {
   isOpen: boolean;
-  toggleMenu: () => void; // Adicionando a prop toggleMenu
+  toggleMenu: () => void; // add prop toggleMenu
 }
 
 export const RulesSideBar: React.FC<OpenMenuProps> = ({ isOpen, toggleMenu }) => {

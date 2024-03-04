@@ -13,6 +13,7 @@ import { Home } from "./Pages/Home";
 import { Characters } from "./Pages/Characters";
 import { Rules } from "./Pages/Rules";
 import { Rule } from "./Pages/Rule";
+import { Locals } from "./Pages/Locals";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path={"/personagens"} element={<Characters />} />
         <Route path={"/regras"} element={<Rules />} />
         <Route path="regras/:id" element={<Rule />} />
+        <Route path={"/locais"} element={<Locals />} />
       </Routes>
     </div>
   );
