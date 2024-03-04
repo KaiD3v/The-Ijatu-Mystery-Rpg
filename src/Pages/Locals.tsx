@@ -1,8 +1,14 @@
 import { LocalCards } from "../components/LocalCards";
+import { motion as m } from "framer-motion";
 
 export const Locals = () => {
   return (
-    <div className=" justify-center text-white italic text-center items-center m-10">
+    <m.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className=" justify-center text-white italic text-center items-center m-10"
+    >
       <div className="flex flex-col justify-center items-center text-left">
         <h1 className=" underline sm:text-4xl text-2xl italic font-times mt-4">
           Locais de Ijatu
@@ -29,6 +35,6 @@ export const Locals = () => {
         <LocalCards />
       </div>
       <div className="m-0 p-0 border border-gray-400 w-full" />
-    </div>
+    </m.div>
   );
 };
