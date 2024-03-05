@@ -506,6 +506,53 @@ export const Characters = () => {
               char: "1",
             }}
           />
+          <CharacterCards
+            name="Julio Soares"
+            desc="Mário Alcântra parece ser uma pessoa encantadora e amigável, com um sorriso caloroso e um jeito afável que conquista a confiança dos outros. "
+            profilePic={marioProfile}
+            skills={["Língua de Prata"]}
+            personality="Julio é conhecido por sua simpatia e honestidade. Ele mantém contatos externos à cidade e é bem relacionado entre os habitantes locais. Sua amigável natureza e sua capacidade de cativar as pessoas com seu carisma fazem dele uma figura querida na comunidade. No entanto, seu grande defeito é acreditar demais em pessoas que foram gentis com ele, o que por vezes o coloca em situações delicadas."
+            appearence={{
+              height: "1,65m",
+              hair: "Grisalhos",
+              eyesColor: "Pretos",
+              skinColor: "Branca",
+              clothes:
+                "Devido a uma lesão no joelho, ele utiliza uma bengala para auxiliar na locomoção. Seu estilo de vestimenta reflete seu gosto pela música blues, muitas vezes optando por camisas de manga longa estilosas, jeans desgastados e botas de couro.",
+            }}
+            lore={
+              "Julio Soares é uma figura proeminente na comunidade de Ijatu, sendo o proprietário do único grande comércio da cidade. Sua história na região remonta a muitos anos, durante os quais ele construiu seu negócio com dedicação e trabalho árduo. Apesar de sua posição de destaque, Julio sempre manteve os pés no chão e se esforçou para manter uma relação próxima com os moradores locais. Sua honestidade e simpatia o tornaram uma figura querida e respeitada na comunidade."
+            }
+            age={"45"}
+            job={"Dono do único grande comércio da"}
+            pro={[
+              "Enganação: 3",
+              "Atualidades: 3",
+              "Intimidação: 1",
+              "Furtividade: 1",
+              "Investigação: 2",
+              "Intuição: 1",
+              "Natureza: 2",
+              "Persuasão: 1",
+              "Percepção: 1",
+              "Persuasão: 3",
+              "Pilotagem: 1",
+              "Reflexos: 1",
+              "Religião: 2",
+              "Pontaria: 1",
+              "Vontade: 2"
+            ]}
+            hp={"6"}
+            pe={"2"}
+            attr={{
+              str: "0",
+              con: "0",
+              dex: "-1",
+              knw: "0",
+              int: "2",
+              char: "1",
+            }}
+          />
         </div>
       </div>
     </motion.div>
