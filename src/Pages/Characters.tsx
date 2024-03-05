@@ -9,8 +9,9 @@ import alfredoProfile from "../assets/ProfilePictures/alfredoProfile.png";
 import franciscaProfile from "../assets/ProfilePictures/franciscaProfile.png";
 import isabelProfile from "../assets/ProfilePictures/isabelProfile.png";
 import marioProfile from "../assets/ProfilePictures/marioProfile.png";
-import julioProfile from "../assets/ProfilePictures/julioProfile.png"
-import carmenProfile from "../assets/ProfilePictures/carmenProfile.png"
+import julioProfile from "../assets/ProfilePictures/julioProfile.png";
+import carmenProfile from "../assets/ProfilePictures/carmenProfile.png";
+import mariaProfile from "../assets/ProfilePictures/mariaProfile.png"
 import { motion } from "framer-motion";
 import {
   PartyPopper,
@@ -24,6 +25,7 @@ import {
   GraduationCap,
   ClipboardPlus,
   PenLine,
+  CircleDollarSign,
 } from "lucide-react";
 
 export const Characters = () => {
@@ -411,7 +413,7 @@ export const Characters = () => {
             name="Carmen Carvalho"
             desc="Uma professora educada e dedicada aos seus alunos, vivem um uma cazinha pequena bem organizada e cheia de pequenas e grandes plantas"
             profilePic={carmenProfile}
-            skills={["Médico"]}
+            skills={["Professor"]}
             curiosity="Formada em Pedagogia pela Universidade Unicesumar - Rio Branco - AC. Melhor amiga da Francisca Santos"
             icons={[<PenLine />]}
             personality="Uma professora educada e dedicada aos seus alunos."
@@ -420,12 +422,9 @@ export const Characters = () => {
               hair: "cabelo volumoso e encaracolado",
               eyesColor: "Castanhos",
               skinColor: "Branca",
-              clothes:
-                "Usa óculos sem aro aparente.",
+              clothes: "Usa óculos sem aro aparente.",
             }}
-            lore={
-              "Francisca Santos é uma figura respeitada em Ijatu, conhecida por sua dedicação à saúde e ao bem-estar da comunidade. Ela estabeleceu uma clínica médica na cidade e dedica-se inteiramente ao cuidado dos habitantes locais. Sua presença é reconfortante e sua habilidade médica é amplamente reconhecida."
-            }
+            lore={""}
             age={"30"}
             job={"Médica"}
             pro={[
@@ -451,6 +450,54 @@ export const Characters = () => {
               int: "2",
               char: "1",
             }}
+          />
+        </div>
+        <div className="flex sm:flex-row flex-col gap-4 justify-center items-center mt-4">
+          <CharacterCards
+            name="Maria"
+            desc="Maria é acostumada a ter tudo o que quer e muitas vezes age de maneira petulante e exigente."
+            profilePic={mariaProfile}
+            skills={["Mimado"]}
+            icons={[<CircleDollarSign />]}
+            personality="Mimada pelas boas condições financeiras de sua família, Maria é acostumada a ter tudo o que quer e muitas vezes age de maneira petulante e exigente.
+            Ela é conhecida por sua personalidade irritante e presunçosa, frequentemente se comportando de maneira arrogante e insensível com os outros.
+            Maria não é particularmente inteligente, muitas vezes tendo dificuldades acadêmicas e mostrando falta de interesse ou motivação nos estudos.
+            Apesar de sua falta de habilidade intelectual, Maria é perspicaz em questões sociais e é capaz de manipular situações para conseguir o que deseja."
+            appearence={{
+              height: "1,55m",
+              hair: "Preto",
+              eyesColor: "Verdes",
+              skinColor: "Bronzeada",
+              clothes:
+                "Ela é frequentemente vista vestindo uma camisa roxa, que parece ser sua cor favorita. Sempre muito bem vestida e elegante, Maria exala uma aura de sofisticação e estilo.",
+            }}
+            lore={
+              "Maria é a filha do prefeito da cidade, nascida e criada em meio ao luxo e privilégio que acompanham sua posição social. Desde cedo, ela foi mimada e protegida por seus pais, acostumada a ter seus caprichos atendidos com um simples estalar de dedos. Apesar de sua vida confortável, Maria enfrenta suas próprias batalhas pessoais, lutando para encontrar sua identidade em meio às expectativas e pressões de sua família e da sociedade. Embora ela possa parecer irritante e mimada à primeira vista, há mais profundidade em Maria do que aparenta, e aqueles que a subestimam muitas vezes se surpreendem com sua astúcia e habilidade para manipular os outros."
+            }
+            age={"15"}
+            job={"Estudante"}
+            hp={"6"}
+            pe={"2"}
+            attr={{
+              str: "0",
+              con: "0",
+              dex: "2",
+              knw: "0",
+              int: "0",
+              char: "2",
+            }}
+            pro={[
+              "Acrobacia: 3",
+              "Enganação: 2",
+              "Furtividade: 2",
+              "Intimidação: 2",
+              "Mãos Leves: 2",
+              "Pilotagem: 2",
+              "Pontaria: 2",
+              "Reflexos: 2",
+              "Persuasão: 3",
+              "Vontade: 1",
+            ]}
           />
         </div>
       </div>
@@ -588,7 +635,7 @@ export const Characters = () => {
               "Reflexos: 1",
               "Religião: 2",
               "Pontaria: 1",
-              "Vontade: 2"
+              "Vontade: 2",
             ]}
             hp={"6"}
             pe={"2"}
@@ -602,9 +649,7 @@ export const Characters = () => {
             }}
           />
         </div>
-        <div className="flex md:flex-row flex-col justify-center items-center gap-4">
-
-        </div>
+        <div className="flex md:flex-row flex-col justify-center items-center gap-4"></div>
       </div>
     </motion.div>
   );
