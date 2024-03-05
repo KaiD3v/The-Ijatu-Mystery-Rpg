@@ -9,6 +9,7 @@ import alfredoProfile from "../assets/ProfilePictures/alfredoProfile.png";
 import franciscaProfile from "../assets/ProfilePictures/franciscaProfile.png";
 import isabelProfile from "../assets/ProfilePictures/isabelProfile.png";
 import marioProfile from "../assets/ProfilePictures/marioProfile.png";
+import julioProfile from "../assets/ProfilePictures/julioProfile.png"
 import { motion } from "framer-motion";
 import {
   PartyPopper,
@@ -509,7 +510,7 @@ export const Characters = () => {
           <CharacterCards
             name="Julio Soares"
             desc="Mário Alcântra parece ser uma pessoa encantadora e amigável, com um sorriso caloroso e um jeito afável que conquista a confiança dos outros. "
-            profilePic={marioProfile}
+            profilePic={julioProfile}
             skills={["Língua de Prata"]}
             personality="Julio é conhecido por sua simpatia e honestidade. Ele mantém contatos externos à cidade e é bem relacionado entre os habitantes locais. Sua amigável natureza e sua capacidade de cativar as pessoas com seu carisma fazem dele uma figura querida na comunidade. No entanto, seu grande defeito é acreditar demais em pessoas que foram gentis com ele, o que por vezes o coloca em situações delicadas."
             appearence={{
