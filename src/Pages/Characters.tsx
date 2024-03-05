@@ -10,6 +10,7 @@ import franciscaProfile from "../assets/ProfilePictures/franciscaProfile.png";
 import isabelProfile from "../assets/ProfilePictures/isabelProfile.png";
 import marioProfile from "../assets/ProfilePictures/marioProfile.png";
 import julioProfile from "../assets/ProfilePictures/julioProfile.png"
+import carmenProfile from "../assets/ProfilePictures/carmenProfile.png"
 import { motion } from "framer-motion";
 import {
   PartyPopper,
@@ -22,6 +23,7 @@ import {
   Tractor,
   GraduationCap,
   ClipboardPlus,
+  PenLine,
 } from "lucide-react";
 
 export const Characters = () => {
@@ -405,6 +407,51 @@ export const Characters = () => {
               char: "1",
             }}
           />
+          <CharacterCards
+            name="Carmen Carvalho"
+            desc="Uma professora educada e dedicada aos seus alunos, vivem um uma cazinha pequena bem organizada e cheia de pequenas e grandes plantas"
+            profilePic={carmenProfile}
+            skills={["Médico"]}
+            curiosity="Formada em Pedagogia pela Universidade Unicesumar - Rio Branco - AC. Melhor amiga da Francisca Santos"
+            icons={[<PenLine />]}
+            personality="Uma professora educada e dedicada aos seus alunos."
+            appearence={{
+              height: "1,70m",
+              hair: "cabelo volumoso e encaracolado",
+              eyesColor: "Castanhos",
+              skinColor: "Branca",
+              clothes:
+                "Usa óculos sem aro aparente.",
+            }}
+            lore={
+              "Francisca Santos é uma figura respeitada em Ijatu, conhecida por sua dedicação à saúde e ao bem-estar da comunidade. Ela estabeleceu uma clínica médica na cidade e dedica-se inteiramente ao cuidado dos habitantes locais. Sua presença é reconfortante e sua habilidade médica é amplamente reconhecida."
+            }
+            age={"30"}
+            job={"Médica"}
+            pro={[
+              "Lidar com Animais: 1",
+              "Enganação: 1",
+              "Intimidação: 1",
+              "Investigação: 2",
+              "Intuição: 2",
+              "Medicina: 1",
+              "Natureza: 2",
+              "Percepção: 2",
+              "Persuasão: 2",
+              "Sobrevivência: 1",
+              "Vontade: 2",
+            ]}
+            hp={"6"}
+            pe={"2"}
+            attr={{
+              str: "0",
+              con: "0",
+              dex: "0",
+              knw: "1",
+              int: "2",
+              char: "1",
+            }}
+          />
         </div>
       </div>
 
@@ -554,6 +601,9 @@ export const Characters = () => {
               char: "1",
             }}
           />
+        </div>
+        <div className="flex md:flex-row flex-col justify-center items-center gap-4">
+
         </div>
       </div>
     </motion.div>
