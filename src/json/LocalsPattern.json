@@ -2,16 +2,13 @@
     "locals": [
         {
             "id": "1",
-            "title": "Local Pika",
+            "title": "A Cidade de Ijatu",
             "desc": "Chupingole",
-            "image": "https://2.bp.blogspot.com/-C4GYKJsXzCQ/V02COXETtZI/AAAAAAAAKgI/Qbt1u_6CugcC4xDGmjvHxp38HrF9ev2CQCLcB/s1600/51803.jpg",
-            "mapImage": "https://i.pinimg.com/736x/51/31/fc/5131fcb2bc45b941de7db657af388729.jpg",
-            "details": "Neste local \né possível encontrar suco de laranja geladinho **nham nham nham**",
-            "secrets": [
-                "Churiço",
-                "chupimba"
+            "image": "../assets/maps/IjatuMap.jpg",
+            "mapImage": "../assets/maps/IjatuMap.jpg",
+            "details": "IJatu é uma pequena cidade situada no coração do interior do Acre, envolta pela exuberante natureza amazônica. \nEsta comunidade autosustentável é caracterizada por laços profundos de amizade e confiança entre seus habitantes, onde todos se conhecem pelo nome e compartilham um senso de comunidade único. \nEm Ijatu, cada pessoa desempenha um papel crucial na vida cotidiana da cidade, contribuindo para sua harmonia e prosperidade.",
+            "secrets": [   
             ]
-
         },
         {
             "id": "2",
