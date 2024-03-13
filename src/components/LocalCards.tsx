@@ -4,10 +4,10 @@ import localsData from "../json/LocalsPattern.json";
 interface Local {
   id: string;
   title: string;
-  desc: string;
+  desc?: string;
   image: string;
   details: string;
-  secrets: string[]
+  secrets?: string[]
 }
 
 const locals: Local[] = localsData.locals;

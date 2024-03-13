@@ -109,6 +109,56 @@
             "secrets": [
 
             ]
+        },
+        {
+            "id": "casa-angela",
+            "title": "Casa da Angela",
+            "details": "Angêla mora em uma pequena fazenda próxima a cidade junto de sua mãe doente",
+            "image": "https://i.pinimg.com/736x/02/ce/54/02ce545fd068cf9d7e3061a89b197d02.jpg"
+        },
+        {
+            "id": "casa-paulo",
+            "title": "Casa do Paulo",
+            "details": "Paulo mora em uma casa pequena cheia de estantes",
+            "image": "https://i.pinimg.com/736x/84/e3/d9/84e3d9f8b076fa87ac7547e001060ebe.jpg"
+        },
+        {
+            "id": "casa-marcos",
+            "title": "Casa do Marcos",
+            "details": "Paulo mora em uma casa pequena cheia de estantes",
+            "image": "https://i.pinimg.com/736x/21/98/4f/21984f66ed54993e205709db7df82c96.jpg"
+        },
+        {
+            "id": "casa-josefino",
+            "title": "Casa do Joséfino",
+            "details": "Joséfino mora em uma das maiores casas da cidade",
+            "image": "https://i.pinimg.com/736x/78/31/2e/78312e827cb85329ba7322c3378af97f.jpg",
+            "mapImage": "https://i.pinimg.com/736x/e3/64/b7/e364b7b14e85ee43896a21c366134a63.jpg"
+        },
+        {
+            "id": "casa-francisca",
+            "title": "Casa da Francisca",
+            "details": "Francisca Santos e sua melhor amiga Carmem Carvalho dividem uma casa modesta em frente a preça da cidade",
+            "image": "https://i.pinimg.com/736x/bf/a5/7d/bfa57d349b5d36b9275de74f247a2a73.jpg"
+        },
+        {
+            "id": "casa-isabel-cida",
+            "title": "Casas de Isabel e Cida",
+            "details": "Isabel Miranda e dona Cleide são vizinhas de porta e moram em frente a praça da cidade",
+            "image": "https://i.pinimg.com/736x/ae/17/d8/ae17d85b91dc0f557f3185e377f048b7.jpg"
+        },
+        {
+            "id": "casa-damiao",
+            "title": "Casas de Damião",
+            "details": "Damião Cavalcanti e Silvia Santos (Sua filha) moram próximo a floresta, a casa mais próxima da casa de Marcos, mesmo assim é distante, Damião é o Seringueiro e o Marceneiro da região",
+            "image": "https://i.pinimg.com/736x/6a/ec/85/6aec85a170bd53f01a6e6d0eee0ced92.jpg"
+        },
+        {
+            "id": "casa-tonhao",
+            "title": "Casas do Tonhão",
+            "details": "Casa do Tonhão, o dono do único bar da cidade",
+            "image": "https://i.pinimg.com/736x/fc/b7/ff/fcb7ff7d919058b29d0bcf12bba7cd99.jpg"
         }
+       
     ]
 }
