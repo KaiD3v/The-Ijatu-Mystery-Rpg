@@ -22,7 +22,7 @@ export const LocalCards = () => {
             <img
               src={local.image}
               alt="nome do local"
-              className="w-full"
+              className="w-full max-h-52"
             />
             <p className="text-center break-all m-1">{local.desc}</p>
           </div>

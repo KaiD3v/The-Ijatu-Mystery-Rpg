@@ -1,5 +1,4 @@
 // Styles
-import "./App.css";
 
 // Libs
 import { Routes } from "react-router-dom";

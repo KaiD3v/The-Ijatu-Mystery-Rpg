@@ -1,25 +1,113 @@
 {
     "locals": [
         {
-            "id": "1",
+            "id": "cidade-ijatu",
             "title": "A Cidade de Ijatu",
-            "desc": "Chupingole",
-            "image": "../assets/maps/IjatuMap.jpg",
-            "mapImage": "../assets/maps/IjatuMap.jpg",
-            "details": "IJatu é uma pequena cidade situada no coração do interior do Acre, envolta pela exuberante natureza amazônica. \nEsta comunidade autosustentável é caracterizada por laços profundos de amizade e confiança entre seus habitantes, onde todos se conhecem pelo nome e compartilham um senso de comunidade único. \nEm Ijatu, cada pessoa desempenha um papel crucial na vida cotidiana da cidade, contribuindo para sua harmonia e prosperidade.",
+            "desc": "IJatu é uma pequena cidade situada no int-erior do Acre.",
+            "image": "https://tse3.mm.bing.net/th/id/OIG3.lqoxuHnAhfJPSaLMWFX.?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
+            "mapImage": "https://i.pinimg.com/736x/66/e3/9a/66e39a698d41e2551017910264ea462f.jpg",
+            "details": "IJatu é uma pequena cidade situada no coração do interior do Acre, envolta pela exuberante natureza amazônica. Esta comunidade autosustentável é caracterizada por laços profundos de amizade e confiança entre seus habitantes, onde todos se conhecem pelo nome e compartilham um senso de comunidade único. Em Ijatu, cada pessoa desempenha um papel crucial na vida cotidiana da cidade, contribuindo para sua harmonia e prosperidade. No entanto, a tranquilidade de Ijatu é repentinamente interrompida quando um assassinato misterioso ocorre em uma manhã de domingo, lançando a cidade em um turbilhão de intriga e suspeita. Agora, cabe aos bravos aventureiros desvendar os segredos ocultos da cidade e restaurar a paz perdida, enfrentando os perigos que espreitam nas sombras e explorando os mistérios que permeiam cada rua e cada edifício de Ijatu.",
             "secrets": [   
+                "Recentemente se Iniciou uma série de assassinatos"
             ]
         },
         {
-            "id": "2",
-            "title": "Local Pika 2",
-            "desc": "Descrição Local pika 2",
-            "image": "https://i.pinimg.com/originals/5f/61/03/5f610392b0e514d17d8695d2cf3b559e.jpg",
+            "id": "praca-central",
+            "title": "Prança Central",
+            "desc": "Chama atenção pela beleza e cuidado que os cidadãos tem com seus aredores...",
+            "image": "https://tse2.mm.bing.net/th/id/OIG3.34m_9Mf55ATShCI1m3Vi?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
             "mapImage": "",
-            "details": "",
+            "details": "A praça, bem espaçosa e arvorada, ocupa o centro da cidade, chamando atenção pela beleza e cuidado que os cidadãos tem com seus aredores, sempre a deixando bem cuidada e viva.  Ela é o local onde ocorre todos os eventos da cidade, como festas e homenagens. Todas as tardes a praça se enche de pessoas, crianças brincando, idosos e adultos conversando e até viajantes mercantes com algumas mercadorias suspeitas.",
             "secrets": [
-                "Churiço",
-                "chupimba"
+
+            ]
+        },
+        {
+            "id": "igreja",
+            "title": "Igreja",
+            "desc": "A igreja é um dos locais mais antigos da c- idade, fundada em 1832.",
+            "image": "https://tse4.mm.bing.net/th/id/OIG1.3qEL5pxRf_hB.tRA_4ki?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
+            "mapImage": "https://i.pinimg.com/736x/6c/76/38/6c76382c719cfb9a42f5799ca23f2233.jpg",
+            "details": "Em frente a praça central, a igreja é um dos locais mais antigos da cidade, fundada em 1832. É o ponto central da cidade, servindo como referencia histórica e local da cidade, contando as histórias locais através das marcas em suas paredes e de homenagens deixadas ali pelos mais diversos motivos.",
+            "secrets": [
+
+            ]
+        },
+        {
+            "id": "boteco-tonhao",
+            "title": "Boteco do Tonhão",
+            "desc": "O único local onde é vendido bebidas alcoólicas na cidade.",
+            "image": "https://tse3.mm.bing.net/th/id/OIG4.97giCACTVQNJKUJ2oYNm?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
+            "mapImage": "https://i.pinimg.com/736x/ab/35/59/ab3559d5dac96b1c461b24bdf53f5a12.jpg",
+            "details": "O único local onde é vendido bebidas alcoólicas na cidade, o que reune os bebâdos, briguentos e os desiludidos locais. Além das bebidas, como um bom boteco, são comercializados todos os tipos de produtos que possa se imaginar, em partes, fornecidos por alguns viajantes conhecidos pelo tonhão.",
+            "secrets": [
+
+            ]
+        },
+        {
+            "id": "bosque-seringueiras",
+            "title": "Bosque das Seringueiras",
+            "desc": "A cidade é cercada pelo tipo de arvóre mais comum da região, as seringueiras.",
+            "image": "https://tse4.mm.bing.net/th/id/OIG3.xAxPC4JOgsTSKo3Jv_0M?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
+            "mapImage": "",
+            "details": "A cidade é cercada pelo tipo de arvóre mais comum da região, as seringueiras. Em meio a uma das várias entradas para a floresta densa próximas a saida da cidade, temos uma singela entrada fechada por um portão de madeira, o Bosque das seringueiras, mais conhecido como xxxxxxx (Homenagem a alguma figura que preservava o local). O bosque sofreu com a atividade extrativista exacerbada que ocorreu devido a explosão do latex na época, a qual influenciou no assoreamento de rios importantes e na abertura de diversos “acampamentos” na mata, aumentando o desmatamento local.",
+            "secrets": [
+
+            ]
+        },
+        {
+            "id": "escola",
+            "title": "Escola “Miranda de Assis”",
+            "desc": "A única escola da cidade de Ijatu.",
+            "image": "https://tse1.mm.bing.net/th/id/OIG3.RJQZJWF5LpbRX80JyZ8z?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
+            "mapImage": "https://i.pinimg.com/736x/6c/5a/7f/6c5a7f221abe41d03abbd533bca18595.jpg",
+            "details": "A única escola da cidade de Ijatu, a escola Miranda de Asss é a base da educação na região inteira. Criada próxima ao centro da cidade, foi, junto da igreja, refúgio para os desabrigados e forasteiros em épocas difíceis. Seu nome é em homenagem a Miranda de Assis, uma tutora e professora que prestou parte de sua vida para ensinar a população carente da região.",
+            "secrets": [
+
+            ]
+        },
+        {
+            "id": "mercado",
+            "title": "Mercado Soares",
+            "desc": "O único e maior comércio da cidade.",
+            "image": "https://tse4.mm.bing.net/th/id/OIG1.s8AmgND3VwA17bybH7fj?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
+            "mapImage": "https://i.pinimg.com/736x/6a/4a/e5/6a4ae598e8088e5b0cc35fb78644860c.jpg",
+            "details": "O único e maior comércio da cidade, o mercado pertence a família Soares e vende de tudo um pouco.",
+            "secrets": [
+
+            ]
+        },
+        {
+            "id": "cemiterio",
+            "title": "Cemitério",
+            "desc": "O cemitério é o local do descanso eterno...",
+            "image": "https://tse2.mm.bing.net/th/id/OIG2.8UE0ICnpC8ukTSIGqc6V?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
+            "mapImage": "https://i.pinimg.com/736x/f2/4f/fd/f24ffde65244e556dbd464cb38c5d3c8.jpg",
+            "details": "Um pouco esquecido pela população, mas sempre bem cuidado pelos moradores mais próximos, o cemitério é o local do descanso eterno, tanto dos conhecidos e amados cidadãos, como dos estranhos e perdidos forasteiros. Duas estátuas guardam a entrada, e outras demais estátuas vigiam as lápides. O local é próximo a floresta que cerca a cidade, o que cria neblinas durante as tardes/noites em épocas mais úmidas.",
+            "secrets": [
+
+            ]
+        },
+        {
+            "id": "hospital",
+            "title": "Clínica da Francisca",
+            "desc": "Único centro médico da cidade",
+            "details": "A Clínica Hospitalar da Francisca é um estabelecimento de saúde administrado exclusivamente pela Dra. Francisca. Apesar de ser uma instituição de menor porte, oferece serviços médicos de qualidade e um atendimento atencioso e personalizado aos pacientes.",
+            "image": "https://tse3.mm.bing.net/th/id/OIG3.MyVZbgxxJhiFA8MWLv9f?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
+            "mapImage": "https://i.pinimg.com/736x/f2/d9/7b/f2d97b77b9e60801c23a97118c34fe27.jpg",
+            "secrets": [
+
+            ]
+        },
+        {
+            "id": "acampamento",
+            "title": "Acampamento de Ijatu",
+            "desc": "O acampamento é um espaço amplo e tranquilo situado nos arredores de Ijatu.",
+            "details": "O acampamento da cidade é um espaço amplo e tranquilo situado nos arredores de Ijatu. É utilizado principalmente por viajantes e aventureiros que buscam abrigo temporário durante suas jornadas pela região. Com tendas dispostas de forma organizada, áreas para fogueiras e mesas para refeições ao ar livre, o acampamento proporciona uma atmosfera acolhedora e relaxante para aqueles que o frequentam. Além disso, sua localização estratégica próximo à natureza permite aos visitantes desfrutar da beleza natural dos arredores e realizar atividades ao ar livre, como caminhadas e observação da fauna e flora local.",
+            "image": "https://tse3.mm.bing.net/th/id/OIG2.NR7FYdk7vOd9vRJm.GeX?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
+            "mapImage": "https://i.pinimg.com/736x/ab/16/70/ab1670b41b7e18b9ed30ac9205c70a98.jpg",
+            "secrets": [
+
             ]
         }
     ]
