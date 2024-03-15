@@ -15,9 +15,10 @@ export const NavBar = () => {
             <ul className="flex flex-col gap-1 bg-gray-800 p-2 border rounded-md">
               <li><Link to={"/regras"}>Regras</Link></li>
               <li><Link to={"/locais"}>Locais</Link></li>
-              <li><Link to={"/"}>Histórias</Link></li>
+              <li><Link to={"/historias"}>Histórias</Link></li>
               <li><Link to={"/personagens"}>Personagens</Link></li>
-              <li><Link to={"/"}>Itens</Link></li>
+              <li><Link to={"/itens"}>Itens</Link></li>
+              <li><Link to={"/contatos"}>Contatos</Link></li>
             </ul>
           </DropdownMenu.Content>
         </DropdownMenu.Root>
@@ -36,16 +37,16 @@ export const NavBar = () => {
         <Link to={'/locais'}>Locais</Link>
         </li>
         <li>
-         <Link to={'/'}>Historias</Link>
+         <Link to={'/historias'}>Historias</Link>
         </li>
         <li>
          <Link to={'/personagens'}>Personagens</Link>
         </li>
         <li>
-        <Link to={'/'}>Itens</Link>
+        <Link to={'/itens'}>Itens</Link>
         </li>
         <li>
-          <Link to={"/"}>Contatos</Link>
+          <Link to={"/contatos"}>Contatos</Link>
         </li>
       </ul>
     </nav>
