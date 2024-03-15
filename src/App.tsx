@@ -6,6 +6,7 @@ import { Route } from "react-router-dom";
 
 // Components
 import { NavBar } from "./components/NavBar";
+import { Footer } from "./components/Footer";
 
 // Pages
 import { Home } from "./Pages/Home";
@@ -27,6 +28,7 @@ export default function App() {
         <Route path={"/locais"} element={<Locals />} />
         <Route path={"locais/:id"} element={<Local />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
