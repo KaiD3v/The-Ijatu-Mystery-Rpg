@@ -15,6 +15,7 @@ import { Rules } from "./Pages/Rules";
 import { Rule } from "./Pages/Rule";
 import { Locals } from "./Pages/Locals";
 import { Local } from "./Pages/Local";
+import NotFound from "./Pages/NotFound";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="regras/:id" element={<Rule />} />
         <Route path={"/locais"} element={<Locals />} />
         <Route path={"locais/:id"} element={<Local />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>
