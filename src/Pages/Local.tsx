@@ -6,11 +6,11 @@ import { motion as m } from "framer-motion";
 interface Local {
   id: string;
   title: string;
-  desc: string;
+  desc?: string;
   image: string;
-  mapImage: string;
+  mapImage?: string;
   details: string;
-  secrets: string[];
+  secrets?: string[];
 }
 
 const locals: Local[] = localsData.locals;
