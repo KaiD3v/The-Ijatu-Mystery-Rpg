@@ -1,0 +1,36 @@
+{
+    "items": [
+      {
+        "id": "1",
+        "name": "Poção de Cura",
+        "description": "Uma poção que restaura 2d4 pontos de vida.",
+        "price": "50",
+        "type": "Consumível"
+      },
+      {
+        "id": "2",
+        "name": "Armadura de Couro",
+        "description": "Uma armadura leve feita de couro.",
+        "price": "75",
+        "defense": "+2",
+        "type": "Armadura"
+      },
+      {
+        "id": "3",
+        "name": "Varinha Mágica",
+        "description": "Uma varinha esculpida com runas antigas.",
+        "price": "200",
+        "damage": "1d6",
+        "effect": "Permite lançar feitiços de nível 1",
+        "type": "Arma"
+      },
+      {
+        "id": "4",
+        "name": "Mapa do Tesouro",
+        "description": "Um mapa que indica a localização de um tesouro enterrado.",
+        "price": "100",
+        "type": "Consumível"
+      }
+    ]
+  }
+  
