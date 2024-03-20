@@ -15,4 +15,17 @@ button:hover{
     width: 300px; 
     height: 400px; 
   }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
   
+  th, td {
+    padding: 10px; /* Adiciona 10 pixels de espaçamento interno em todas as células */
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    text-align: left;
+  }  

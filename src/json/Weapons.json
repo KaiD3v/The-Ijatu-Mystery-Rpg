@@ -1,0 +1,33 @@
+{
+    "weapons": [
+      {
+        "id": "1",
+        "name": "Adaga",
+        "description": "Uma faca de curto alcance.",
+        "price": "50",
+        "damage": "1d4"
+      },
+      {
+        "id": "2",
+        "name": "Espada Longa",
+        "description": "Uma espada de uma mão.",
+        "price": "100",
+        "damage": "1d8"
+      },
+      {
+        "id": "3",
+        "name": "Arco Curto",
+        "description": "Um arco de tamanho médio.",
+        "price": "75",
+        "damage": "1d6"
+      },
+      {
+        "id": "4",
+        "name": "Machado de Batalha",
+        "description": "Um machado de duas mãos.",
+        "price": "150",
+        "damage": "1d10"
+      }
+    ]
+  }
+  
