@@ -2,11 +2,24 @@
     "items": [
       {
         "id": "1",
+        "name": "Corda Resistente",
+        "description": "Uma corda resistente e durável, essencial para escaladas, travessias e situações de resgate. Pode ser utilizada para criar armadilhas, improvisar abrigos ou atravessar terrenos perigosos.",
+        "price": "5000",
+        "type": "Utensílios"
+      },
+      {
+        "id": "2",
+        "name": "Ferramenta Multifuncional",
+        "description": "Um canivete suíço de alta qualidade, equipado com uma variedade de ferramentas úteis, como lâmina, tesoura, abridor de garrafas, chave de fenda e saca-rolhas. Perfeito para resolver problemas cotidianos, consertar equipamentos e improvisar soluções em situações adversas.",
+        "price": "4500",
+        "type": "Utensílios"
+      },
+      {
+        "id": "3",
         "name": "Lanterna",
-        "description": "Ilumina em até 6m locais escuros.",
-        "price": "600",
+        "description": "Uma lanterna robusta equipada com uma lâmpada de óleo resistente e uma lente de vidro transparente. Produz um feixe de luz brilhante, iluminando até 10 metros à frente do usuário e proporcionando visibilidade em locais escuros.",
+        "price": "5000",
         "type": "Utensílios"
       }
     ]
-  }
-  
+  }  
