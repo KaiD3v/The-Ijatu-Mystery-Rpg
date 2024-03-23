@@ -2,12 +2,45 @@
     "weapons": [
       {
         "id": "1",
-        "name": "Adaga",
-        "description": "Uma faca de curto alcance.",
-        "price": "3000",
-        "damage": "1d4"
+        "name": "Revolver",
+        "description": "Revólveres são uma categoria de armas de fogo projetadas para serem disparadas a partir da mão. O nome 'revólver' vem da ação rotativa do cilindro quando o gatilho é puxado.",
+        "price": "100.000",
+        "damage": "2d6"
+      },
+      {
+        "id": "2",
+        "name": "Pistola Semi-Auto",
+        "description": "As pistolas semi-automáticas são uma categoria de armas de fogo que, após cada disparo, automaticamente expelam a cápsula vazia e carregam uma nova munição no cano, preparando-se para o próximo disparo. Essas armas não disparam continuamente com um único acionamento do gatilho, como as armas automáticas, mas permitem uma cadência de tiro bastante rápida. Com uma semi-automática é possível efetuar até 3 tiros por turno.",
+        "price": "200.000",
+        "damage": "2d6"
+      }, 
+      {
+        "id": "3",
+        "name": "Espingarda de Caça",
+        "description": "A Espingarda de Caça é uma arma de fogo de longo alcance, projetada para enfrentar desafios em ambientes adversos. Sua capacidade de carregamento de cinco cartuchos e ação de bombeamento a tornam uma escolha versátil para caçadores e aventureiros que buscam uma arma confiável para lidar com uma variedade de situações. Fornece +2 dois de mira caso esteja equipada com uma luneta de longo alcance.",
+        "price": "350.000",
+        "damage": "2d8"
+      },
+      {
+        "id": "4",
+        "name": "Escopeta de Combate",
+        "description": "A Escopeta de Combate é uma arma formidável, conhecida por sua capacidade de infligir danos devastadores a curta distância. Fornece +2 no ataque a curta distância, -2 no ataque a longa distância.",
+        "price": "500.000",
+        "damage": "2d12"
+      },
+      {
+        "id": "5",
+        "name": "Arco de Caça",
+        "description": " Arco de Caça é uma arma versátil e confiável, popular entre caçadores, arqueiros e aventureiros que buscam uma opção silenciosa e eficaz para combates de médio alcance. Esta arma fornece +2 no ataque a média distância, -2 a curta distância e todos os ataques acertados enquanto o usuário estiver furtivo é considerado um ataque crítico.",
+        "price": "100.000",
+        "damage": "1d8 +destreza"
+      },
+      {
+        "id": "6",
+        "name": "Facão de Exploração",
+        "description": "O Facão de Exploração é uma ferramenta essencial para exploradores, lenhadores e caçadores que enfrentam os desafios da natureza selvagem.",
+        "price": "50.000",
+        "damage": "1d6 +destreza"
       }
     ]
-    
   }
-  

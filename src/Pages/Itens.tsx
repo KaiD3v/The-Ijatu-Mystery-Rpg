@@ -95,7 +95,7 @@ export const Itens = () => {
                 <td>{item.name}</td>
                 <td>{item.type}</td>
                 <td>{item.description}</td>
-                <td>Cr$ {item.price} </td>
+                <td>CR$ {item.price} </td>
               </tr>
             ))}
           </tbody>
