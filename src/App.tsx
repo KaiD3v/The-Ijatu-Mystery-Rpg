@@ -17,6 +17,8 @@ import { Locals } from "./Pages/Locals";
 import { Local } from "./Pages/Local";
 import NotFound from "./Pages/NotFound";
 import { Itens } from "./Pages/Itens";
+import { Lores } from "./Pages/Lores";
+import { Lore } from "./Pages/Lore";
 
 export default function App() {
   return (
@@ -30,6 +32,8 @@ export default function App() {
         <Route path={"/locais"} element={<Locals />} />
         <Route path={"locais/:id"} element={<Local />} />
         <Route path="/itens" element={<Itens />} />
+        <Route path="/historias" element={<Lores />} />
+        <Route path="/historias/:id" element={<Lore />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
