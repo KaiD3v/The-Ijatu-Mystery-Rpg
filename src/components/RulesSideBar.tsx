@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import { ruleNavLinks } from "../config/ruleNavigation";
 
-interface OpenMenuProps {
+interface RulesSideBarProps {
   isOpen: boolean;
-  toggleMenu: () => void; // add prop toggleMenu
+  toggleMenu: () => void;
 }
 
-export const RulesSideBar: React.FC<OpenMenuProps> = ({ isOpen, toggleMenu }) => {
+export function RulesSideBar({ isOpen, toggleMenu }: RulesSideBarProps) {
   return (
     <div
       className={`flex flex-col justify-center items-center h-full max-w-4xl bg-gray-800 text-white ${
@@ -14,13 +15,17 @@ export const RulesSideBar: React.FC<OpenMenuProps> = ({ isOpen, toggleMenu }) =>
     >
       <h2 className="text-2xl font-bold mb-4">Regras</h2>
       <ul className="flex flex-col gap-2">
-        <li className="cursor-pointer hover:text-gray-400"><Link to={'/regras/mestre-jogo'}>O Mestre do Jogo</Link></li>
-        <li className="cursor-pointer hover:text-gray-400"><Link to={'/regras/como-jogar'}>Como Jogar</Link></li>
-        <li className="cursor-pointer hover:text-gray-400"><Link to={'/regras/sistema-dados'}>Sistema de Dados</Link></li>
-        <li className="cursor-pointer hover:text-gray-400"><Link to={'/regras/habilidades'}>habilidades</Link></li>
-        <li className="cursor-pointer hover:text-gray-400"><Link to={'/regras/combate'}>Combate</Link></li>
-        <li><button onClick={toggleMenu}>Fechar</button></li>
-      </ul>  
+        {ruleNavLinks.map(({ to, label }) => (
+          <li key={to} className="cursor-pointer hover:text-gray-400">
+            <Link to={to}>{label}</Link>
+          </li>
+        ))}
+        <li>
+          <button type="button" onClick={toggleMenu}>
+            Fechar
+          </button>
+        </li>
+      </ul>
     </div>
   );
-};
+}
