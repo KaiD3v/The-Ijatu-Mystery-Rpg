@@ -1,93 +1,79 @@
-import localsData from "../json/LocalsPattern.json";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { motion as m } from "framer-motion";
+import { useLocalById } from "../hooks/useLocalById";
+import { formatRichText } from "../utils/formatRichText";
+import { useParams } from "react-router-dom";
+import { PageFrame } from "../components/cinematic/PageFrame";
 
-interface Local {
-  id: string;
-  title: string;
-  desc?: string;
-  image: string;
-  mapImage?: string;
-  details: string;
-  secrets?: string[];
-}
-
-const locals: Local[] = localsData.locals;
-
-export const Local = () => {
+export function Local() {
   const { id } = useParams<{ id: string }>();
-  const [selectedLocal, setSelectedLocal] = useState<Local | null>(null);
+  const selectedLocal = useLocalById(id);
 
-  useEffect(() => {
-    const local = locals.find((local) => local.id === id);
-    setSelectedLocal(local || null);
-  }, [id]);
+  if (!selectedLocal) {
+    return (
+      <PageFrame eyebrow="404" title="Local não encontrado">
+        <p className="font-sans text-mist">Este endereço não consta no arquivo.</p>
+      </PageFrame>
+    );
+  }
 
-  // Formatar texto json
-  const formatText = (text: string) => {
-    return text
-      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // negrito
-      .replace(/_(.*?)_/g, "<u>$1</u>") // sublinhado
-      .replace(/\n/g, "<br>"); // quebra de linha
-  };
+  const hasMapImage = Boolean(
+    selectedLocal.mapImage && selectedLocal.mapImage.trim() !== ""
+  );
 
   return (
-    <div>
-      {selectedLocal ? (
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="flex flex-col gap-4 justify-center items-center m-10"
-        >
-          <h1 className="text-2xl mt-4 font-semibold text-gray-200">
-            {selectedLocal.title}
-          </h1>
-          <img
-            src={selectedLocal.image}
-            alt={selectedLocal.title}
-            className="mb-4 sm:max-w-4xl rounded-md shadow-md sm:m-0 p-0"
-          />
-          <div
-            className="mb-6 text-gray-300 text-left"
-            dangerouslySetInnerHTML={{
-              __html: formatText(selectedLocal.details),
-            }}
-          />
-          <div className="border border-gray-400 w-full" />
-          <div>
-            <h1 className="text-2xl font-semibold mb-2 text-gray-200">
-              Mapa Local
-            </h1>
+    <m.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <PageFrame eyebrow="Cena" title={selectedLocal.title}>
+        <div className="mt-8 space-y-10">
+          <div className="overflow-hidden rounded-lg border border-stroke shadow-panel">
             <img
-              src={selectedLocal.mapImage}
+              src={selectedLocal.image}
               alt={selectedLocal.title}
-              className="rounded-md shadow-md"
+              className="max-h-[28rem] w-full object-cover"
             />
           </div>
-          <div className="border border-gray-400 w-full" />
-          <div className="mt-8">
-            <h1 className="text-2xl font-semibold mb-2 text-gray-200">
-              Segredos do Local:
-            </h1>
+          <div
+            className="font-sans text-base leading-relaxed text-mist [&_strong]:text-bone"
+            dangerouslySetInnerHTML={{
+              __html: formatRichText(selectedLocal.details),
+            }}
+          />
+          <div className="h-px bg-gradient-to-r from-transparent via-stroke to-transparent" />
+          {hasMapImage ? (
+            <section>
+              <h2 className="font-mono text-[10px] uppercase tracking-ultra text-signal/85">
+                Planta / mapa
+              </h2>
+              <img
+                src={selectedLocal.mapImage}
+                alt={`Mapa de ${selectedLocal.title}`}
+                className="mt-4 rounded-lg border border-stroke shadow-innerline"
+              />
+            </section>
+          ) : null}
+          <div className="h-px bg-stroke/80" />
+          <section>
+            <h2 className="font-mono text-[10px] uppercase tracking-ultra text-signal/85">
+              Segredos arquivados
+            </h2>
             {selectedLocal.secrets && selectedLocal.secrets.length > 0 ? (
-              <ul className="text-left text-white">
-                {selectedLocal.secrets.map((secret, i) => (
-                  <li key={i} className="mb-2">
-                    {secret}
-                  </li>
+              <ul className="mt-4 list-inside list-disc space-y-2 text-left font-sans text-mist">
+                {selectedLocal.secrets.map((secret, index) => (
+                  <li key={index}>{secret}</li>
                 ))}
               </ul>
             ) : (
-              <p className="text-gray-300">Sem Segredos</p>
+              <p className="mt-4 font-sans text-sm text-mist/80">
+                Nenhuma anotação confidencial neste dossiê.
+              </p>
             )}
-          </div>
-          <div className="border border-gray-400 m-4 w-full" />
-        </m.div>
-      ) : (
-        <p className="text-center text-gray-300">Local não encontrado</p>
-      )}
-    </div>
+          </section>
+        </div>
+      </PageFrame>
+    </m.div>
   );
-};
+}

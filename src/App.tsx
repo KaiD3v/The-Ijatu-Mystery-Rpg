@@ -1,42 +1,47 @@
-// Styles
-
-// Libs
-import { Routes } from "react-router-dom";
-import { Route } from "react-router-dom";
-
-// Components
+import { AnimatePresence, motion } from "framer-motion";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
 import { Footer } from "./components/Footer";
-
-// Pages
-import { Home } from "./Pages/Home";
-import { Characters } from "./Pages/Characters";
-import { Rules } from "./Pages/Rules";
-import { Rule } from "./Pages/Rule";
-import { Locals } from "./Pages/Locals";
-import { Local } from "./Pages/Local";
-import NotFound from "./Pages/NotFound";
-import { Itens } from "./Pages/Itens";
-import { Lores } from "./Pages/Lores";
-import { Lore } from "./Pages/Lore";
+import { appRoutes } from "./routes/appRoutes";
+import { CinematicLayers } from "./components/cinematic/CinematicLayers";
+import { IntroGate } from "./components/cinematic/IntroGate";
+import { useLenis } from "./hooks/useLenis";
+import { useCursorGlow } from "./hooks/useCursorGlow";
 
 export default function App() {
+  const location = useLocation();
+  useLenis();
+  useCursorGlow();
+
   return (
-    <div className=" bg-github h-full w-screen">
-      <NavBar />
-      <Routes>
-        <Route path={"/"} element={<Home />} />
-        <Route path={"/personagens"} element={<Characters />} />
-        <Route path={"/regras"} element={<Rules />} />
-        <Route path="regras/:id" element={<Rule />} />
-        <Route path={"/locais"} element={<Locals />} />
-        <Route path={"locais/:id"} element={<Local />} />
-        <Route path="/itens" element={<Itens />} />
-        <Route path="/historias" element={<Lores />} />
-        <Route path="/historias/:id" element={<Lore />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
-    </div>
+    <>
+      <a href="#main-content" className="skip-to-content">
+        Pular para o conteúdo
+      </a>
+      <CinematicLayers />
+      <IntroGate />
+      <div className="relative z-20 flex min-h-screen w-full min-w-0 max-w-full flex-col">
+        <NavBar />
+        <AnimatePresence mode="wait">
+          <motion.div
+            id="main-content"
+            key={location.pathname}
+            tabIndex={-1}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+            className="flex min-h-0 min-w-0 flex-1 flex-col outline-none"
+          >
+            <Routes location={location}>
+              {appRoutes.map(({ path, element }) => (
+                <Route key={path} path={path} element={element} />
+              ))}
+            </Routes>
+          </motion.div>
+        </AnimatePresence>
+        <Footer />
+      </div>
+    </>
   );
 }
