@@ -1,45 +1,36 @@
+import type { ReactNode } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
+import type {
+  CharacterAppearance,
+  CharacterAttributes,
+} from "../types/content";
 
-interface CardProps {
+export interface CharacterCardProps {
   profilePic: string;
   age: string;
   job: string;
   name: string;
   desc: string;
   lore: string;
-  icons?: React.ReactNode;
+  icons?: ReactNode[];
   personality: string;
   skills?: string[];
-  appearence?: {
-    height?: string;
-    hair?: string;
-    eyesColor?: string;
-    skinColor?: string;
-    clothes?: string;
-    more?: string;
-  };
+  appearance?: CharacterAppearance;
   curiosity?: string;
   hp: string;
   pe: string;
-  attr: {
-    str: string;
-    con: string;
-    dex: string;
-    knw: string;
-    int: string;
-    char: string;
-  };
+  attr: CharacterAttributes;
   pro?: string[];
 }
 
-export const CharacterCards: React.FC<CardProps> = ({
+export function CharacterCards({
   name,
   desc,
   profilePic,
   icons,
   personality,
-  appearence,
+  appearance,
   curiosity,
   hp,
   pe,
@@ -49,7 +40,7 @@ export const CharacterCards: React.FC<CardProps> = ({
   age,
   job,
   lore,
-}) => {
+}: CharacterCardProps) {
   return (
     <Dialog.Root>
       <Dialog.Trigger className="">
@@ -61,7 +52,7 @@ export const CharacterCards: React.FC<CardProps> = ({
                 <img
                   width="100"
                   src={profilePic}
-                  alt="bolsolas"
+                  alt={`Retrato de ${name}`}
                   className="rounded-full cursor-pointer"
                 />
               </div>
@@ -71,13 +62,11 @@ export const CharacterCards: React.FC<CardProps> = ({
               <div className="text-gray-400 mt-8">{desc}</div>
             </div>
             <div className="absolute flex items-center justify-center text-white bottom-0 left-0 right-0 rounded-b-lg px-6 py-12">
-              {icons &&
-                Array.isArray(icons) &&
-                icons.map((icon, i) => (
-                  <span key={i} className="mr-4">
-                    {icon}
-                  </span>
-                ))}
+              {icons?.map((icon, index) => (
+                <span key={index} className="mr-4">
+                  {icon}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -98,36 +87,33 @@ export const CharacterCards: React.FC<CardProps> = ({
               <Dialog.Description className="text-gray-300">
                 {desc}
               </Dialog.Description>
-              <div className="m-0 p-0 border border-gray-400 w-full"/>
+              <div className="m-0 p-0 border border-gray-400 w-full" />
               <h1> Personalidade: </h1>
               <p>{personality}</p>
-              <div className="m-0 p-0 border border-gray-400 w-full"/>
-              {appearence ? (
+              <div className="m-0 p-0 border border-gray-400 w-full" />
+              {appearance ? (
                 <div className="flex flex-col justify-center items-center">
-                  
                   <h1 className="text-white text-xl mb-0">Aparência</h1>
                   <ul>
-                    {appearence.height && <li>Altura: {appearence.height}</li>}
-                    {appearence.hair && <li>Cabelo: {appearence.hair}</li>}
-                    {appearence.eyesColor && (
-                      <li>Cor dos olhos: {appearence.eyesColor}</li>
+                    {appearance.height && <li>Altura: {appearance.height}</li>}
+                    {appearance.hair && <li>Cabelo: {appearance.hair}</li>}
+                    {appearance.eyesColor && (
+                      <li>Cor dos olhos: {appearance.eyesColor}</li>
                     )}
-                    {appearence.skinColor && (
-                      <li>Cor da pele: {appearence.skinColor}</li>
+                    {appearance.skinColor && (
+                      <li>Cor da pele: {appearance.skinColor}</li>
                     )}
-                    {appearence.clothes && (
-                      <li>Roupas: {appearence.clothes}</li>
+                    {appearance.clothes && (
+                      <li>Roupas: {appearance.clothes}</li>
                     )}
-                    {appearence.more && (
-                      <li>Outros detalhes: {appearence.more}</li>
+                    {appearance.more && (
+                      <li>Outros detalhes: {appearance.more}</li>
                     )}
                     {curiosity && <li>{curiosity}</li>}
                   </ul>
                 </div>
-              ) : (
-                ""
-              )}
-               <div className="border border-gray-400 w-full"/>
+              ) : null}
+              <div className="border border-gray-400 w-full" />
               <div className="justify-center text-center">
                 <h1 className="text-white sm:text-xl text-sm">Atributos</h1>
                 <div className="flex sm:text-xl text-sm gap-6 bg-gray-200 text-github sm:p-4 py-2 text rounded-xl">
@@ -143,28 +129,28 @@ export const CharacterCards: React.FC<CardProps> = ({
                 <details className="flex">
                   <summary className="cursor-pointer">Habilidades</summary>
                   <ul>
-                    {skills?.map((skill, i) => (
-                      <li key={i}>{skill}</li>
+                    {skills?.map((skill, index) => (
+                      <li key={index}>{skill}</li>
                     ))}
                   </ul>
                 </details>
                 <h1 className="text-white m-4 text-xl">Perícias</h1>
                 <ul className="flex text-left justify-center items-center flex-col">
-                  {pro?.map((item, i) => (
-                    <li key={i}>{item}</li>
+                  {pro?.map((item, index) => (
+                    <li key={index}>{item}</li>
                   ))}
                 </ul>
               </div>
-              <div className="m-0 p-0 border border-gray-400 w-full"/>
+              <div className="m-0 p-0 border border-gray-400 w-full" />
               <div>
                 <h1 className="text-white m-4 text-xl">História</h1>
                 <p>{lore}</p>
               </div>
-              <div className="m-0 p-0 border border-gray-400 w-full"/>
+              <div className="m-0 p-0 border border-gray-400 w-full" />
             </div>
           </div>
         </div>
       </Dialog.Content>
     </Dialog.Root>
   );
-};
+}
