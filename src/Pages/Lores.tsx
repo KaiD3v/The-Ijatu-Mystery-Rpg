@@ -1,15 +1,7 @@
-import loresData from "../json/Lores.json";
 import { Link } from "react-router-dom";
+import { LORES } from "../data/lores";
 
-interface Lore {
-  id: string;
-  title: string;
-}
-
-export const Lores = () => {
-  // Dados das histórias
-  const lores: Lore[] = loresData.lores;
-
+export function Lores() {
   return (
     <div className="text-gray-200 flex flex-col gap-4 m-10">
       <div className="flex flex-col text-center justify-center content-center gap-4">
@@ -26,11 +18,9 @@ export const Lores = () => {
         <div>
           <h2 className="text-3xl">Histórias Disponíveis:</h2>
           <ul className="text-center">
-            {lores.map((lore) => (
+            {LORES.map((lore) => (
               <li key={lore.id} className="text-lg">
-                <Link to={`${lore.id}`}>
-                {lore.title}
-                </Link>
+                <Link to={`/historias/${lore.id}`}>{lore.title}</Link>
               </li>
             ))}
           </ul>
@@ -38,4 +28,4 @@ export const Lores = () => {
       </div>
     </div>
   );
-};
+}
