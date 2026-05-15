@@ -1,42 +1,6 @@
-import "../index.css";
-import { useEffect, useState } from "react";
-import weaponsData from "../json/Weapons.json";
-import itemsData from "../json/Items.json";
+import { ITEMS, WEAPONS } from "../data/catalog";
 
-interface Weapon {
-  id: string;
-  name: string;
-  description: string;
-  price: string;
-  damage: string;
-}
-
-interface Item {
-  id: string;
-  name: string;
-  description: string;
-  price: string;
-  type: string;
-}
-
-const weapons: Weapon[] = weaponsData.weapons;
-const items: Item[] = itemsData.items;
-
-export const Itens = () => {
-  const [selectedWeapon, setSelectedWeapon] = useState<Weapon | null>(null);
-  const [selectedItem, setSelectedItem] = useState<Item | null>(null);
-
-  // buscar dados do json weapons
-  useEffect(() => {
-    const weapon = weapons.find(
-      (weapon) => weapon.id === (selectedWeapon?.id || "")
-    );
-    setSelectedWeapon(weapon || null);
-
-    const item = items.find((item) => item.id === (selectedItem?.id || ""));
-    setSelectedItem(item || null);
-  }, [selectedWeapon, selectedItem]);
-
+export function Itens() {
   return (
     <div className="text-gray-300 m-4">
       <div className="flex flex-col justify-center items-center text-initial content-center">
@@ -62,8 +26,7 @@ export const Itens = () => {
             </tr>
           </thead>
           <tbody>
-            {/* Map das armas */}
-            {weapons.map((weapon) => (
+            {WEAPONS.map((weapon) => (
               <tr key={weapon.id}>
                 <td>{weapon.name}</td>
                 <td>{weapon.description}</td>
@@ -86,8 +49,7 @@ export const Itens = () => {
             </tr>
           </thead>
           <tbody>
-            {/* Map das armas */}
-            {items.map((item) => (
+            {ITEMS.map((item) => (
               <tr key={item.id}>
                 <td>{item.name}</td>
                 <td>{item.type}</td>
@@ -142,4 +104,4 @@ export const Itens = () => {
       </div>
     </div>
   );
-};
+}
