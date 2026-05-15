@@ -10,20 +10,19 @@ function RuleArticle({ rule }: { rule: GameRule }) {
     <m.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       className="flex flex-col gap-8"
       key={rule.id}
     >
-      <h1 className="sm:text-4xl underline text-gray-50 text-2xl italic font-times mt-4">
+      <h1 className="mt-2 border-b border-stroke/80 pb-4 font-display text-3xl font-light italic text-bone sm:text-4xl">
         {rule.title}
       </h1>
-      <div className="text-left">
-        <p
-          dangerouslySetInnerHTML={{
-            __html: formatRichText(rule.content),
-          }}
-        />
-      </div>
+      <div
+        className="text-left font-sans text-base leading-relaxed text-mist [&_strong]:text-bone [&_u]:text-signal/90"
+        dangerouslySetInnerHTML={{
+          __html: formatRichText(rule.content),
+        }}
+      />
     </m.div>
   );
 }
@@ -36,7 +35,9 @@ export function Rule() {
     <RulesPageLayout>
       {selectedRule ? (
         <RuleArticle rule={selectedRule} />
-      ) : null}
+      ) : (
+        <p className="font-mono text-sm text-mist">Trecho não localizado no arquivo.</p>
+      )}
     </RulesPageLayout>
   );
 }

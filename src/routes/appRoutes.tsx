@@ -9,6 +9,7 @@ import NotFound from "../Pages/NotFound";
 import { Itens } from "../Pages/Itens";
 import { Lores } from "../Pages/Lores";
 import { Lore } from "../Pages/Lore";
+import { Contatos } from "../Pages/Contatos";
 
 export interface AppRouteConfig {
   path: string;
@@ -25,5 +26,6 @@ export const appRoutes: AppRouteConfig[] = [
   { path: "/itens", element: <Itens /> },
   { path: "/historias", element: <Lores /> },
   { path: "/historias/:id", element: <Lore /> },
+  { path: "/contatos", element: <Contatos /> },
   { path: "*", element: <NotFound /> },
 ];
