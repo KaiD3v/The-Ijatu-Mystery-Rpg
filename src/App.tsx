@@ -1,40 +1,16 @@
-// Styles
-
-// Libs
-import { Routes } from "react-router-dom";
-import { Route } from "react-router-dom";
-
-// Components
+import { Route, Routes } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
 import { Footer } from "./components/Footer";
-
-// Pages
-import { Home } from "./Pages/Home";
-import { Characters } from "./Pages/Characters";
-import { Rules } from "./Pages/Rules";
-import { Rule } from "./Pages/Rule";
-import { Locals } from "./Pages/Locals";
-import { Local } from "./Pages/Local";
-import NotFound from "./Pages/NotFound";
-import { Itens } from "./Pages/Itens";
-import { Lores } from "./Pages/Lores";
-import { Lore } from "./Pages/Lore";
+import { appRoutes } from "./routes/appRoutes";
 
 export default function App() {
   return (
     <div className=" bg-github h-full w-screen">
       <NavBar />
       <Routes>
-        <Route path={"/"} element={<Home />} />
-        <Route path={"/personagens"} element={<Characters />} />
-        <Route path={"/regras"} element={<Rules />} />
-        <Route path="regras/:id" element={<Rule />} />
-        <Route path={"/locais"} element={<Locals />} />
-        <Route path={"locais/:id"} element={<Local />} />
-        <Route path="/itens" element={<Itens />} />
-        <Route path="/historias" element={<Lores />} />
-        <Route path="/historias/:id" element={<Lore />} />
-        <Route path="*" element={<NotFound />} />
+        {appRoutes.map(({ path, element }) => (
+          <Route key={path} path={path} element={element} />
+        ))}
       </Routes>
       <Footer />
     </div>
