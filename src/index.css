@@ -131,6 +131,35 @@
     transform: translateY(-2px);
   }
 
+  .character-dossier-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    .character-dossier-grid {
+      grid-template-columns: 20rem minmax(0, 1fr);
+      align-items: start;
+    }
+
+    .character-dossier-sidebar {
+      grid-column: 1 / 2;
+    }
+
+    .character-dossier-content {
+      grid-column: 2 / 3;
+      min-width: 0;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .character-dossier-grid {
+      grid-template-columns: 21.5rem minmax(0, 1fr);
+      gap: 2.25rem;
+    }
+  }
+
   .media-frame {
     @apply relative flex w-full items-center justify-center overflow-hidden rounded-lg border border-stroke/80 bg-abyss text-mist;
   }

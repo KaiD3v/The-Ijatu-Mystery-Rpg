@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 interface PageFrameProps {
   children: ReactNode;
   className?: string;
+  headerClassName?: string;
   /** Título curto em mono acima do conteúdo */
   eyebrow?: string;
   title?: string;
@@ -13,6 +14,7 @@ interface PageFrameProps {
 export function PageFrame({
   children,
   className,
+  headerClassName,
   eyebrow,
   title,
   subtitle,
@@ -25,7 +27,12 @@ export function PageFrame({
       )}
     >
       {(eyebrow || title || subtitle) && (
-        <header className="mb-12 max-w-3xl border-l-2 border-signal/40 pl-5 sm:mb-16 sm:pl-6">
+        <header
+          className={cn(
+            "mb-12 max-w-3xl border-l-2 border-signal/40 pl-5 sm:mb-16 sm:pl-6",
+            headerClassName
+          )}
+        >
           {eyebrow ? (
             <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-signal/90">
               {eyebrow}
