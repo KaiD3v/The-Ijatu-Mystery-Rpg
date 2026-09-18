@@ -1,177 +1,28 @@
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ITEMS, WEAPONS } from "../data/catalog";
 import { PageFrame } from "../components/cinematic/PageFrame";
+import type { GameItem, Weapon } from "../types/content";
 
-const tableWrap =
-  "overflow-x-auto rounded-lg border border-stroke bg-panel/50 shadow-innerline backdrop-blur-sm";
-const tableClass =
-  "hidden w-full min-w-[36rem] border-collapse text-left text-sm sm:table";
-const thClass =
-  "border-b border-stroke bg-panel2/95 px-3 py-3 font-mono text-[10px] font-normal uppercase tracking-ultra text-signal/90 sm:sticky sm:top-0 sm:z-10";
-const tdClass =
-  "border-b border-stroke/80 px-3 py-3 align-top font-sans text-mist last:border-b-0";
-const rowHover = "transition-colors hover:bg-white/[0.03]";
-
-const cardListClass = "grid gap-4 sm:hidden";
+const tableWrap = "overflow-x-auto rounded-lg border border-stroke bg-panel/50 shadow-innerline";
+const thClass = "border-b border-stroke bg-panel2/95 px-3 py-3 text-left font-mono text-[10px] font-normal uppercase tracking-ultra text-signal/90";
+const tdClass = "border-b border-stroke/80 px-3 py-3 align-top font-sans text-sm text-mist";
+function RuleRefs({ refs }: { refs: readonly string[] }) { return <div className="mt-3 flex flex-wrap gap-2">{refs.map((ref) => <Link key={ref} to={`/regras/${ref}`} className="rounded-full border border-stroke px-2 py-1 font-mono text-[9px] text-signal hover:border-signal/50">Regra: {ref.split("-").join(" ")}</Link>)}</div>; }
+function WeaponFields({ weapon }: { weapon: Weapon }) { return <dl className="mt-3 grid grid-cols-2 gap-2 text-sm"><div><dt className="font-mono text-[9px] uppercase tracking-ultra text-signal/70">Preço</dt><dd className="text-bone">{weapon.price}</dd></div><div><dt className="font-mono text-[9px] uppercase tracking-ultra text-signal/70">Dano</dt><dd className="text-bone" title="Dano aplicado após um ataque bem-sucedido">{weapon.damage}</dd></div><div><dt className="font-mono text-[9px] uppercase tracking-ultra text-signal/70">Alcance</dt><dd className="text-bone">{weapon.range}</dd></div><div><dt className="font-mono text-[9px] uppercase tracking-ultra text-signal/70">Disponibilidade</dt><dd className="text-bone">{weapon.availability}</dd></div></dl>; }
+function ItemCard({ item }: { item: GameItem }) { return <article className="rounded-lg border border-stroke bg-panel/70 p-4 shadow-innerline"><h3 className="font-display text-lg text-bone">{item.name}</h3><p className="mt-1 font-mono text-[9px] uppercase tracking-ultra text-signal/75">{item.type} · {item.availability}</p><p className="mt-2 font-sans text-sm leading-relaxed text-mist">{item.description}</p><p className="mt-3 font-sans text-sm font-medium text-bone">{item.price}</p><RuleRefs refs={item.ruleRefs} /></article>; }
 
 export function Itens() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <PageFrame
-        eyebrow="Inventário"
-        title="Itens e equipamento"
-        subtitle="Tabelas de referência para mesa — leitura densa, como catálogo de evidências."
-      >
-        <section className="mt-10 space-y-5 border-t border-stroke/60 pt-12">
-          <h2 className="font-display text-2xl font-light italic text-bone sm:text-3xl">
-            Armas
-          </h2>
-
-          <div className={cardListClass}>
-            {WEAPONS.map((weapon) => (
-              <article
-                key={weapon.id}
-                className="rounded-lg border border-stroke bg-panel/70 p-4 shadow-innerline"
-              >
-                <h3 className="font-display text-lg text-bone">{weapon.name}</h3>
-                <p className="mt-2 font-sans text-sm leading-relaxed text-mist">
-                  {weapon.description}
-                </p>
-                <dl className="mt-3 grid grid-cols-2 gap-2 font-sans text-sm">
-                  <div>
-                    <dt className="font-mono text-[9px] uppercase tracking-ultra text-signal/70">
-                      Preço
-                    </dt>
-                    <dd className="font-medium text-bone">Cr$ {weapon.price}</dd>
-                  </div>
-                  <div>
-                    <dt className="font-mono text-[9px] uppercase tracking-ultra text-signal/70">
-                      Dano
-                    </dt>
-                    <dd className="font-medium text-bone">{weapon.damage}</dd>
-                  </div>
-                </dl>
-              </article>
-            ))}
-          </div>
-
-          <div className={tableWrap}>
-            <table className={tableClass}>
-              <thead>
-                <tr>
-                  <th className={thClass}>Arma</th>
-                  <th className={thClass}>Descrição</th>
-                  <th className={thClass}>Preço</th>
-                  <th className={thClass}>Dano</th>
-                </tr>
-              </thead>
-              <tbody>
-                {WEAPONS.map((weapon) => (
-                  <tr key={weapon.id} className={rowHover}>
-                    <td className={`${tdClass} font-medium text-bone`}>
-                      {weapon.name}
-                    </td>
-                    <td className={tdClass}>{weapon.description}</td>
-                    <td className={tdClass}>Cr$ {weapon.price}</td>
-                    <td className={tdClass}>{weapon.damage}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section className="mt-14 space-y-5">
-          <h2 className="font-display text-2xl font-light italic text-bone sm:text-3xl">
-            Itens
-          </h2>
-
-          <div className={cardListClass}>
-            {ITEMS.map((item) => (
-              <article
-                key={item.id}
-                className="rounded-lg border border-stroke bg-panel/70 p-4 shadow-innerline"
-              >
-                <h3 className="font-display text-lg text-bone">{item.name}</h3>
-                <p className="mt-1 font-mono text-[9px] uppercase tracking-ultra text-signal/75">
-                  {item.type}
-                </p>
-                <p className="mt-2 font-sans text-sm leading-relaxed text-mist">
-                  {item.description}
-                </p>
-                <p className="mt-3 font-sans text-sm font-medium text-bone">
-                  CR$ {item.price}
-                </p>
-              </article>
-            ))}
-          </div>
-
-          <div className={tableWrap}>
-            <table className={`${tableClass} min-w-[42rem]`}>
-              <thead>
-                <tr>
-                  <th className={thClass}>Item</th>
-                  <th className={thClass}>Tipo</th>
-                  <th className={thClass}>Descrição</th>
-                  <th className={thClass}>Preço</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ITEMS.map((item) => (
-                  <tr key={item.id} className={rowHover}>
-                    <td className={`${tdClass} font-medium text-bone`}>
-                      {item.name}
-                    </td>
-                    <td className={tdClass}>{item.type}</td>
-                    <td className={tdClass}>{item.description}</td>
-                    <td className={tdClass}>CR$ {item.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section className="mx-auto mt-16 max-w-prose border-t border-stroke/60 pt-12">
-          <h2 className="font-display text-2xl font-light italic text-bone sm:text-3xl">
-            Improvisando
-          </h2>
-          <p className="mt-4 font-sans leading-relaxed text-mist">
-            Às vezes os aventureiros não têm equipamento à mão. Nestes momentos,
-            criatividade e improviso viram aliados.
-          </p>
-          <ul className="mt-6 list-disc space-y-4 pl-5 font-sans text-mist marker:text-signal/50">
-            <li>
-              <strong className="text-bone">Armas improvisadas:</strong> pedras,
-              paus ou ferramentas do ambiente em combates desesperados.
-            </li>
-            <li>
-              <strong className="text-bone">Utensílios de sobrevivência:</strong>{" "}
-              folhas, galhos e cascas para abrigos, armadilhas ou pesca.
-            </li>
-            <li>
-              <strong className="text-bone">Disfarces e camuflagem:</strong> tecidos
-              e roupas para passar despercebido.
-            </li>
-            <li>
-              <strong className="text-bone">Truques e armadilhas:</strong> cordas e
-              mecanismos simples para atrasar inimigos.
-            </li>
-            <li>
-              <strong className="text-bone">Comunicação e sinais:</strong> fumaça,
-              pedras ou ramos para mensagens à distância.
-            </li>
-          </ul>
-          <p className="mt-6 font-sans text-sm leading-relaxed text-mist/85">
-            A eficácia depende da criatividade, do ambiente e das habilidades dos
-            personagens.
-          </p>
-        </section>
-      </PageFrame>
-    </motion.div>
-  );
+  const [weaponType, setWeaponType] = useState("todos");
+  const [range, setRange] = useState("todos");
+  const [itemType, setItemType] = useState("todos");
+  const weapons = useMemo(() => WEAPONS.filter((weapon) => (weaponType === "todos" || weapon.weaponType === weaponType) && (range === "todos" || weapon.range === range)), [range, weaponType]);
+  const items = useMemo(() => ITEMS.filter((item) => itemType === "todos" || item.type === itemType), [itemType]);
+  return <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}><PageFrame eyebrow="Inventário" title="Itens e equipamento" subtitle="Referência de mesa para armas e equipamentos. Os termos mecânicos apontam para as regras relacionadas.">
+    <section className="mt-10 space-y-5 border-t border-stroke/60 pt-12" aria-labelledby="weapons-title"><div className="flex flex-wrap items-end justify-between gap-4"><h2 id="weapons-title" className="font-display text-2xl font-light italic text-bone sm:text-3xl">Armas</h2><div className="flex flex-wrap gap-2"><label className="font-mono text-[9px] uppercase tracking-ultra text-signal/80">Tipo<select value={weaponType} onChange={(event) => setWeaponType(event.target.value)} className="ml-2 rounded border border-stroke bg-panel px-2 py-2 text-xs text-bone"><option value="todos">Todos</option><option value="fogo">Fogo</option><option value="arco">Arco</option><option value="branca">Branca</option></select></label><label className="font-mono text-[9px] uppercase tracking-ultra text-signal/80">Alcance<select value={range} onChange={(event) => setRange(event.target.value)} className="ml-2 rounded border border-stroke bg-panel px-2 py-2 text-xs text-bone"><option value="todos">Todos</option><option value="corpo a corpo">Corpo a corpo</option><option value="curta">Curta</option><option value="média">Média</option><option value="longa">Longa</option></select></label></div></div>
+      <div className="grid gap-4 sm:hidden">{weapons.map((weapon) => <article key={weapon.id} className="rounded-lg border border-stroke bg-panel/70 p-4"><h3 className="font-display text-lg text-bone">{weapon.name}</h3><p className="mt-2 text-sm text-mist">{weapon.description}</p><WeaponFields weapon={weapon} /><RuleRefs refs={weapon.ruleRefs} /></article>)}</div><div className={tableWrap}><table className="hidden w-full min-w-[46rem] border-collapse text-left text-sm sm:table"><caption className="sr-only">Tabela de armas filtradas</caption><thead><tr><th className={thClass}>Arma</th><th className={thClass}>Tipo</th><th className={thClass}>Alcance</th><th className={thClass}>Dano</th><th className={thClass}>Preço</th><th className={thClass}>Disponibilidade</th></tr></thead><tbody>{weapons.map((weapon) => <tr key={weapon.id}><td className={`${tdClass} font-medium text-bone`}>{weapon.name}</td><td className={tdClass}>{weapon.weaponType}</td><td className={tdClass}>{weapon.range}</td><td className={tdClass} title="Dano aplicado após ataque bem-sucedido">{weapon.damage}</td><td className={tdClass}>{weapon.price}</td><td className={tdClass}>{weapon.availability}</td></tr>)}</tbody></table></div><p className="font-mono text-[10px] uppercase tracking-ultra text-mist/60" role="status" aria-live="polite">{weapons.length} arma(s) visível(is)</p>
+    </section>
+    <section className="mt-14 space-y-5" aria-labelledby="items-title"><div className="flex flex-wrap items-end justify-between gap-4"><h2 id="items-title" className="font-display text-2xl font-light italic text-bone sm:text-3xl">Itens</h2><label className="font-mono text-[9px] uppercase tracking-ultra text-signal/80">Tipo<select value={itemType} onChange={(event) => setItemType(event.target.value)} className="ml-2 rounded border border-stroke bg-panel px-2 py-2 text-xs text-bone"><option value="todos">Todos</option>{Array.from(new Set(ITEMS.map((item) => item.type))).map((type) => <option key={type} value={type}>{type}</option>)}</select></label></div><div className="grid gap-4 sm:hidden">{items.map((item) => <ItemCard key={item.id} item={item} />)}</div><div className={tableWrap}><table className="hidden w-full min-w-[42rem] border-collapse text-left text-sm sm:table"><caption className="sr-only">Tabela de itens filtrados</caption><thead><tr><th className={thClass}>Item</th><th className={thClass}>Tipo</th><th className={thClass}>Descrição</th><th className={thClass}>Preço</th><th className={thClass}>Disponibilidade</th></tr></thead><tbody>{items.map((item) => <tr key={item.id}><td className={`${tdClass} font-medium text-bone`}>{item.name}</td><td className={tdClass}>{item.type}</td><td className={tdClass}>{item.description}</td><td className={tdClass}>{item.price}</td><td className={tdClass}>{item.availability}</td></tr>)}</tbody></table></div><p className="font-mono text-[10px] uppercase tracking-ultra text-mist/60" role="status" aria-live="polite">{items.length} item(ns) visível(is)</p></section>
+    <section className="mx-auto mt-16 max-w-prose border-t border-stroke/60 pt-12"><h2 className="font-display text-2xl font-light italic text-bone sm:text-3xl">Improvisando</h2><p className="mt-4 font-sans leading-relaxed text-mist">Quando o equipamento não está à mão, criatividade e improviso viram aliados. A eficácia depende da criatividade, do ambiente e das habilidades dos personagens.</p><ul className="mt-6 list-disc space-y-4 pl-5 font-sans text-mist marker:text-signal/50"><li><strong className="text-bone">Armas improvisadas:</strong> pedras, paus ou ferramentas do ambiente.</li><li><strong className="text-bone">Sobrevivência:</strong> folhas, galhos e cascas para abrigos, armadilhas ou pesca.</li><li><strong className="text-bone">Disfarces:</strong> tecidos e roupas para passar despercebido.</li></ul></section>
+  </PageFrame></motion.div>;
 }
