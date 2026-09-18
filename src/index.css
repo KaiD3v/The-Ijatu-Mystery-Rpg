@@ -5,6 +5,20 @@
 :root {
   --cursor-x: 50vw;
   --cursor-y: 45vh;
+  --color-void: #050508;
+  --color-abyss: #08080f;
+  --color-surface: #0e0e16;
+  --color-surface-raised: #14141f;
+  --color-border: #2a2a38;
+  --color-text: #eae6de;
+  --color-text-muted: #aaa7b1;
+  --color-text-subtle: #8f8d9a;
+  --color-signal: #c9a227;
+  --color-danger: #c16c73;
+  --motion-fast: 160ms;
+  --motion-base: 260ms;
+  --motion-slow: 520ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @layer base {
@@ -20,6 +34,19 @@
 
   body {
     @apply min-h-screen bg-void font-sans text-bone antialiased;
+    background-color: var(--color-void);
+    overflow-x: hidden;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+
+  button,
+  a,
+  summary {
+    -webkit-tap-highlight-color: transparent;
   }
 
   ::selection {
@@ -48,9 +75,110 @@
   border-radius: 999px;
 }
 
+.rules-chapter-scroll {
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.rules-chapter-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.rules-chapter-item {
+  scroll-snap-align: start;
+}
+
+.rules-card-summary {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.rule-section-anchor {
+  scroll-margin-top: 10rem;
+}
+
+@media (min-width: 1024px) {
+  .rule-section-anchor {
+    scroll-margin-top: 7rem;
+  }
+}
+
 @layer utilities {
   .text-glow-signal {
     text-shadow: 0 0 40px rgba(201, 162, 39, 0.15);
+  }
+
+  .eyebrow {
+    @apply font-mono text-[10px] uppercase tracking-[0.28em] text-signal;
+  }
+
+  .reading-width {
+    width: min(100%, 68ch);
+  }
+
+  .dossier-card {
+    @apply h-full rounded-xl border border-stroke/80 bg-panel/70 p-5 shadow-innerline backdrop-blur-sm;
+    transition: border-color var(--motion-base) var(--ease-out),
+      background-color var(--motion-base) var(--ease-out),
+      box-shadow var(--motion-base) var(--ease-out),
+      transform var(--motion-base) var(--ease-out);
+  }
+
+  .dossier-card:hover {
+    @apply border-signal/40 bg-panel shadow-glow;
+    transform: translateY(-2px);
+  }
+
+  .media-frame {
+    @apply relative flex w-full items-center justify-center overflow-hidden rounded-lg border border-stroke/80 bg-abyss text-mist;
+  }
+
+  .media-frame img {
+    transition: transform var(--motion-slow) var(--ease-out), filter var(--motion-base) var(--ease-out);
+  }
+
+  .group:hover .media-frame img,
+  .media-frame:hover img {
+    transform: scale(1.035);
+    filter: saturate(1.04) contrast(1.04);
+  }
+
+  .skeleton {
+    @apply rounded-md bg-panel2;
+    animation: pulse-skeleton 1.6s ease-in-out infinite;
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 999px;
+    animation: spin 0.7s linear infinite;
+  }
+}
+
+@keyframes pulse-skeleton {
+  0%,
+  100% { opacity: 0.45; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

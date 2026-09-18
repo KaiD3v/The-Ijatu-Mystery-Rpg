@@ -1,20 +1,29 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Route, Routes, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { NavBar } from "./components/NavBar";
 import { Footer } from "./components/Footer";
 import { appRoutes } from "./routes/appRoutes";
 import { CinematicLayers } from "./components/cinematic/CinematicLayers";
 import { IntroGate } from "./components/cinematic/IntroGate";
-import { useLenis } from "./hooks/useLenis";
 import { useCursorGlow } from "./hooks/useCursorGlow";
+import { ArchiveModeProvider } from "./context/ArchiveModeContext";
+import { RouteMetadata } from "./components/RouteMetadata";
+import { Suspense } from "react";
 
 export default function App() {
   const location = useLocation();
-  useLenis();
+  const reduceMotion = useReducedMotion();
   useCursorGlow();
 
+  useEffect(() => {
+    const main = document.getElementById("main-content");
+    if (main && location.pathname !== "/") main.focus();
+  }, [location.pathname]);
+
   return (
-    <>
+    <ArchiveModeProvider>
+      <RouteMetadata />
       <a href="#main-content" className="skip-to-content">
         Pular para o conteúdo
       </a>
@@ -23,25 +32,25 @@ export default function App() {
       <div className="relative z-20 flex min-h-screen w-full min-w-0 max-w-full flex-col">
         <NavBar />
         <AnimatePresence mode="wait">
-          <motion.div
+          <motion.main
             id="main-content"
             key={location.pathname}
             tabIndex={-1}
-            initial={{ opacity: 0, y: 16 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+            exit={reduceMotion ? undefined : { opacity: 0, y: -12 }}
+            transition={{ duration: reduceMotion ? 0 : 0.42, ease: [0.22, 1, 0.36, 1] }}
             className="flex min-h-0 min-w-0 flex-1 flex-col outline-none"
           >
-            <Routes location={location}>
-              {appRoutes.map(({ path, element }) => (
-                <Route key={path} path={path} element={element} />
-              ))}
-            </Routes>
-          </motion.div>
+            <Suspense fallback={<div className="flex min-h-[50vh] items-center justify-center font-mono text-xs uppercase tracking-ultra text-mist" role="status">Carregando arquivo…</div>}>
+              <Routes location={location}>
+                {appRoutes.map(({ path, element }) => <Route key={path} path={path} element={element} />)}
+              </Routes>
+            </Suspense>
+          </motion.main>
         </AnimatePresence>
         <Footer />
       </div>
-    </>
+    </ArchiveModeProvider>
   );
 }

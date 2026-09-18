@@ -1,77 +1,41 @@
+import { useMemo, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { motion as m } from "framer-motion";
-import { useLocalById } from "../hooks/useLocalById";
-import { formatRichText } from "../utils/formatRichText";
-import { useParams } from "react-router-dom";
 import { PageFrame } from "../components/cinematic/PageFrame";
+import { getLocalAsset, LOCALS } from "../data/locals";
+import { useLocalById } from "../hooks/useLocalById";
+import { useArchiveMode } from "../context/ArchiveModeContext";
 
 export function Local() {
   const { id } = useParams<{ id: string }>();
   const selectedLocal = useLocalById(id);
+  const { mode, setMode } = useArchiveMode();
+  const [revealed, setRevealed] = useState(false);
+  const [selectedPoint, setSelectedPoint] = useState(selectedLocal?.id ?? "");
+  const index = selectedLocal ? LOCALS.findIndex((local) => local.id === selectedLocal.id) : -1;
+  const previous = index > 0 ? LOCALS[index - 1] : undefined;
+  const next = index >= 0 && index < LOCALS.length - 1 ? LOCALS[index + 1] : undefined;
+  const mapPoints = useMemo(() => LOCALS.filter((local) => local.coordinates), []);
 
-  if (!selectedLocal) {
-    return (
-      <PageFrame eyebrow="404" title="Local não encontrado">
-        <p className="font-sans text-mist">Este endereço não consta no arquivo.</p>
-      </PageFrame>
-    );
-  }
-
-  const hasMapImage = Boolean(
-    selectedLocal.mapImage && selectedLocal.mapImage.trim() !== ""
-  );
+  if (!selectedLocal) return <PageFrame eyebrow="404" title="Local não encontrado"><p className="font-sans text-mist">Este endereço não consta no arquivo.</p><Link className="mt-6 inline-block font-mono text-xs uppercase tracking-ultra text-signal" to="/locais">Voltar aos locais</Link></PageFrame>;
+  const highlighted = LOCALS.find((local) => local.id === selectedPoint) ?? selectedLocal;
 
   return (
-    <m.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <PageFrame eyebrow="Cena" title={selectedLocal.title}>
+    <m.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}>
+      <PageFrame eyebrow={`Dossiê ${selectedLocal.fileNumber}`} title={selectedLocal.title} subtitle={selectedLocal.summary}>
         <div className="mt-8 space-y-10">
-          <div className="overflow-hidden rounded-lg border border-stroke shadow-panel">
-            <img
-              src={selectedLocal.image}
-              alt={selectedLocal.title}
-              className="max-h-[28rem] w-full object-cover"
-            />
-          </div>
-          <div
-            className="font-sans text-base leading-relaxed text-mist [&_strong]:text-bone"
-            dangerouslySetInnerHTML={{
-              __html: formatRichText(selectedLocal.details),
-            }}
-          />
-          <div className="h-px bg-gradient-to-r from-transparent via-stroke to-transparent" />
-          {hasMapImage ? (
-            <section>
-              <h2 className="font-mono text-[10px] uppercase tracking-ultra text-signal/85">
-                Planta / mapa
-              </h2>
-              <img
-                src={selectedLocal.mapImage}
-                alt={`Mapa de ${selectedLocal.title}`}
-                className="mt-4 rounded-lg border border-stroke shadow-innerline"
-              />
-            </section>
-          ) : null}
-          <div className="h-px bg-stroke/80" />
-          <section>
-            <h2 className="font-mono text-[10px] uppercase tracking-ultra text-signal/85">
-              Segredos arquivados
-            </h2>
-            {selectedLocal.secrets && selectedLocal.secrets.length > 0 ? (
-              <ul className="mt-4 list-inside list-disc space-y-2 text-left font-sans text-mist">
-                {selectedLocal.secrets.map((secret, index) => (
-                  <li key={index}>{secret}</li>
-                ))}
-              </ul>
-            ) : (
-              <p className="mt-4 font-sans text-sm text-mist/80">
-                Nenhuma anotação confidencial neste dossiê.
-              </p>
-            )}
-          </section>
+          <figure className="overflow-hidden rounded-xl border border-stroke bg-abyss shadow-panel">
+            <img src={getLocalAsset(selectedLocal.imageAsset)} alt={`Capa documental de ${selectedLocal.title}`} width={1200} height={900} loading="eager" onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = "/assets/locations/dossier-cover.svg"; }} className="max-h-[28rem] w-full object-cover" />
+            <figcaption className="border-t border-stroke px-4 py-2 font-mono text-[9px] uppercase tracking-ultra text-mist/70">Registro visual · {selectedLocal.fileNumber}</figcaption>
+          </figure>
+          <Link to="/locais" className="inline-flex rounded border border-stroke px-3 py-2 font-mono text-[10px] uppercase tracking-ultra text-mist transition hover:border-signal/50 hover:text-bone">← Voltar ao arquivo</Link>
+          <div className="grid gap-4 sm:grid-cols-3"><div className="rounded border border-stroke bg-panel/70 p-4"><p className="font-mono text-[9px] uppercase tracking-ultra text-signal/70">Categoria</p><p className="mt-2 text-bone">{selectedLocal.category}</p></div><div className="rounded border border-stroke bg-panel/70 p-4"><p className="font-mono text-[9px] uppercase tracking-ultra text-signal/70">Atmosfera</p><p className="mt-2 text-sm text-mist">{selectedLocal.atmosphere}</p></div><div className="rounded border border-stroke bg-panel/70 p-4"><p className="font-mono text-[9px] uppercase tracking-ultra text-signal/70">Tags</p><p className="mt-2 text-sm text-mist">{selectedLocal.tags.join(" · ")}</p></div></div>
+          <section><h2 className="font-mono text-[10px] uppercase tracking-ultra text-signal/85">Descrição pública</h2><ul className="mt-4 space-y-3 text-base leading-relaxed text-mist">{selectedLocal.publicFacts.map((fact) => <li key={fact} className="border-l border-signal/30 pl-4">{fact}</li>)}</ul></section>
+          {mode === "mestre" && revealed ? <section><h2 className="font-mono text-[10px] uppercase tracking-ultra text-signal/85">Pistas catalogadas</h2><ul className="mt-4 grid gap-3 sm:grid-cols-2">{selectedLocal.clues.map((clue) => <li key={clue} className="rounded border border-stroke bg-panel/70 p-4 text-sm text-mist">{clue}</li>)}</ul></section> : null}
+          <section className="rounded-xl border border-stroke bg-panel/60 p-5"><div className="flex flex-wrap items-center justify-between gap-4"><div><h2 className="font-mono text-[10px] uppercase tracking-ultra text-signal/85">Controle de mesa</h2><p className="mt-2 text-sm text-mist">O modo Jogador é padrão. O modo Mestre revela spoilers apenas após confirmação.</p></div><div className="inline-flex rounded border border-stroke p-1" role="group" aria-label="Modo de leitura"><button type="button" aria-pressed={mode === "jogador"} onClick={() => { setMode("jogador"); setRevealed(false); }} className={`rounded px-3 py-2 font-mono text-[10px] uppercase tracking-ultra ${mode === "jogador" ? "bg-bone/10 text-bone" : "text-mist"}`}>Jogador</button><button type="button" aria-pressed={mode === "mestre"} onClick={() => { setMode("mestre"); setRevealed(false); }} className={`rounded px-3 py-2 font-mono text-[10px] uppercase tracking-ultra ${mode === "mestre" ? "bg-signal/15 text-signal" : "text-mist"}`}>Mestre</button></div></div>{mode === "mestre" ? <div className="mt-5 border-t border-signal/20 pt-5">{revealed ? <><h3 className="font-mono text-[10px] uppercase tracking-ultra text-signal">Segredos arquivados</h3><ul className="mt-3 list-inside list-disc space-y-2 text-sm text-bone/90">{selectedLocal.gmSecrets.map((secret) => <li key={secret}>{secret}</li>)}</ul></> : <div role="alert"><p className="text-sm text-mist">Aviso: este conteúdo pode revelar elementos do caso.</p><button type="button" onClick={() => setRevealed(true)} className="mt-3 rounded border border-signal/50 px-3 py-2 font-mono text-[10px] uppercase tracking-ultra text-signal">Revelar segredos do mestre</button></div>}</div> : <p className="mt-5 border-t border-stroke pt-5 text-sm text-mist/70">Arquivo público ativo. Pistas e conteúdo confidencial ocultos.</p>}</section>
+          <section aria-labelledby="map-title"><h2 id="map-title" className="font-mono text-[10px] uppercase tracking-ultra text-signal/85">Mapa de Ijatu</h2><div className="mt-4 overflow-hidden rounded-xl border border-stroke bg-[#151914] p-3"><div className="relative min-h-[22rem] rounded-lg border border-signal/10 bg-[radial-gradient(circle_at_40%_30%,rgba(115,132,91,.22),transparent_40%),linear-gradient(135deg,#1d251b,#101411)]" role="img" aria-label="Mapa esquemático de Ijatu com pontos selecionáveis">{mapPoints.map((point) => <button key={point.id} type="button" onClick={() => setSelectedPoint(point.id)} aria-label={`Abrir resumo de ${point.title}`} className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-full border p-1.5 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal ${point.id === selectedPoint ? "border-signal bg-signal text-void" : "border-bone/50 bg-void/80 text-signal hover:border-signal"}`} style={{ left: `${point.coordinates.x}%`, top: `${point.coordinates.y}%` }}><span className="block h-2 w-2 rounded-full bg-current" /></button>)}</div></div><div className="mt-4 rounded border border-stroke bg-panel/70 p-4"><p className="font-mono text-[10px] uppercase tracking-ultra text-signal/80">Ponto selecionado</p><p className="mt-2 font-display text-xl text-bone">{highlighted.title}</p><p className="mt-1 text-sm text-mist">{highlighted.summary}</p><Link to={`/locais/${highlighted.id}`} className="mt-3 inline-block font-mono text-[10px] uppercase tracking-ultra text-signal">Abrir dossiê →</Link></div><details className="mt-4 rounded border border-stroke bg-panel/50 p-4"><summary className="cursor-pointer font-mono text-[10px] uppercase tracking-ultra text-signal">Lista acessível de pontos</summary><ul className="mt-3 grid gap-2 sm:grid-cols-2">{mapPoints.map((point) => <li key={point.id}><button type="button" onClick={() => setSelectedPoint(point.id)} className="w-full rounded border border-stroke px-3 py-2 text-left text-sm text-mist hover:border-signal/50 hover:text-bone">{point.fileNumber} · {point.title}</button></li>)}</ul></details></section>
+          <section><h2 className="font-mono text-[10px] uppercase tracking-ultra text-signal/85">Personagens relacionados</h2><div className="mt-4 flex flex-wrap gap-2">{selectedLocal.relatedCharacterIds.map((characterId) => <Link key={characterId} to={`/personagens/${characterId}`} className="rounded-full border border-stroke px-3 py-2 font-mono text-[10px] text-mist hover:border-signal/50 hover:text-bone">{characterId.split("-").join(" ")}</Link>)}</div></section>
+          <nav className="grid gap-3 border-t border-stroke pt-6 sm:grid-cols-2" aria-label="Navegação entre dossiês">{previous ? <Link to={`/locais/${previous.id}`} className="rounded border border-stroke p-4 text-left hover:border-signal/50"><span className="block font-mono text-[9px] uppercase tracking-ultra text-mist">← Anterior</span><span className="mt-2 block text-bone">{previous.title}</span></Link> : <span />}{next ? <Link to={`/locais/${next.id}`} className="rounded border border-stroke p-4 text-right hover:border-signal/50"><span className="block font-mono text-[9px] uppercase tracking-ultra text-mist">Próximo →</span><span className="mt-2 block text-bone">{next.title}</span></Link> : null}</nav>
         </div>
       </PageFrame>
     </m.div>

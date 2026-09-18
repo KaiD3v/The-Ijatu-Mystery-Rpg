@@ -1,80 +1,16 @@
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  CharacterCards,
-  type CharacterCardProps,
-} from "../components/CharacterCards";
+import { CharacterCard } from "../components/CharacterCards";
 import { PageFrame } from "../components/cinematic/PageFrame";
-import {
-  npcCharacterRows,
-  protagonistCharacterRows,
-} from "../data/characters";
-
-const PROTAGONIST_ROW_CLASS =
-  "flex flex-col items-center justify-center gap-8 sm:flex-row sm:gap-10";
-const NPC_ROW_CLASS =
-  "flex flex-col items-center justify-center gap-8 md:flex-row md:gap-10";
-
-function CharacterRow({
-  characters,
-  className,
-}: {
-  characters: CharacterCardProps[];
-  className: string;
-}) {
-  return (
-    <div className={className}>
-      {characters.map((character) => (
-        <CharacterCards key={character.name} {...character} />
-      ))}
-    </div>
-  );
-}
+import { CHARACTERS } from "../data/characters";
 
 export function Characters() {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <PageFrame
-        eyebrow="Elenco"
-        title="Personagens"
-        subtitle="Protagonistas e figuras que movem o mistério em Ijatu — cada ficha é um depoimento disfarçado de estatística."
-      >
-        <section className="border-t border-stroke/60 pt-12">
-          <h2 className="font-mono text-[10px] uppercase tracking-ultra text-signal/85">
-            Protagonistas
-          </h2>
-          {protagonistCharacterRows.map((row, rowIndex) => (
-            <div
-              key={`protagonist-row-${rowIndex}`}
-              className={rowIndex > 0 ? "mt-10" : "mt-8"}
-            >
-              <CharacterRow
-                characters={row}
-                className={PROTAGONIST_ROW_CLASS}
-              />
-            </div>
-          ))}
-        </section>
-
-        <section className="mt-20 border-t border-stroke/60 pt-16">
-          <h2 className="font-mono text-[10px] uppercase tracking-ultra text-signal/85">
-            NPC&apos;s / PDM&apos;s
-          </h2>
-          <div className="mt-8">
-            {npcCharacterRows.map((row, rowIndex) => (
-              <CharacterRow
-                key={`npc-row-${rowIndex}`}
-                characters={row}
-                className={rowIndex > 0 ? `${NPC_ROW_CLASS} mt-10` : NPC_ROW_CLASS}
-              />
-            ))}
-          </div>
-        </section>
-      </PageFrame>
-    </motion.div>
-  );
+  const [query, setQuery] = useState("");
+  const [role, setRole] = useState("todos");
+  const filtered = useMemo(() => { const value = query.trim().toLocaleLowerCase("pt-BR"); return CHARACTERS.filter((character) => (role === "todos" || character.role === role) && (!value || [character.fullName, character.nickname, character.occupation, character.summary, ...character.locations].join(" ").toLocaleLowerCase("pt-BR").includes(value))); }, [query, role]);
+  const clear = () => { setQuery(""); setRole("todos"); };
+  return <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}><PageFrame eyebrow="Elenco" title="Personagens" subtitle="Um elenco de testemunhas, protagonistas e suspeitos. Abra qualquer ficha para compartilhar um dossiê direto.">
+    <section className="border-t border-stroke/60 pt-8" aria-labelledby="character-filters-title"><h2 id="character-filters-title" className="sr-only">Buscar e filtrar personagens</h2><div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_15rem_auto] md:items-end"><label className="font-mono text-[10px] uppercase tracking-ultra text-signal/85">Buscar por nome, ocupação ou local<input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Ex.: biblioteca, praça..." className="mt-2 block w-full rounded border border-stroke bg-panel px-3 py-3 font-sans text-sm normal-case tracking-normal text-bone placeholder:text-mist/50 focus:border-signal/60 focus:outline-none focus:ring-2 focus:ring-signal/20" /></label><label className="font-mono text-[10px] uppercase tracking-ultra text-signal/85">Papel narrativo<select value={role} onChange={(event) => setRole(event.target.value)} className="mt-2 block w-full rounded border border-stroke bg-panel px-3 py-3 font-sans text-sm normal-case tracking-normal text-bone focus:border-signal/60 focus:outline-none"><option value="todos">Todos</option><option value="protagonista">Protagonistas</option><option value="npc">NPCs</option><option value="suspeito">Suspeitos</option><option value="figura-publica">Figuras públicas</option></select></label><button type="button" onClick={clear} disabled={!query && role === "todos"} className="rounded border border-stroke px-4 py-3 font-mono text-[10px] uppercase tracking-ultra text-mist hover:border-signal/40 hover:text-bone disabled:cursor-not-allowed disabled:opacity-40">Limpar</button></div><p className="mt-4 font-mono text-[10px] uppercase tracking-ultra text-mist/65" role="status" aria-live="polite">{filtered.length} de {CHARACTERS.length} fichas visíveis</p></section>
+    {filtered.length > 0 ? <div className="mt-8 grid grid-cols-1 justify-items-center gap-8 sm:grid-cols-2 lg:grid-cols-3">{filtered.map((character) => <CharacterCard key={character.id} character={character} />)}</div> : <div className="mt-8 rounded-xl border border-dashed border-stroke p-10 text-center"><p className="font-display text-2xl text-bone">Nenhuma ficha encontrada</p><button type="button" onClick={clear} className="mt-5 rounded border border-signal/40 px-4 py-2 font-mono text-[10px] uppercase tracking-ultra text-signal">Limpar filtros</button></div>}
+  </PageFrame></motion.div>;
 }

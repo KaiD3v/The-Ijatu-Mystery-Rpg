@@ -1,299 +1,156 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { useLayoutEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Search, Users, Skull, FileQuestion, MapPin, BookOpen } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, BookOpen, Eye, FileSearch, MapPin, ShieldQuestion, Users } from "lucide-react";
+import { DossierCard, MediaFrame, SectionHeader, StatusBadge, ButtonLink } from "../components/ui";
+import { getLocalAsset, LOCALS } from "../data/locals";
+import { LORES } from "../data/lores";
+import angelaProfile from "../assets/ProfilePictures/angelaProfile.png";
+import { useLenis } from "../hooks/useLenis";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const dossierItems = [
-  {
-    title: "Enigmas",
-    text: "Pistas que não se deixam ler na primeira passagem.",
-    icon: Search,
-  },
-  {
-    title: "Personagens",
-    text: "Cada rosto esconde um álibi ou uma confissão em potencial.",
-    icon: Users,
-  },
-  {
-    title: "Ambientes",
-    text: "O Acre respira atrás da cortina de árvores e silêncio.",
-    icon: Skull,
-  },
-  {
-    title: "Conspiração",
-    text: "O que a cidade sabe — e o que finge não ver.",
-    icon: FileQuestion,
-  },
-];
-
-const quickLinks = [
-  { to: "/regras", label: "Regras", hint: "Sistema", icon: BookOpen },
-  { to: "/locais", label: "Locais", hint: "Mapa mental", icon: MapPin },
-  { to: "/personagens", label: "Elenco", hint: "Fichas", icon: Users },
-];
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.08 },
-  },
+const featuredCharacter = {
+  name: "Ângela de Matos",
+  description: "Garçonete e testemunha improvável das conversas que a cidade prefere esquecer.",
+  profilePic: angelaProfile,
 };
 
-const item = {
-  hidden: { opacity: 0, y: 28 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
-  },
-};
+const evidence = [
+  { label: "1977", title: "O linchamento", text: "Uma ferida antiga ainda marca os muros da cidade." },
+  { label: "1987", title: "O assassinato", text: "Um corpo às margens do rio rompe a rotina de Ijatu." },
+  { label: "Agora", title: "As versões", text: "Cada depoimento aponta para uma verdade diferente." },
+];
 
-export const Home = () => {
-  const rootRef = useRef<HTMLDivElement>(null);
-  const heroRef = useRef<HTMLElement>(null);
-  const blobLRef = useRef<HTMLDivElement>(null);
-  const blobRRef = useRef<HTMLDivElement>(null);
+const steps = [
+  { icon: Eye, title: "Observe", text: "Leia pistas, mapas e relatos como partes do mesmo arquivo." },
+  { icon: Users, title: "Interprete", text: "Reúna uma mesa, escolha personagens e dê voz às testemunhas." },
+  { icon: ShieldQuestion, title: "Decida", text: "Conecte evidências e escolha o que sua investigação fará com elas." },
+];
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+const ease = [0.22, 1, 0.36, 1] as const;
 
-    const root = rootRef.current;
-    const hero = heroRef.current;
-    const bL = blobLRef.current;
-    const bR = blobRRef.current;
-    if (!root || !hero || !bL || !bR) return;
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        bL,
-        { y: 0 },
-        {
-          y: 140,
-          ease: "none",
-          scrollTrigger: {
-            trigger: hero,
-            start: "top top",
-            end: "bottom top",
-            scrub: 1.15,
-          },
-        }
-      );
-      gsap.fromTo(
-        bR,
-        { y: 0 },
-        {
-          y: -110,
-          ease: "none",
-          scrollTrigger: {
-            trigger: hero,
-            start: "top top",
-            end: "bottom top",
-            scrub: 1.15,
-          },
-        }
-      );
-    }, root);
-
-    return () => ctx.revert();
-  }, []);
+export function Home() {
+  useLenis();
+  const reduceMotion = useReducedMotion();
+  const reveal = reduceMotion
+    ? undefined
+    : {
+        initial: { opacity: 0, y: 18 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-60px" },
+      };
 
   return (
-    <div ref={rootRef} className="relative">
-      <section
-        ref={heroRef}
-        className="relative min-h-[92vh] overflow-hidden px-4 pb-28 pt-16 sm:px-8 sm:pt-24"
-      >
-        <div
-          ref={blobLRef}
-          className="pointer-events-none absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-signal/5 blur-3xl will-change-transform"
-        />
-        <div
-          ref={blobRRef}
-          className="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-blood/20 blur-3xl will-change-transform"
-        />
+    <div className="relative overflow-hidden">
+      <section aria-labelledby="hero-title" className="relative isolate border-b border-stroke/70 px-4 pb-20 pt-12 sm:px-8 sm:pb-28 sm:pt-20">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_60%_at_20%_10%,rgba(201,162,39,0.11),transparent_64%),radial-gradient(ellipse_55%_65%_at_100%_90%,rgba(92,26,34,0.25),transparent_68%)]" />
+        <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07] [background-image:linear-gradient(rgba(234,230,222,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(234,230,222,0.05)_1px,transparent_1px)] [background-size:72px_72px]" />
 
-        <div className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:linear-gradient(rgba(234,230,222,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(234,230,222,0.04)_1px,transparent_1px)] [background-size:72px_72px]" />
-
-        <div className="relative mx-auto max-w-6xl">
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-stroke/50 pb-6">
-            <motion.p
-              initial={{ opacity: 0, letterSpacing: "0.55em" }}
-              animate={{ opacity: 1, letterSpacing: "0.35em" }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-mono text-[10px] uppercase text-signal/90 sm:text-xs"
-            >
-              Dossiê em andamento
+        <div className="mx-auto grid max-w-7xl items-end gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
+          <div>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-stroke/70 pb-5">
+              <StatusBadge>Arquivo em andamento</StatusBadge>
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-mist">Acre · 1987 · Caso IJ-01</p>
+            </div>
+            <motion.h1 id="hero-title" initial={reduceMotion ? false : { opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, ease }} className="mt-10 max-w-4xl font-display text-[clamp(3.25rem,9vw,7.5rem)] font-light leading-[0.88] tracking-[-0.03em] text-bone text-glow-signal">
+              O silêncio
+              <span className="block italic text-mist">também testemunha.</span>
+            </motion.h1>
+            <motion.p initial={reduceMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.16, duration: 0.65 }} className="mt-8 max-w-2xl text-lg leading-relaxed text-mist sm:text-xl">
+              Um RPG de mesa investigativo ambientado em Ijatu, uma cidade pequena do Acre onde um assassinato quebra a confiança entre vizinhos. Você não recebe a verdade: precisa montá-la.
             </motion.p>
-            <p className="font-mono text-[10px] uppercase tracking-ultra text-mist/90">
-              Ref. BR-AC · IJ-1987 · CONF
-            </p>
+            <motion.div initial={reduceMotion ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28, duration: 0.55, ease }} className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+              <ButtonLink to="/regras" variant="primary">Começar a investigar <ArrowRight className="h-4 w-4" aria-hidden /></ButtonLink>
+              <ButtonLink to="/historias" variant="secondary">Ler o caso</ButtonLink>
+            </motion.div>
           </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 36 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.12, duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-10 max-w-4xl font-display text-5xl font-light leading-[0.95] tracking-tight text-bone sm:text-7xl md:text-8xl text-glow-signal"
-          >
-            O silêncio
-            <span className="block italic text-mist/90">também testemunha.</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="mt-8 max-w-xl font-sans text-lg font-light leading-relaxed text-mist sm:text-xl"
-          >
-            Um RPG de mistério onde a floresta, a cidade e o medo compartilham a
-            mesma mesa. Você não joga apenas — investiga.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.55, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center"
-          >
-            <Link
-              to="/regras"
-              className="inline-flex min-h-[48px] items-center justify-center border border-signal/50 bg-signal/10 px-10 py-3 font-mono text-[11px] uppercase tracking-ultra text-bone shadow-glow transition hover:bg-signal/20 hover:shadow-panel"
-            >
-              Abrir arquivo de regras
-            </Link>
-            <Link
-              to="/historias"
-              className="inline-flex min-h-[48px] items-center justify-center border border-stroke px-10 py-3 font-mono text-[11px] uppercase tracking-ultra text-mist transition hover:border-signal/30 hover:text-bone"
-            >
-              Linha do tempo
-            </Link>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.75, duration: 0.6 }}
-            className="mt-16 grid gap-3 sm:grid-cols-3"
-          >
-            {quickLinks.map(({ to, label, hint, icon: Icon }) => (
-              <Link
-                key={to}
-                to={to}
-                className="group flex items-center gap-4 rounded-lg border border-stroke/80 bg-panel/40 px-4 py-4 shadow-innerline backdrop-blur-sm transition hover:border-signal/25 hover:bg-panel/70"
-              >
-                <Icon className="h-5 w-5 shrink-0 text-signal/65" strokeWidth={1.2} />
-                <div className="min-w-0 text-left">
-                  <p className="font-mono text-[9px] uppercase tracking-ultra text-mist/80">
-                    {hint}
-                  </p>
-                  <p className="truncate font-display text-lg text-bone">{label}</p>
-                </div>
-                <span className="ml-auto shrink-0 font-mono text-[9px] uppercase text-signal/0 transition group-hover:text-signal/80">
-                  →
-                </span>
-              </Link>
-            ))}
-          </motion.div>
+          <aside className="relative rounded-xl border border-stroke/80 bg-panel/70 p-5 shadow-panel backdrop-blur-sm sm:p-7" aria-label="Resumo do caso">
+            <p className="eyebrow">Nota de campo · 01</p>
+            <p className="mt-6 font-display text-2xl leading-tight text-bone sm:text-3xl">Uma mesa para quem prefere perguntas difíceis a respostas prontas.</p>
+            <dl className="mt-8 grid grid-cols-2 gap-5 border-t border-stroke/70 pt-5">
+              <div><dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-signal/85">Formato</dt><dd className="mt-1 text-sm text-mist">RPG de mesa</dd></div>
+              <div><dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-signal/85">Tom</dt><dd className="mt-1 text-sm text-mist">Mistério e tensão</dd></div>
+              <div><dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-signal/85">Cenário</dt><dd className="mt-1 text-sm text-mist">Interior do Acre</dd></div>
+              <div><dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-signal/85">Arquivo</dt><dd className="mt-1 text-sm text-mist">Em expansão</dd></div>
+            </dl>
+          </aside>
         </div>
       </section>
 
-      <section className="border-t border-stroke/60 bg-panel/30 px-4 py-20 sm:px-8">
-        <div className="mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-2xl"
-          >
-            <p className="font-mono text-[10px] uppercase tracking-ultra text-signal/80">
-              Evidências
-            </p>
-            <h2 className="mt-4 font-display text-3xl font-light text-bone sm:text-4xl">
-              O que o caso exige de você
-            </h2>
-          </motion.div>
-
-          <motion.ul
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-60px" }}
-            className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
-          >
-            {dossierItems.map(({ title, text, icon: Icon }) => (
-              <motion.li
-                key={title}
-                variants={item}
-                className="group relative overflow-hidden rounded border border-stroke/80 bg-panel/60 p-6 shadow-innerline backdrop-blur-sm transition hover:border-signal/25 hover:shadow-glow"
-              >
-                <div className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100">
-                  <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-signal/10 blur-2xl" />
-                </div>
-                <Icon className="relative h-7 w-7 text-signal/70" strokeWidth={1.25} />
-                <h3 className="relative mt-5 font-display text-xl text-bone">{title}</h3>
-                <p className="relative mt-3 font-sans text-sm leading-relaxed text-mist">
-                  {text}
-                </p>
-              </motion.li>
+      <section className="px-4 py-20 sm:px-8 sm:py-28" aria-labelledby="case-title">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader id="case-title" eyebrow="O caso" title="A cidade não esqueceu." description="Na manhã de domingo, um morador é encontrado morto às margens do rio. O crime parece impossível — até que as histórias antigas começam a se repetir." action={<Link className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-signal transition hover:text-bone" to="/historias">Arquivo completo <ArrowRight className="h-3.5 w-3.5" aria-hidden /></Link>} />
+          <div className="mt-12 grid gap-4 md:grid-cols-3">
+            {evidence.map((entry, index) => (
+              <motion.article key={entry.label} {...(reveal ?? {})} transition={reduceMotion ? undefined : { duration: 0.6, ease, delay: index * 0.08 }} className="relative border-l border-signal/45 px-5 py-2">
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-signal">{entry.label}</p>
+                <h3 className="mt-3 font-display text-2xl text-bone">{entry.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-mist">{entry.text}</p>
+              </motion.article>
             ))}
-          </motion.ul>
+          </div>
         </div>
       </section>
 
-      <section id="intro" className="px-4 py-24 sm:px-8">
-        <div className="mx-auto max-w-prose">
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.65 }}
-            className="font-display text-3xl font-light italic text-bone sm:text-4xl"
-          >
-            Introdução ao caso
-          </motion.h2>
-          <motion.blockquote
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.8 }}
-            className="mt-10 border-l-2 border-signal/35 pl-6 font-sans text-base font-light leading-relaxed text-mist sm:text-lg"
-          >
-            Bem-vindo a IJatu Mystery, uma experiência única de RPG de mesa que
-            combina um cenário envolvente com um sistema de jogo dinâmico. IJatu
-            é uma pequena cidade no coração do Acre: laços profundos, rotinas
-            pacíficas — e um assassinato que rasga a superfície. Cabe aos
-            jogadores atravessar a névoa, confrontar testemunhas instáveis e
-            decidir o que salvar… e o que enterrar de vez.
-          </motion.blockquote>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15, duration: 0.55 }}
-            className="mt-12 flex flex-wrap gap-4"
-          >
-            <Link
-              to="/personagens"
-              className="inline-flex min-h-[44px] items-center border border-stroke px-6 py-2 font-mono text-[10px] uppercase tracking-ultra text-mist transition hover:border-signal/35 hover:text-bone"
-            >
-              Ver elenco
-            </Link>
-            <Link
-              to="/contatos"
-              className="inline-flex min-h-[44px] items-center border border-transparent px-6 py-2 font-mono text-[10px] uppercase tracking-ultra text-signal/80 underline-offset-4 transition hover:text-signal"
-            >
-              Canal de contato
-            </Link>
-          </motion.div>
+      <section className="border-y border-stroke/70 bg-panel/35 px-4 py-20 sm:px-8 sm:py-28" aria-labelledby="highlights-title">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader id="highlights-title" eyebrow="Destaques do arquivo" title="Comece por um fio." description="Locais, pessoas e relatos que ajudam a entrar no universo sem precisar conhecer o sistema inteiro." />
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            <DossierCard href="/locais" label="Ver todos os locais">
+              <MediaFrame src={LOCALS[0] ? getLocalAsset(LOCALS[0].imageAsset) : undefined} alt="Capa documental da cidade de Ijatu" aspect="landscape" />
+              <p className="eyebrow mt-5">Local · Acesso público</p>
+              <h3 className="mt-2 font-display text-2xl text-bone">{LOCALS[0]?.title ?? "A cidade de Ijatu"}</h3>
+              <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-mist">{LOCALS[0]?.summary ?? "O centro de tudo que ainda não foi explicado."}</p>
+            </DossierCard>
+            <DossierCard href="/personagens" label="Conhecer o elenco">
+              <MediaFrame src={featuredCharacter.profilePic} alt="Retrato de Ângela de Matos" aspect="landscape" />
+              <p className="eyebrow mt-5">Pessoa · Depoimento</p>
+              <h3 className="mt-2 font-display text-2xl text-bone">{featuredCharacter.name}</h3>
+              <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-mist">{featuredCharacter.description}</p>
+            </DossierCard>
+            <DossierCard href={`/historias/${LORES[0]?.id ?? ""}`} label="Ler o relato">
+              <div className="media-frame aspect-[16/10] bg-[radial-gradient(circle_at_30%_30%,rgba(201,162,39,0.22),transparent_40%),linear-gradient(135deg,#14141f,#08080f)]"><FileSearch className="h-12 w-12 text-signal/70" aria-hidden /></div>
+              <p className="eyebrow mt-5">História · Registro 077</p>
+              <h3 className="mt-2 font-display text-2xl text-bone">{LORES[0]?.title ?? "O relato perdido"}</h3>
+              <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-mist">Um eco do passado pode explicar o que a cidade tenta esconder.</p>
+            </DossierCard>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-20 sm:px-8 sm:py-28" aria-labelledby="how-title">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader id="how-title" eyebrow="Como jogar" title="O arquivo é o seu tabuleiro." description="A experiência foi desenhada para acompanhar uma mesa de RPG e também funcionar como leitura independente para quem está chegando agora." align="center" />
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {steps.map(({ icon: Icon, title, text }, index) => (
+              <motion.div key={title} {...(reveal ?? {})} transition={reduceMotion ? undefined : { duration: 0.6, ease, delay: index * 0.08 }} className="dossier-card">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-signal/35 bg-signal/10 text-signal"><Icon className="h-5 w-5" aria-hidden /></span>
+                <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-mist">0{index + 1}</p>
+                <h3 className="mt-2 font-display text-2xl text-bone">{title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-mist">{text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-stroke/70 bg-abyss/70 px-4 py-20 sm:px-8 sm:py-24" aria-labelledby="about-title">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <p className="eyebrow">Sobre o projeto</p>
+            <h2 id="about-title" className="mt-3 max-w-2xl font-display text-3xl font-light text-bone sm:text-4xl">Um dossiê autoral para jogar, consultar e imaginar.</h2>
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-mist sm:text-base">The Ijatu Mystery RPG é um projeto de KaiD3v: uma aplicação React/TypeScript que transforma regras, locais, histórias e personagens em um arquivo navegável. A estética de investigação existe para servir a leitura — nunca para esconder informação.</p>
+            <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 font-mono text-[10px] uppercase tracking-[0.16em] text-signal/90">
+              <a href="https://kaidev.com.br" target="_blank" rel="noreferrer" className="transition hover:text-bone">Portfólio</a>
+              <a href="https://github.com/KaiD3v" target="_blank" rel="noreferrer" className="transition hover:text-bone">GitHub</a>
+              <Link to="/contatos" className="transition hover:text-bone">Contato</Link>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-3 lg:justify-end">
+            <ButtonLink to="/regras" variant="secondary"><BookOpen className="h-4 w-4" aria-hidden /> Regras</ButtonLink>
+            <ButtonLink to="/locais" variant="quiet"><MapPin className="h-4 w-4" aria-hidden /> Locais</ButtonLink>
+          </div>
         </div>
       </section>
     </div>
   );
-};
+}

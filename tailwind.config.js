@@ -21,7 +21,8 @@ module.exports = {
         panel: "#0e0e16",
         panel2: "#14141f",
         stroke: "#2a2a38",
-        mist: "#8f8d9a",
+        // Muted text stays above WCAG AA on both void and panel surfaces.
+        mist: "#aaa7b1",
         bone: "#eae6de",
         signal: "#c9a227",
         blood: "#5c1a22",
