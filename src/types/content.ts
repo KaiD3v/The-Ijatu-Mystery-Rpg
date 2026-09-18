@@ -12,7 +12,13 @@ export const CHARACTER_IDS = [
 ] as const satisfies readonly string[];
 export type CharacterId = (typeof CHARACTER_IDS)[number];
 
-export const LORE_IDS = ["o-linchamento-77", "um-misterio-inexplicavel"] as const satisfies readonly string[];
+export const LORE_IDS = [
+  "o-linchamento-77",
+  "um-misterio-inexplicavel",
+  "o-rastro-no-bosque",
+  "o-livro-da-paroquia",
+  "o-carregamento-noturno",
+] as const satisfies readonly string[];
 export type LoreId = (typeof LORE_IDS)[number];
 
 export const WEAPON_IDS = ["revolver", "pistola-semi-auto", "espingarda-caca", "escopeta-combate", "arco-caca", "facao-exploracao"] as const satisfies readonly string[];
