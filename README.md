@@ -40,7 +40,7 @@ Ijatu é apresentada como uma pequena cidade do Acre, de laços estreitos, cuja 
 - **Histórias** — relatos narrativos curtos do universo
 - **Personagens** — protagonistas e NPCs, com diálogos no estilo de ficha
 - **Itens** — tabelas de referência de armas e equipamentos, além de notas sobre improviso
-- **Contatos** — página de canal de contato (endereço provisório ainda presente na interface)
+- **Contatos** — canal editorial público via GitHub do autor
 
 A interface aposta em uma atmosfera escura e investigativa: camadas de grão e vinheta, transições suaves entre páginas, tipografia monoespaçada com sotaque de “arquivo” e textos em português em toda a experiência.
 
@@ -58,18 +58,17 @@ A interface aposta em uma atmosfera escura e investigativa: camadas de grão e v
 - Navegação responsiva (links no desktop e menu no celular)
 - Área de regras com índice lateral fixo em telas grandes e gaveta móvel no celular
 - Cards de locais com links para páginas de detalhe (descrição, texto rico, imagem de mapa opcional e lista de segredos)
-- Listagem e páginas de detalhe das histórias, alimentadas por dados em JSON
+- Listagem e páginas de detalhe das histórias, alimentadas por objetos TypeScript tipados
 - Cards de personagens com diálogos do Radix UI (personalidade, aparência, atributos, habilidades e lore)
 - Catálogos de armas e itens em cards no celular e em tabelas no desktop
 - Link “pular para o conteúdo” para acessibilidade por teclado
 - Configuração de *rewrite* de SPA para a Vercel (`vercel.json`)
 
-### Incompletas ou provisórias
+### Decisões editoriais e de produção
 
-- A página **Contatos** ainda exibe um endereço de e-mail provisório na interface (não alterado neste ciclo de documentação)
-- Vários locais têm `mapImage` e/ou `secrets` vazios; algumas imagens dos cards dependem de URLs externas que podem falhar ao carregar
-- O texto das regras de combate inclui títulos de distância incompletos (curta / média / longa) nos dados de origem
-- A versão do projeto é `0.0.0` e está marcada como `private` no `package.json`
+- Os locais e catálogos usam conteúdo em português revisado, regras completas de distância/condições e preços no formato `cr$`.
+- As imagens de locais, mapas, marca e compartilhamento ficam em `public/assets/`, sem dependência de hotlinks.
+- A versão do projeto e a política de publicação permanecem sob decisão do mantenedor.
 - Dependência não utilizada: `@radix-ui/react-dropdown-menu` (não importada em `src`)
 - Alguns arquivos de perfil em `src/assets/ProfilePictures/` e o componente `MysteryouSvg.tsx` não são referenciados pelos dados ou pela interface atuais
 
@@ -107,9 +106,8 @@ The-Ijatu-Mystery-Rpg/
 │   ├── Pages/            # Telas por rota
 │   ├── components/       # Blocos de UI (nav, cards, cinematic, layout)
 │   ├── config/           # Links da navegação principal e do índice de regras
-│   ├── data/             # Carregadores tipados sobre JSON / módulos de personagens
+│   ├── data/             # Fonte única de conteúdo editorial, em objetos TypeScript tipados
 │   ├── hooks/            # Busca de conteúdo, Lenis, brilho do cursor
-│   ├── json/             # Regras, locais, histórias, armas e itens
 │   ├── routes/           # Tabela de rotas consumida pelo App
 │   ├── types/            # Interfaces TypeScript compartilhadas do conteúdo
 │   ├── utils/            # Utilitários de formatação de texto rico
@@ -124,7 +122,7 @@ The-Ijatu-Mystery-Rpg/
 └── vercel.json
 ```
 
-O conteúdo é, em grande parte, orientado a dados: regras, locais, histórias, armas e itens vivem em `src/json/` e são expostos por `src/data/`. As fichas de personagens estão em `src/data/characters.tsx`.
+O conteúdo é orientado a dados e vive exclusivamente em `src/data/*.ts`: regras, locais, histórias, armas, itens e personagens são objetos TypeScript com IDs e referências cruzadas tipadas. `src/types/content.ts` concentra as interfaces e unions de IDs; os arquivos em `src/data/` usam `satisfies` para validar cada coleção em tempo de compilação.
 
 ---
 
@@ -187,18 +185,44 @@ Não há variáveis de ambiente exigidas pelo código atual; o projeto não util
 - **Cascas de página reutilizáveis** — `PageFrame` para páginas de conteúdo; `RulesPageLayout` para a experiência de regras em dois painéis
 - **Modelos de conteúdo tipados** — interfaces compartilhadas em `src/types/content.ts` para regras, locais, histórias, armas e itens
 - **Hooks de busca** — `useRuleById`, `useLocalById` e `useLoreById` mantêm as páginas de detalhe enxutas
-- **Texto rico em regras e locais** — `formatRichText` converte marcadores do JSON em HTML para o corpo dos artigos
+- **Conteúdo seguro em regras e locais** — os artigos renderizam campos tipados diretamente, sem conversão de JSON em HTML
 - **Catálogos responsivos** — itens e armas alternam entre cards em telas pequenas e tabelas a partir de `sm+`
 - **Movimento com restrição** — Lenis, GSAP e o brilho do cursor respeitam `prefers-reduced-motion`
 - **Hospedagem de SPA** — `vercel.json` redireciona todos os caminhos para `/`, em favor do roteamento no cliente
 
 ---
 
+## Direção editorial e assets
+
+As convenções de escrita, o recorte temporal (Acre, 1987), o glossário mecânico, os avisos de conteúdo e a política de autoria estão em [docs/editorial-guide.md](docs/editorial-guide.md). A biblioteca visual de produção fica em `public/assets/`, com manifesto tipado em [src/assets/assetManifest.ts](src/assets/assetManifest.ts); dados de locais referenciam apenas caminhos locais controlados pelo projeto.
+
 ## Status do projeto
 
-Este projeto está **em desenvolvimento ativo**. O arquivo interativo já permite navegar por regras, locais, histórias, personagens e itens, mas várias partes seguem provisórias (interface de contatos ainda provisória, campos de mapa e segredos incompletos em alguns locais, notas de distância de combate incompletas nos dados e ativos/dependências não utilizados).
+Este projeto é um arquivo companheiro autoral para mesas de RPG. O site permite navegar por regras, locais, histórias, personagens e itens; a direção editorial e a política de assets estão documentadas em `docs/editorial-guide.md`.
 
 Trate-o como um dossiê em evolução, e não como um produto finalizado.
+
+## Case study e quality gate
+
+O projeto começou como uma SPA visual com conteúdo misturado à apresentação. A renovação separou dados editoriais, componentes e ativos locais, corrigiu a hierarquia semântica e transformou regras, histórias e catálogos em referências navegáveis. O principal risco de produto era revelar spoilers no fluxo de jogadores; por isso o modo Jogador é o padrão, o modo Mestre persiste apenas como preferência local e cada revelação exige confirmação explícita. Essa preferência não é uma barreira de segurança.
+
+As páginas individuais são carregadas sob demanda com `React.lazy`, e a home mantém GSAP/ScrollTrigger isolados. Cada rota atualiza title, description, canonical, Open Graph, Twitter Card e JSON-LD; `public/robots.txt` e `public/sitemap.xml` completam a base de indexação. O layout usa `<main id="main-content">`, foco após navegação, skip link, focus trap no índice móvel, tabelas com caption e alternativas responsivas.
+
+### Verificação local
+
+```bash
+npm ci
+npm run lint
+npm run typecheck
+npm test
+npm run build
+```
+
+O workflow `.github/workflows/ci.yml` executa os mesmos comandos em cada push e pull request. O script de teste empacota os módulos TypeScript reais com esbuild e valida campos obrigatórios, unicidade, paridade do registro de IDs e referências cruzadas; auditorias de Lighthouse, axe e regressão visual devem ser executadas no ambiente de preview antes de publicar.
+
+### Resultados e limites
+
+O bundle inicial foi dividido por rota e o limite de alerta do Vite foi definido em 450 kB por chunk. Métricas finais de Lighthouse/LCP/CLS dependem do domínio, navegador e rede do deploy e permanecem pendentes até uma execução em preview; não são declaradas como validadas neste repositório. Não há publicação externa configurada pelo projeto.
 
 ---
 
@@ -216,11 +240,10 @@ Trate-o como um dossiê em evolução, e não como um produto finalizado.
 - [x] Camadas cinemáticas, transições de rota e rolagem suave
 - [x] Capturas de prévia do README em `docs/images/`
 
-### Próximos passos possíveis (ainda não implementados)
+### Próximos passos possíveis
 
-- [ ] Substituir o endereço provisório da interface de contatos por um contato real de publicação
-- [ ] Completar mapas e anotações de segredos nos locais previstos
-- [ ] Finalizar o texto restante de combate / distâncias
+- [ ] Exportar derivados AVIF/WebP e tamanhos responsivos para a biblioteca visual
+- [ ] Validar visualmente as telas em 390, 768, 1024 e 1440 px
 - [ ] Remover ou integrar ativos e a dependência Radix de *dropdown* não utilizados
 - [ ] Incluir um arquivo de licença, caso os termos de distribuição devam ser públicos
 
