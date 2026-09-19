@@ -65,8 +65,8 @@ export function IntroGate() {
             Arquivo confidencial
           </motion.p>
           <motion.h1 id="intro-title" initial={reduceMotion ? false : { opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduceMotion ? 0 : 0.15, duration: reduceMotion ? 0 : 0.55 }} className="mt-6 text-center font-display text-5xl font-light tracking-tight text-bone sm:text-7xl">
-            Ijatu
-            <span className="block text-center font-sans text-lg font-medium tracking-[0.4em] text-mist sm:text-xl">MYSTERY</span>
+            <span className="block text-center font-mono text-xs font-semibold tracking-[0.45em] text-signal/90 sm:text-sm">THE SINS OF</span>
+            <span className="mt-1 block">Ijatu</span>
           </motion.h1>
           <motion.div initial={reduceMotion ? false : { scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: reduceMotion ? 0 : 0.4, duration: reduceMotion ? 0 : 0.55 }} className="mt-10 h-px w-32 origin-center bg-gradient-to-r from-transparent via-signal/50 to-transparent" />
           <p className="mt-8 max-w-xs text-center font-mono text-[10px] leading-relaxed text-mist">Acesso autorizado apenas para investigação em curso.</p>

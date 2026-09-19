@@ -25,7 +25,7 @@ export function Lore() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     if (lore) {
-      document.title = `${lore.title} · Histórias · O Mistério de Ijatu`;
+      document.title = `${lore.title} · Histórias · The Sins of Ijatu`;
     }
   }, [id, lore]);
 

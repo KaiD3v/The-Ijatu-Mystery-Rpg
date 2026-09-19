@@ -1,4 +1,4 @@
-# The Ijatu Mystery RPG
+# The Sins of Ijatu
 
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -6,9 +6,9 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-2-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Node.js](https://img.shields.io/badge/Node.js-24.x-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 
-> Um dossiê web interativo para um RPG de mesa de mistério ambientado em Ijatu — uma cidade quieta do Acre, onde o silêncio guarda os próprios segredos.
+> Um dossiê web interativo para um RPG de mesa de investigação e horror ambientado em Ijatu — uma cidade quieta do Acre, onde o silêncio guarda os próprios segredos.
 
-**The Ijatu Mystery RPG** é uma aplicação de página única (SPA) em React que apresenta o material de referência da campanha: regras, locais, histórias, personagens e equipamentos. Os visitantes percorrem o arquivo como se fossem pastas de investigação — não se trata de um cliente multiplayer em tempo real, e sim de um site companheiro, atmosférico, para leitura e exploração do cenário.
+**The Sins of Ijatu** é uma aplicação de página única (SPA) em React que apresenta o material de referência da campanha: regras, locais, histórias, personagens e equipamentos. Os visitantes percorrem o arquivo como se fossem pastas de investigação — não se trata de um cliente multiplayer em tempo real, e sim de um site companheiro, atmosférico, para leitura e exploração do cenário.
 
 ---
 
@@ -16,15 +16,15 @@
 
 ### Início
 
-![Página inicial do Ijatu Mystery](docs/images/ijatu-home.png)
+![Página inicial do The Sins of Ijatu](docs/images/ijatu-home.png)
 
 ### Personagens · Locais · Histórias
 
 | Personagens | Locais |
 | --- | --- |
-| ![Página de personagens do Ijatu Mystery](docs/images/ijatu-characters.png) | ![Página de locais do Ijatu Mystery](docs/images/ijatu-locations.png) |
+| ![Página de personagens do The Sins of Ijatu](docs/images/ijatu-characters.png) | ![Página de locais do The Sins of Ijatu](docs/images/ijatu-locations.png) |
 
-![Página de histórias do Ijatu Mystery](docs/images/ijatu-lore.png)
+![Página de histórias do The Sins of Ijatu](docs/images/ijatu-lore.png)
 
 ---
 

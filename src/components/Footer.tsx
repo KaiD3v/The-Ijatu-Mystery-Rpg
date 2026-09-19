@@ -4,7 +4,7 @@ export function Footer() {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-signal/20 to-transparent" />
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 text-center sm:flex-row sm:px-8 sm:text-left">
         <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-mist">
-          Ijatu Mystery &copy; {new Date().getFullYear()}
+          The Sins of Ijatu &copy; {new Date().getFullYear()}
         </p>
         <p className="max-w-md font-sans text-xs leading-relaxed text-mist/80">
           Tom de investigação paranormal — não substitui

@@ -138,7 +138,7 @@ export function Home() {
           <div>
             <p className="eyebrow">Sobre o projeto</p>
             <h2 id="about-title" className="mt-3 max-w-2xl font-display text-3xl font-light text-bone sm:text-4xl">Um dossiê autoral para jogar, consultar e imaginar.</h2>
-            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-mist sm:text-base">The Ijatu Mystery RPG é um projeto de KaiD3v: uma aplicação React/TypeScript que transforma regras, locais, histórias e personagens em um arquivo navegável. A estética de investigação existe para servir a leitura — nunca para esconder informação.</p>
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-mist sm:text-base">The Sins of Ijatu é um projeto de KaiD3v: uma aplicação React/TypeScript que transforma regras, locais, histórias e personagens em um arquivo navegável. A estética de investigação existe para servir a leitura — nunca para esconder informação.</p>
             <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 font-mono text-[10px] uppercase tracking-[0.16em] text-signal/90">
               <a href="https://kaidev.com.br" target="_blank" rel="noreferrer" className="transition hover:text-bone">Portfólio</a>
               <a href="https://github.com/KaiD3v" target="_blank" rel="noreferrer" className="transition hover:text-bone">GitHub</a>

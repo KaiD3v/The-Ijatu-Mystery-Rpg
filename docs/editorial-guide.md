@@ -1,10 +1,10 @@
-# Guia editorial de Ijatu Mystery
+# Guia editorial de The Sins of Ijatu
 
 Este guia é a referência para novos textos, dados e assets do projeto.
 
 ## Identidade e voz
 
-- A grafia oficial é **The Ijatu Mystery RPG** em títulos de produto e **Ijatu Mystery** em frases. A cidade é sempre **Ijatu**; nunca usar “IJatu”, “Ijatu Mistery” ou “Ijatu Mysterys”.
+- A grafia oficial é **The Sins of Ijatu** em títulos de produto e frases. A cidade é sempre **Ijatu**; nunca usar “IJatu” ou grafias incorretas.
 - O texto é escrito em português brasileiro, com tom de arquivo criminal amazônico: concreto, observador e atmosférico. Evite humor involuntário, excesso de adjetivos e explicações que retirem a agência do mestre.
 - Use capitalização normal em títulos. Períodos terminam com pontuação; listas paralelas começam com maiúscula e terminam com ponto.
 - Medidas usam o sistema métrico (`1,80 m`, `10 m`), idades em anos e moeda ficcional em **cr$** com ponto para milhares (`cr$ 5.000`).

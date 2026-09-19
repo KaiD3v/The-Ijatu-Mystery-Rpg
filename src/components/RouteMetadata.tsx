@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const routeMeta: Array<{ test: (path: string) => boolean; title: string; description: string }> = [
-  { test: (path) => path === "/", title: "O Mistério de Ijatu · RPG de investigação", description: "Um dossiê interativo de mistério ambientado no Acre: regras, personagens, locais, histórias e pistas para sua mesa." },
-  { test: (path) => path.startsWith("/regras"), title: "Regras · O Mistério de Ijatu", description: "Regras, exemplos de rolagem, combate, cura e condições para conduzir uma investigação em Ijatu." },
-  { test: (path) => path.startsWith("/locais"), title: "Locais · O Mistério de Ijatu", description: "Dossiês dos locais de Ijatu, com pistas públicas, relações e mapas para a investigação." },
-  { test: (path) => path.startsWith("/historias"), title: "Histórias · O Mistério de Ijatu", description: "Relatos, recortes e depoimentos que formam o arquivo narrativo de Ijatu." },
-  { test: (path) => path.startsWith("/personagens"), title: "Personagens · O Mistério de Ijatu", description: "Fichas de protagonistas, testemunhas e suspeitos do caso de Ijatu." },
-  { test: (path) => path.startsWith("/itens"), title: "Itens e armas · O Mistério de Ijatu", description: "Referência rápida de armas, equipamentos, alcance, dano e disponibilidade." },
-  { test: (path) => path.startsWith("/contatos"), title: "Contatos · O Mistério de Ijatu", description: "Créditos, autoria e canais para falar sobre o projeto Ijatu Mystery." },
+  { test: (path) => path === "/", title: "The Sins of Ijatu · RPG de investigação", description: "Um dossiê interativo de mistério e horror ambientado no Acre: regras, personagens, locais, histórias e segredos para sua mesa." },
+  { test: (path) => path.startsWith("/regras"), title: "Regras · The Sins of Ijatu", description: "Regras, exemplos de rolagem, combate, cura e condições para conduzir uma investigação em Ijatu." },
+  { test: (path) => path.startsWith("/locais"), title: "Locais · The Sins of Ijatu", description: "Dossiês dos locais de Ijatu, com pistas públicas, relações e mapas para a investigação." },
+  { test: (path) => path.startsWith("/historias"), title: "Histórias · The Sins of Ijatu", description: "Relatos, recortes e depoimentos que formam o arquivo narrativo de Ijatu." },
+  { test: (path) => path.startsWith("/personagens"), title: "Personagens · The Sins of Ijatu", description: "Fichas de protagonistas, testemunhas e suspeitos do caso de Ijatu." },
+  { test: (path) => path.startsWith("/itens"), title: "Itens e armas · The Sins of Ijatu", description: "Referência rápida de armas, equipamentos, alcance, dano e disponibilidade." },
+  { test: (path) => path.startsWith("/contatos"), title: "Contatos · The Sins of Ijatu", description: "Créditos, autoria e canais para falar sobre o projeto The Sins of Ijatu." },
 ];
 
 function setMeta(attribute: "name" | "property", key: string, content: string) {
@@ -22,7 +22,7 @@ export function RouteMetadata() {
   useEffect(() => {
     const matched = routeMeta.find((entry) => entry.test(pathname));
     const isNotFound = !matched;
-    const title = matched?.title ?? "Arquivo não encontrado · O Mistério de Ijatu";
+    const title = matched?.title ?? "Arquivo não encontrado · The Sins of Ijatu";
     const description = matched?.description ?? "O registro solicitado não está no arquivo público de Ijatu.";
     const canonical = `${window.location.origin}${pathname}`;
     document.title = title;

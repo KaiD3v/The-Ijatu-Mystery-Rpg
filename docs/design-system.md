@@ -1,4 +1,4 @@
-# Design system · Ijatu Mystery
+# Design system · The Sins of Ijatu
 
 Este documento registra os fundamentos reutilizáveis da interface. A composição visual deve continuar legível quando o grão, a vinheta e o brilho de cursor são removidos.
 

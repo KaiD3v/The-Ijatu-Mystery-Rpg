@@ -40,7 +40,7 @@ export function Character() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     if (character) {
-      document.title = `${character.fullName} · Dossiê · O Mistério de Ijatu`;
+      document.title = `${character.fullName} · Dossiê · The Sins of Ijatu`;
     }
   }, [id, character]);
 

@@ -70,9 +70,9 @@ export function NavBar() {
     <header id="site-header" className="sticky top-0 z-50 border-b border-stroke/80 bg-void/90 backdrop-blur-xl">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-signal/35 to-transparent" />
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3.5 sm:px-8">
-        <Link to="/" className="relative z-10 flex rounded-md flex-col leading-none transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal" onClick={closeMenu} aria-label="Ijatu Mystery — início">
-          <span className="font-display text-2xl font-light tracking-tight text-bone sm:text-3xl">Ijatu</span>
-          <span className="mt-1 font-mono text-[9px] uppercase tracking-[0.55em] text-signal/80">Mystery</span>
+        <Link to="/" className="relative z-10 flex rounded-md flex-col leading-none transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal" onClick={closeMenu} aria-label="The Sins of Ijatu — início">
+          <span className="font-mono text-[9px] uppercase tracking-[0.35em] text-signal/80">The Sins of</span>
+          <span className="mt-0.5 font-display text-2xl font-light tracking-tight text-bone sm:text-3xl">Ijatu</span>
         </Link>
 
         <nav aria-label="Navegação principal" className="hidden items-center gap-1 lg:flex">
